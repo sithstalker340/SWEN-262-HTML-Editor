@@ -1,4 +1,4 @@
-public class FirstClass {
+public class mainFile {
 
 	public static void main(String arg[]){
 
