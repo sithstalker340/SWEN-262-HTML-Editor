@@ -1,8 +1,7 @@
 
 public class InputHandler {
 
-	public InputHandler()
-	{
+	public InputHandler(){
 		
 	}
 }

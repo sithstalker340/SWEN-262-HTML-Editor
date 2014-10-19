@@ -1,8 +1,7 @@
 
 public class LinkedView {
 	
-	public LinkedView()
-	{
+	public LinkedView(){
 		
 	}
 }

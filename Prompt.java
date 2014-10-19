@@ -1,8 +1,7 @@
 
-public class Prompt {
+public class Prompt{
 
-	public Prompt()
-	{
+	public Prompt(){
 		
 	}
 }

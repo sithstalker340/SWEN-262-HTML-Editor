@@ -6,6 +6,19 @@ public class FileHandler {
 		
 	}
 	
+	/**
+	 * Sends the parameter command to the active file
+	 * @param cmd
+	 */
+	public void pushCommand(Command cmd){
+	}
+		
+	/**
+	 * Undoes the most recent command of the active file
+	 */
+	public void popCommand(){
+	}
+	
 	public void save(){
 		
 	}

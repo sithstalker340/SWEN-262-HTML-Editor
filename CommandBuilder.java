@@ -1,5 +1,5 @@
 
-public class CommandBuilder {
+public class CommandBuilder{
 
 	public CommandBuilder()
 	{
