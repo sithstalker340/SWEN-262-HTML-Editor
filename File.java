@@ -38,7 +38,6 @@ public class File{
 	
 	public void setMouseStart(){
 	}
-	}
 	
 	
 }
