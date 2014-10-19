@@ -3,16 +3,16 @@ import java.util.Stack;
 public class File{
 	private Stack<Command> commandStack = new Stack<Command>(); 
 	private String buffer;
-	private int mouseStart;
-	private int mouseEnd;
+	private int cursorStart;
+	private int cursorEnd;
 	
 	/**
 	 * The constructor of the File class.
 	 */
 	public File(){
 		buffer = "";
-		mouseStart = 0;
-		mouseEnd = 0;
+		cursorStart = 0;
+		cursorEnd = 0;
 	}
   
   /**
@@ -28,12 +28,12 @@ public class File{
 	public void popCommand(){
 	}
 	
-	public int getMouseStart(){
-		return mouseStart;
+	public int getCursorStart(){
+		return cursorStart;
 	}
 	
-	public int getMouseEnd(){
-		return mouseEnd;
+	public int getCursorEnd(){
+		return cursorEnd;
 	}
 	
 	public void setMouseStart(){
