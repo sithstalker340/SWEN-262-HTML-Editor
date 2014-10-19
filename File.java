@@ -28,16 +28,25 @@ public class File{
 	public void popCommand(){
 	}
 	
+	/**
+	 * Returns the position of the cursor
+	 */
 	public int getCursorStart(){
 		return cursorStart;
 	}
 	
+	/**
+	 * Returns the end position of the highlighted string
+	 * If there is no highlighted string, returns the cursor position
+	 */
 	public int getCursorEnd(){
 		return cursorEnd;
 	}
 	
-	public void setMouseStart(){
-	}
-	
-	
+	/**
+	 * Sets the cursor position
+	 */
+	public void setCursorStart(){
+		
+	}	
 }
