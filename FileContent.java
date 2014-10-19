@@ -9,30 +9,47 @@ public class FileContent {
 	public FileContent(){
 		
 	}
-	
-	public void request(){
-		
-	}
-	
+
+	/**
+	 * Changes the the active file
+	 */
 	public void changeFile(){
 		
 	}
 	
+	/**
+	 * Sends the parameter command to the active file
+	 * @param cmd
+	 */
 	public void pushCommand(Command cmd){
 	}
 		
+	/**
+	 * Undoes the most recent command of the active file
+	 */
 	public void popCommand(){
 	}
 		
-	public int getMouseStart(){
-		return activeFile.getMouseStart();
+	
+	/**
+	 * Returns the start position of the highlighted string
+	 * If there is no highlighted string, it returns the cursor position
+	 */
+	public int getCursorStart(){
+		return activeFile.getCursorStart();
 	}
 		
-	public int getMouseEnd(){
-		return activeFile.getMouseEnd();
+	/**
+	 * Returns the end position of the highlighted string
+	 */
+	public int getCursorEnd(){
+		return activeFile.getCursorEnd();
 	}
 		
-	public void setMouseStart(){
+	/**
+	 * Sets the cursor position
+	 */
+	public void setCursorStart(){
 	}
 	
 }
