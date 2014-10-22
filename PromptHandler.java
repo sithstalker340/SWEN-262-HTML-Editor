@@ -1,12 +1,12 @@
 
-public class Prompt{
-
-	//Prompt constructor
-	public Prompt(String message){
-		
-	}
+public class PromptHandler{
 	
-	String message
+	String message;
+	
+	//PromptHandler constructor
+	public PromptHandler(String m){
+		message = m;
+	}
 	
 	/**
 	 * Displays a message to the user
@@ -38,7 +38,7 @@ public class Prompt{
 	 * Displays dialog with custom prompt
 	 * @param message
 	 */
-	private bool displayBool(String message){
+	private Boolean displayBool(String message){
 		
 	}
 }
