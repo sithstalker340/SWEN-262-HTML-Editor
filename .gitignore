@@ -9,3 +9,12 @@
 /Mediator.class
 /Prompt.class
 /CommandBuilder.class
+/SortByAlpha.class
+/SortByAppear.class
+/LinkedViewStrategy.class
+/BtnView.class
+/Card.class
+/CardLayout.class
+/MainView.class
+/MenuView.class
+/ViewListener.class
