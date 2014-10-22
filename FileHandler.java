@@ -19,22 +19,40 @@ public class FileHandler {
 	public void popCommand(){
 	}
 	
+	/**
+	 * Saves the active file
+	 */
 	public void save(){
 		
 	}
 	
+	/**
+	 * Prompts the user to save the file with a desired name and location
+	 */
 	public void saveAs(){
 		
 	}
 	
-	public File load(){
+	/**
+	 * Loads a file from the location specified in the parameter
+	 * @param loc
+	 * @return null
+	 */
+	public File load(String loc){
 		return null;
 	}
 	
+	/**
+	 * Checks to see if the text in the current file is valid HTML
+	 * @return bool
+	 */
 	public boolean wellFormed(){
 		return true;
 	}
 	
+	/**
+	 * Prompts to save any unsaved work, and then exits the program
+	 */
 	public void quit(){
 		
 	}	
