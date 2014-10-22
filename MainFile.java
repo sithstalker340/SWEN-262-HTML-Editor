@@ -1,8 +1,6 @@
-import java.applet.Applet;
+import javax.swing.JFrame;
 
-import javax.swing.JApplet;
-
-public class MainFile extends Applet
+public class MainFile extends JFrame
 {
 	MainView view;
 	Mediator mediator;
@@ -13,7 +11,7 @@ public class MainFile extends Applet
 		mediator = new Mediator();
 		input = new InputHandler();
 		this.setSize(400, 400);
-		this.show();
+		this.setVisible(true);
 		this.add(view);
 		view.init(this);
 	}
