@@ -17,7 +17,7 @@ public class MainView extends JPanel
 		this.setBounds(0, 0, parent.getWidth(), parent.getHeight());
 		//JButton x = new JButton();
 		menu.init(this);
-		this.add(x);
+		//this.add(x);
 		menu.show();
 		menu.setVisible(true);
 	}
