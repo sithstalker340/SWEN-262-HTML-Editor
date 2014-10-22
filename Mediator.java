@@ -1,23 +1,25 @@
 
 public class Mediator {
 	
-	public CommandBuilder builder;
+<<<<<<< HEAD
+	private CommandBuilder builder;
 	private FileHandler fileHandler;
+=======
+	public CommandBuilder builder;
+>>>>>>> ad9f4670854402671d98452672964a3129e94eff
 	
 	public Mediator(){
 		
 	}
 	
-	/**
-	 * Creates and pushes a command.
-	 */
-	public void createCommand(){
+	public Command createCommand(){
+		return null;
+	}
+	
+	public void pushCommand(){
 		
 	}
 	
-	/**
-	 * Updates the view.
-	 */
 	public void updateDisplay(){
 		
 	}
