@@ -1,17 +1,9 @@
-import javax.swing.JPanel;
-
-
-public class MenuView extends JPanel
-{
+//Methods to display and run dropdown menu functions (save, load, button commands)
+public class MenuView {
 
 	/**
 	 * @param args
 	 */
-	public void init(MainView parent) 
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 
 }
