@@ -5,4 +5,10 @@ public class Command {
 	{
 		
 	}
+	
+	public void Apply(){}
+	
+	public void Undo(){}
+	
 }
+
