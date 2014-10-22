@@ -8,14 +8,17 @@ public class Mediator {
 		
 	}
 	
-	public Command createCommand(){
-		return null;
-	}
-	
+	/**
+	 * Tells the builder to create a command and then pushes it to fileHandler.
+	 */
 	public void pushCommand(){
-		
+		builder.CreateCommand();
+		fileHandler.pushCommand(null);
 	}
 	
+	/**
+	 * Updates the view.
+	 */
 	public void updateDisplay(){
 		
 	}
