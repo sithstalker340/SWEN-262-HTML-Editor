@@ -5,15 +5,15 @@ public class Mediator {
 	private FileHandler fileHandler;
 	
 	public Mediator(){
-		
+		builder = new CommandBuilder();
+		fileHandler = new FileHandler();
 	}
 	
 	/**
 	 * Tells the builder to create a command and then pushes it to fileHandler.
 	 */
 	public void pushCommand(){
-		builder.CreateCommand();
-		fileHandler.pushCommand(null);
+		fileHandler.pushCommand(builder.CreateCommand());
 	}
 	
 	/**
