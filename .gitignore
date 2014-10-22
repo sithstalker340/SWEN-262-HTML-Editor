@@ -9,3 +9,9 @@
 /Mediator.class
 /Prompt.class
 /CommandBuilder.class
+/BtnView.class
+/Card.class
+/CardLayout.class
+/MainView.class
+/MenuView.class
+/ViewListener.class
