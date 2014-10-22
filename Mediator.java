@@ -1,7 +1,7 @@
 
 public class Mediator {
 	
-	public CommandBuilder builder;
+	private CommandBuilder builder;
 	private FileHandler fileHandler;
 	
 	public Mediator(){
