@@ -1,5 +1,14 @@
+<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.Stack;
+=======
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+>>>>>>> 678eb9905b59f6f3519d847f4a761ae7ab21888c
 
 
 public class FileHandler {
@@ -42,7 +51,20 @@ public class FileHandler {
 	 * @return null
 	 */
 	public File load(String loc){
-		return null;
+		Path path = Paths.get(loc);
+		Charset charset = Charset.forName("US-ASCII");
+		String allText = "";
+		try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
+		    String line = null;
+		    while ((line = reader.readLine()) != null){
+		        System.out.println(line);
+		        allText += line;
+		    }
+		}catch (IOException x){
+		    System.err.format("IOException: %s%n", x);
+		}
+		return new File(allText);
+
 	}
 	
 	/**

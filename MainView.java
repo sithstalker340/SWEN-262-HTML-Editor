@@ -1,28 +1,50 @@
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import java.awt.FlowLayout;
+
+import javax.swing.JFrame;
 
 
-public class MainView extends JPanel
+public class MainView extends JFrame
 {
-	//MenuView menu = new MenuView(this);
+	MenuView menu;
+	ViewListener listener;
 	BtnView buttons = new BtnView();
 	CardLayout cL = new CardLayout();
 	
-	public MainView(MainFile parent)
+	public MainView()
 	{
-		this.init(parent);
+		//calls init
+		this.init();
+		//sets layout
+		this.setLayout(new FlowLayout());
 	}
 	
 	/**
 	 * @param args
 	 */
-	public void init(MainFile parent) 
+	public void init() 
 	{
-		//this.setBounds(0, 0, , height)
+		//create menu Object
+		menu = new MenuView(this);
+		//create ViewListener
+		listener = new ViewListener();
+		//set Size of program
+		this.setSize(400, 400);
+		//makes program appear
 		this.setVisible(true);
-		this.setBounds(0, 0, parent.getWidth(), parent.getHeight());
-		//JButton x = new JButton();
-		//x.setVisible(true);
+		//initialize menu
+		menu.init(this, listener);
+		//sets menu Object as the MenuBar
+		this.setJMenuBar(menu);
+		//Set program to exit on close
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE); 
 	}
+	
+
+	public static void main(String args[])
+	{	
+		//create MainView to let user use program
+		MainView view = new MainView();
+	}
+	
 
 }
