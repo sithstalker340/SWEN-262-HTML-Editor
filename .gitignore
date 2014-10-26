@@ -18,3 +18,5 @@
 /MainView.class
 /MenuView.class
 /ViewListener.class
+PromptHandler.class
+java.policy.applet
