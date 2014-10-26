@@ -7,12 +7,12 @@ import javax.swing.JMenuItem;
 //Methods to display and run dropdown menu functions (save, load, button commands)
 public class MenuView extends JMenuBar
 {
-	public MenuView(MainFile parent){}
+	public MenuView(MainView mainView){}
 	
 	/**
 	 * @param args
 	 */
-	public void init(MainFile parent, ViewListener listener) 
+	public void init(MainView parent, ViewListener listener) 
 	{
 		this.setSize(parent.getWidth(), 25);
 		JMenu file = new JMenu();
