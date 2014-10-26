@@ -6,6 +6,7 @@ public class PromptHandler{
 	public PromptHandler(){
 		message = "";
 	}
+	
 	public void setMessage(String m){
 		message = m;
 	}
