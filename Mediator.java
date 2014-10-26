@@ -2,7 +2,7 @@
 public class Mediator{
 
 	private CommandBuilder builder;
-	private FileHandler fileHandler;
+	public FileHandler fileHandler;
 	private PromptHandler prompt;
 	
 	public Mediator(){
