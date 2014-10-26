@@ -3,7 +3,7 @@ public class FileHandler {
 	private FileContent mainFileContent;
 	
 	public FileHandler(){
-		
+		mainFileContent = new FileContent();
 	}
 	
 	/**
