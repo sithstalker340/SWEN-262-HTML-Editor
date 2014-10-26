@@ -1,14 +1,12 @@
-<<<<<<< HEAD
+
 import java.util.Arrays;
 import java.util.Stack;
-=======
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
->>>>>>> 678eb9905b59f6f3519d847f4a761ae7ab21888c
 
 
 public class FileHandler {
