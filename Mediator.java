@@ -8,7 +8,7 @@ public class Mediator{
 	public Mediator(){
 		builder = new CommandBuilder();
 		fileHandler = new FileHandler();
-		prompt = new PromptHandler();
+		prompt = new PromptHandler("");
 	}
 	
 	/**
