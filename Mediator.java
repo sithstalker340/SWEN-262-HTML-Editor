@@ -3,12 +3,12 @@ public class Mediator{
 
 	private CommandBuilder builder;
 	private FileHandler fileHandler;
-	private PromptHandler prompt;
+	private PromptManager prompt;
 	
 	public Mediator(){
 		builder = new CommandBuilder();
 		fileHandler = new FileHandler();
-		prompt = new PromptHandler();
+		prompt = new PromptManager();
 	}
 	
 	/**

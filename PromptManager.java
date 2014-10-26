@@ -1,9 +1,9 @@
-public class PromptHandler{
+public class PromptManager{
 	
 	String message;
 	
 	//PromptHandler constructor
-	public PromptHandler(){
+	public PromptManager(){
 		message = "";
 	}
 	
