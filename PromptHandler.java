@@ -1,4 +1,3 @@
-
 public class PromptHandler{
 	
 	String message;
@@ -22,6 +21,7 @@ public class PromptHandler{
 	 * @param message1, message2
 	 */
 	private String[] displayLines2(String message1, String message2){
+		return null;
 		
 	}
 	
@@ -31,6 +31,7 @@ public class PromptHandler{
 	 * @param message
 	 */
 	private String displayLines1(String message){
+		return null;
 		
 	}
 	
@@ -39,6 +40,8 @@ public class PromptHandler{
 	 * @param message
 	 */
 	private Boolean displayBool(String message){
+		return null;
 		
 	}
 }
+
