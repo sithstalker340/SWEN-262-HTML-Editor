@@ -1,5 +1,17 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 //Methods to get and relay updates to the other view files
-public class ViewListener {
+public class ViewListener implements ActionListener
+{
+
+	public ViewListener(){}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	/**
 	 * @param args
