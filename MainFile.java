@@ -24,6 +24,7 @@ public class MainFile extends JFrame
 		//view.init(this);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		//this.paintComponents(getGraphics());
+		mediator.fileHandler.load("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt");
 	}
 	
 	public static void main(String args[])
