@@ -9,8 +9,8 @@ public class File{
 	/**
 	 * The constructor of the File class.
 	 */
-	public File(String b){
-		buffer = b;
+	public File(){
+		buffer = "";
 		cursorStart = 0;
 		cursorEnd = 0;
 	}
