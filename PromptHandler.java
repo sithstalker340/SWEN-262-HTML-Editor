@@ -3,10 +3,12 @@ public class PromptHandler{
 	String message;
 	
 	//PromptHandler constructor
-	public PromptHandler(String m){
+	public PromptHandler(){
+		message = "";
+	}
+	public void setMessage(String m){
 		message = m;
 	}
-	
 	/**
 	 * Displays a message to the user
 	 * @param message
