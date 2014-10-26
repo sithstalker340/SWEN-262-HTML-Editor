@@ -2,13 +2,8 @@
 public class Mediator{
 
 	private CommandBuilder builder;
-<<<<<<< HEAD
-	public FileHandler fileHandler;
-	private PromptHandler prompt;
-=======
 	private FileHandler fileHandler;
 	private PromptManager prompt;
->>>>>>> d267454b3165d05adb5664355cd9333f49a8946f
 	
 	public Mediator(){
 		builder = new CommandBuilder();
