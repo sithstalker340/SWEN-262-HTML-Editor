@@ -1,13 +1,15 @@
-
 public class PromptHandler{
 	
 	String message;
 	
 	//PromptHandler constructor
-	public PromptHandler(String m){
-		message = m;
+	public PromptHandler(){
+		message = "";
 	}
 	
+	public void setMessage(String m){
+		message = m;
+	}
 	/**
 	 * Displays a message to the user
 	 * @param message
@@ -22,6 +24,7 @@ public class PromptHandler{
 	 * @param message1, message2
 	 */
 	private String[] displayLines2(String message1, String message2){
+		return null;
 		
 	}
 	
@@ -31,6 +34,7 @@ public class PromptHandler{
 	 * @param message
 	 */
 	private String displayLines1(String message){
+		return null;
 		
 	}
 	
@@ -39,6 +43,8 @@ public class PromptHandler{
 	 * @param message
 	 */
 	private Boolean displayBool(String message){
+		return null;
 		
 	}
 }
+
