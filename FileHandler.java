@@ -1,3 +1,10 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 
 public class FileHandler {
 	private FileContent mainFileContent;
@@ -39,7 +46,20 @@ public class FileHandler {
 	 * @return null
 	 */
 	public File load(String loc){
-		return null;
+		Path path = Paths.get(loc);
+		Charset charset = Charset.forName("US-ASCII");
+		String allText = "";
+		try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
+		    String line = null;
+		    while ((line = reader.readLine()) != null){
+		        System.out.println(line);
+		        allText += line;
+		    }
+		}catch (IOException x){
+		    System.err.format("IOException: %s%n", x);
+		}
+		return new File(allText);
+
 	}
 	
 	/**
