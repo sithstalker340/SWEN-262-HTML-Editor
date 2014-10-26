@@ -38,13 +38,5 @@ public class MainView extends JFrame
 		//Set program to exit on close
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE); 
 	}
-	
-
-	public static void main(String args[])
-	{	
-		//create MainView to let user use program
-		MainView view = new MainView();
-	}
-	
 
 }
