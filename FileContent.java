@@ -4,10 +4,10 @@ import java.util.List;
 
 public class FileContent {
 	private File activeFile;
-	private List<File> fileList = new ArrayList<File>();
+	private List<File> fileList;
 	
-	public FileContent(){
-		
+	public FileContent(){ 
+		fileList = new ArrayList<File>();
 	}
 
 	/**
@@ -52,4 +52,9 @@ public class FileContent {
 	public void setCursorStart(){
 	}
 	
+	/**
+	 * Sets the end cursor position.
+	 */
+	public void setCursorEnd(){
+	}
 }

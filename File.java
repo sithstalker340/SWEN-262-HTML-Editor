@@ -1,7 +1,7 @@
 import java.util.Stack;
 
 public class File{
-	private Stack<Command> commandStack = new Stack<Command>(); 
+	private Stack<Command> commandStack;
 	private String buffer;
 	private int cursorStart;
 	private int cursorEnd;
@@ -10,6 +10,7 @@ public class File{
 	 * The constructor of the File class.
 	 */
 	public File(){
+		commandStack = new Stack<Command>();
 		buffer = "";
 		cursorStart = 0;
 		cursorEnd = 0;
