@@ -1,20 +1,28 @@
+import java.nio.file.Path;
 import java.util.Stack;
 
 public class File{
-	private Stack<Command> commandStack = new Stack<Command>(); 
+	private Stack<Command> commandStack;
 	private String buffer;
 	private int cursorStart;
 	private int cursorEnd;
+	private int id;
+	private Path location;
 	
 	/**
 	 * The constructor of the File class.
 	 */
-	public File(String b){
+	public File(String b, int idNum){
+		commandStack = new Stack<Command>();
 		buffer = b;
 		cursorStart = 0;
 		cursorEnd = 0;
+		id = idNum;
 	}
   
+	public int getID(){
+		return id;
+	}
   /**
    * Saves the command to the file and then applies the command.
    * @param cmd
@@ -23,7 +31,7 @@ public class File{
 	}
 	
 	/**
-	 * Removes and undos the command.
+	 * Removes and undo's the command.
 	 */
 	public void popCommand(){
 	}
