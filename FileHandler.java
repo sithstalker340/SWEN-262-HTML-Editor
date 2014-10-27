@@ -7,10 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 
 public class FileHandler {
@@ -39,16 +35,16 @@ public class FileHandler {
 	 */
 	public void save(){
 		File newFile = new File(fileNumbers);
-		String path = "C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt";
+		newFile.setPath("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt");
 		FileWriter fw;
 		BufferedWriter bw;
-		try {
-			fw = new FileWriter(path);
+		try{
+			fw = new FileWriter(newFile.getPath().toString());
 			bw= new BufferedWriter(fw);
-			bw.write(newFile.getBuffer());//Needs to write the buffer from the File.
+			bw.write(newFile.getBuffer());
 			bw.close();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
+		}catch (IOException e1){
+			System.out.println("Error saving file '" + newFile.getPath().toString() + "'");	
 			e1.printStackTrace();
 		}
 	}
@@ -66,13 +62,11 @@ public class FileHandler {
 	 * @return null
 	 */
 	public File load(String loc){
-		File newFile = new File(fileNumbers);
-		newFile.setPath(loc);
-		Charset charset = Charset.forName("US-ASCII");
+		File newFile;
 		String allText = "";
 		FileReader fileReader;
 		BufferedReader bufferedReader;
-		try {
+		try{
 			fileReader = new FileReader(loc);
 			bufferedReader = new BufferedReader(fileReader);
 			while((allText = bufferedReader.readLine()) != null) {
@@ -80,13 +74,17 @@ public class FileHandler {
 	            }	
 			bufferedReader.close();	
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Unable to open file '" + loc + "'");
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading file '" + loc + "'");	
 			e.printStackTrace();
 		}
+		
+		newFile = new File(allText,fileNumbers);
+		newFile.setPath(loc);
 		fileNumbers +=1;
+		
 		return newFile;
 	}
 	

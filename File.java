@@ -20,6 +20,10 @@ public class File{
 		cursorEnd = 0;
 		id = idNum;
 	}
+	public File(String b,int idNum){
+		this(idNum);
+		buffer = b;
+	}
   
 	public int getID(){
 		return id;
@@ -35,6 +39,10 @@ public class File{
 	
 	public void setPath(String p){
 		Path path = Paths.get(p);
+	}
+	
+	public void setBuffer(String s){
+		buffer = s;
 	}
 	
   /**
