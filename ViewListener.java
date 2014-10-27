@@ -8,8 +8,10 @@ public class ViewListener implements ActionListener
 	public ViewListener(){}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent arg0) 
+	{
+		//Exit menu button
+		//if(arg0.getSource() == Me)
 		
 	}
 
