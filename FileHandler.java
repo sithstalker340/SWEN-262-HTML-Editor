@@ -3,10 +3,8 @@ import java.util.Arrays;
 import java.util.Stack;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,6 +23,7 @@ public class FileHandler {
 	 * @param cmd
 	 */
 	public void pushCommand(Command cmd){
+		mainFileContent.pushCommand(cmd);
 	}
 		
 	/**
@@ -37,14 +36,14 @@ public class FileHandler {
 	 * Saves the active file
 	 */
 	public void save(){
-		File file = new File(null, fileNumbers);
+		File newFile = new File(null, fileNumbers);
 		String path = "C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt";
 		FileWriter fw;
 		BufferedWriter bw;
 		try {
 			fw = new FileWriter(path);
 			bw= new BufferedWriter(fw);
-			bw.write("Testing save method.");//Needs to write the buffer from the File.
+			bw.write(newFile.getBuffer());//Needs to write the buffer from the File.
 			bw.close();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
