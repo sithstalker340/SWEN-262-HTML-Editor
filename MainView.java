@@ -7,7 +7,7 @@ public class MainView extends JFrame
 {
 	MenuView menu;
 	ViewListener listener;
-	BtnView buttons = new BtnView();
+	BtnView buttons;
 	CardLayout cL = new CardLayout();
 	
 	public MainView()
@@ -25,6 +25,8 @@ public class MainView extends JFrame
 	{
 		//create menu Object
 		menu = new MenuView(this);
+		//create ButtonView Object
+		buttons = new BtnView();
 		//create ViewListener
 		listener = new ViewListener();
 		//set Size of program
@@ -33,10 +35,14 @@ public class MainView extends JFrame
 		this.setVisible(true);
 		//initialize menu
 		menu.init(this, listener);
+		//initialize buttons
+		buttons.init(this, listener);
 		//sets menu Object as the MenuBar
 		this.setJMenuBar(menu);
 		//Set program to exit on close
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE); 
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//Adds the btnView Object
+		this.add(buttons);
 	}
 
 }
