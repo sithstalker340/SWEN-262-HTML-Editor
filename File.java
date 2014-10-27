@@ -1,4 +1,5 @@
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Stack;
 
 public class File{
@@ -12,9 +13,9 @@ public class File{
 	/**
 	 * The constructor of the File class.
 	 */
-	public File(String b, int idNum){
+	public File(int idNum){
 		commandStack = new Stack<Command>();
-		buffer = b;
+		buffer = "";
 		cursorStart = 0;
 		cursorEnd = 0;
 		id = idNum;
@@ -31,6 +32,11 @@ public class File{
 	public String getBuffer(){
 		return buffer;
 	}
+	
+	public void setPath(String p){
+		Path path = Paths.get(p);
+	}
+	
   /**
    * Saves the command to the file and then applies the command.
    * @param cmd

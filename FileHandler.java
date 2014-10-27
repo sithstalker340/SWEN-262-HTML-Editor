@@ -3,6 +3,8 @@ import java.util.Arrays;
 import java.util.Stack;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -36,7 +38,7 @@ public class FileHandler {
 	 * Saves the active file
 	 */
 	public void save(){
-		File newFile = new File(null, fileNumbers);
+		File newFile = new File(fileNumbers);
 		String path = "C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt";
 		FileWriter fw;
 		BufferedWriter bw;
@@ -64,22 +66,28 @@ public class FileHandler {
 	 * @return null
 	 */
 	public File load(String loc){
-		Path path = Paths.get(loc);
+		File newFile = new File(fileNumbers);
+		newFile.setPath(loc);
 		Charset charset = Charset.forName("US-ASCII");
 		String allText = "";
-		try (BufferedReader reader = Files.newBufferedReader(path, charset)){
-		    String line = null;
-		    while ((line = reader.readLine()) != null){
-		        System.out.println(line);
-		        allText += line;
-		    }
-		}catch (IOException x){
-		    System.err.format("IOException: %s%n", x);
+		FileReader fileReader;
+		BufferedReader bufferedReader;
+		try {
+			fileReader = new FileReader(loc);
+			bufferedReader = new BufferedReader(fileReader);
+			while((allText = bufferedReader.readLine()) != null) {
+	                System.out.println(allText);
+	            }	
+			bufferedReader.close();	
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		fileNumbers +=1;
-		return new File(allText, fileNumbers-1);
-		
-
+		return newFile;
 	}
 	
 	/**
