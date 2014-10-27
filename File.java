@@ -23,6 +23,14 @@ public class File{
 	public int getID(){
 		return id;
 	}
+	
+	public Path getPath(){
+		return location;
+	}
+	
+	public String getBuffer(){
+		return buffer;
+	}
   /**
    * Saves the command to the file and then applies the command.
    * @param cmd

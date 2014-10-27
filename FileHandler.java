@@ -37,7 +37,7 @@ public class FileHandler {
 	 * Saves the active file
 	 */
 	public void save(){
-		File file = new File(null);
+		File file = new File(null, fileNumbers);
 		String path = "C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt";
 		FileWriter fw;
 		BufferedWriter bw;
@@ -77,7 +77,9 @@ public class FileHandler {
 		}catch (IOException x){
 		    System.err.format("IOException: %s%n", x);
 		}
-		return new File(allText);
+		fileNumbers +=1;
+		return new File(allText, fileNumbers-1);
+		
 
 	}
 	
