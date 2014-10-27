@@ -1,14 +1,10 @@
 
-public class Command {
-
-	public Command()
-	{
-		
-	}
+public abstract class Command {
 	
-	public void Apply(){}
+	public boolean isUndoable;
 	
-	public void Undo(){}
+	public abstract void Apply();
 	
+	public abstract void Undo();
 }
 
