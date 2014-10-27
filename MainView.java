@@ -18,6 +18,8 @@ public class MainView extends JFrame
 		this.setLayout(new FlowLayout());
 		//sets Title
 		this.setTitle("Editor");
+		//repaint fix
+		buttons.repaint();
 	}
 	
 	/**
@@ -32,7 +34,7 @@ public class MainView extends JFrame
 		//create ViewListener
 		listener = new ViewListener();
 		//set Size of program
-		this.setSize(600, 400);
+		this.setSize(700, 400);
 		//makes program appear
 		this.setVisible(true);
 		//initialize menu

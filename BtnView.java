@@ -16,6 +16,7 @@ public class BtnView extends JPanel
 	JButton btnUl;//<ul>   (unordered list)
 	JButton btnDl;//<dl>   (dictionary list)
 	JButton btnTable;//<Table>
+	JButton btnImg;//<img>   (Image)
 	
 	public BtnView(){}
 	
@@ -31,8 +32,8 @@ public class BtnView extends JPanel
 		this.add(btnUl = new JButton("<ul>"));
 		this.add(btnDl = new JButton("<dl>"));
 		this.add(btnTable = new JButton("<table>"));
+		this.add(btnImg = new JButton("<img>"));
 		
-		System.out.println(this.getLayout());
 		this.setVisible(true);
 	}
 	
