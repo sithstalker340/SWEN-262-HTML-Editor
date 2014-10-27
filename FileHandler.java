@@ -35,16 +35,16 @@ public class FileHandler {
 	 */
 	public void save(){
 		File newFile = new File(fileNumbers);
-		String path = "C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt";
+		newFile.setPath("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt");
 		FileWriter fw;
 		BufferedWriter bw;
-		try {
-			fw = new FileWriter(path);
+		try{
+			fw = new FileWriter(newFile.getPath().toString());
 			bw= new BufferedWriter(fw);
-			bw.write(newFile.getBuffer());//Needs to write the buffer from the File.
+			bw.write(newFile.getBuffer());
 			bw.close();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
+		}catch (IOException e1){
+			System.out.println("Error saving file '" + newFile.getPath().toString() + "'");	
 			e1.printStackTrace();
 		}
 	}
@@ -74,8 +74,10 @@ public class FileHandler {
 	            }	
 			bufferedReader.close();	
 		} catch (FileNotFoundException e) {
+			System.out.println("Unable to open file '" + loc + "'");
 			e.printStackTrace();
 		} catch (IOException e) {
+			System.out.println("Error reading file '" + loc + "'");	
 			e.printStackTrace();
 		}
 		
