@@ -7,10 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 
 public class FileHandler {
@@ -68,7 +64,6 @@ public class FileHandler {
 	public File load(String loc){
 		File newFile = new File(fileNumbers);
 		newFile.setPath(loc);
-		Charset charset = Charset.forName("US-ASCII");
 		String allText = "";
 		FileReader fileReader;
 		BufferedReader bufferedReader;
@@ -80,10 +75,8 @@ public class FileHandler {
 	            }	
 			bufferedReader.close();	
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		fileNumbers +=1;
