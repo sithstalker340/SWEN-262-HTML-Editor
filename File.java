@@ -37,6 +37,10 @@ public class File{
 		Path path = Paths.get(p);
 	}
 	
+	public void setBuffer(String s){
+		buffer = s;
+	}
+	
   /**
    * Saves the command to the file and then applies the command.
    * @param cmd
