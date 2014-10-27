@@ -18,12 +18,11 @@ public class MenuView extends JMenuBar
 	JMenu edit;
 	JMenuItem undo;
 	JMenuItem redo;
-	JMenuItem cut;
-	JMenuItem copy;
-	JMenuItem paste;
 	JMenuItem delete;
-	JMenuItem selectAll;
-	//JMenuItem find_replace;???
+	JMenuItem wordWrap;
+	JMenuItem autoIndent;
+	JMenuItem indent;
+	
 	
 	JMenu helpMenu;
 	JMenuItem help;
@@ -84,36 +83,31 @@ public class MenuView extends JMenuBar
 		redo = new JMenuItem("Redo");
 		//add actionListener for redo
 		redo.addActionListener(listener);
-		//Creates "Cut" menu Item
-		cut = new JMenuItem("Cut");
-		//add actionListener for cut
-		cut.addActionListener(listener);
-		//Creates "Copy" menu Item
-		copy = new JMenuItem("Copy");
-		//add actionListener for undo
-		copy.addActionListener(listener);
-		//Creates "Paste" menu Item
-		paste = new JMenuItem("Paste");
-		//add actionListener for paste
-		paste.addActionListener(listener);
 		//Creates "Delete" menu Item
 		delete = new JMenuItem("Delete");
 		//add actionListener for delete
 		delete.addActionListener(listener);
-		//Creates "Select All" menu Item
-		selectAll = new JMenuItem("Select All");
-		//add actionListener for selectAll
-		selectAll.addActionListener(listener);
+		//Creates "Word Wrap" menu Item
+		wordWrap = new JMenuItem("Word Wrap");
+		//add actionListener for wordWrap
+		wordWrap.addActionListener(listener);
+		//Creates "autoIndent" menu Item
+		autoIndent = new JMenuItem("Auto-Indent");
+		//add actionListener for autoIndent
+		autoIndent.addActionListener(listener);
+		//Creates "Indent" menu Item
+		indent = new JMenuItem("Indent");
+		//add actionListener for indent
+		indent.addActionListener(listener);
 		//Set Text of edit menu
 		edit.setText("Edit");
 		//add menu items for edit
 		edit.add(undo);
 		edit.add(redo);
-		edit.add(cut);
-		edit.add(copy);
-		edit.add(paste);
 		edit.add(delete);
-		edit.add(selectAll);
+		edit.add(wordWrap);
+		edit.add(autoIndent);
+		edit.add(indent);
 		//add edit menu to the menu bar
 		this.add(edit);
 		//END EDIT MENU
