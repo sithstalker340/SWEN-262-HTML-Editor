@@ -62,12 +62,11 @@ public class FileHandler {
 	 * @return null
 	 */
 	public File load(String loc){
-		File newFile = new File(fileNumbers);
-		newFile.setPath(loc);
+		File newFile;
 		String allText = "";
 		FileReader fileReader;
 		BufferedReader bufferedReader;
-		try {
+		try{
 			fileReader = new FileReader(loc);
 			bufferedReader = new BufferedReader(fileReader);
 			while((allText = bufferedReader.readLine()) != null) {
@@ -79,7 +78,11 @@ public class FileHandler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		newFile = new File(allText,fileNumbers);
+		newFile.setPath(loc);
 		fileNumbers +=1;
+		
 		return newFile;
 	}
 	

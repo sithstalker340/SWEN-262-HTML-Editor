@@ -20,6 +20,10 @@ public class File{
 		cursorEnd = 0;
 		id = idNum;
 	}
+	public File(String b,int idNum){
+		this(idNum);
+		buffer = b;
+	}
   
 	public int getID(){
 		return id;
