@@ -4,17 +4,22 @@ import java.util.List;
 
 public class FileContent {
 	private File activeFile;
-	private List<File> fileList = new ArrayList<File>();
+	private List<File> fileList;
 	
 	public FileContent(){
-		
+		fileList = new ArrayList<File>();
 	}
 
 	/**
 	 * Changes the the active file
 	 */
-	public void changeFile(){
-		
+	public void changeFile(int id){
+		for(int i = 0; i < fileList.size(); i++){
+			if(fileList.get(i).getID() == id){
+				activeFile = fileList.get(i);
+				return;
+			}
+		}
 	}
 	
 	/**
@@ -22,12 +27,14 @@ public class FileContent {
 	 * @param cmd
 	 */
 	public void pushCommand(Command cmd){
+		
 	}
 		
 	/**
 	 * Undoes the most recent command of the active file
 	 */
 	public void popCommand(){
+		
 	}
 		
 	
@@ -50,6 +57,7 @@ public class FileContent {
 	 * Sets the cursor position
 	 */
 	public void setCursorStart(){
+		
 	}
 	
 }
