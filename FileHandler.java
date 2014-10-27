@@ -44,7 +44,7 @@ public class FileHandler {
 			bw.write(newFile.getBuffer());//Needs to write the buffer from the File.
 			bw.close();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
+			System.out.println("Error saving file '" + path + "'");	
 			e1.printStackTrace();
 		}
 	}
@@ -74,8 +74,10 @@ public class FileHandler {
 	            }	
 			bufferedReader.close();	
 		} catch (FileNotFoundException e) {
+			System.out.println("Unable to open file '" + loc + "'");
 			e.printStackTrace();
 		} catch (IOException e) {
+			System.out.println("Error reading file '" + loc + "'");	
 			e.printStackTrace();
 		}
 		
