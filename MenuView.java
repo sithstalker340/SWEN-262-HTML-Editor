@@ -112,21 +112,6 @@ public class MenuView extends JMenuBar
 		this.add(edit);
 		//END EDIT MENU
 		
-		//START HELP MENU
-		//Create help menu
-		helpMenu = new JMenu();
-		//Create "Help" help menu item
-		help = new JMenuItem("Help");
-		//add actionListener for help
-		help.addActionListener(listener);
-		//Set text of help menu
-		helpMenu.setText("Help");
-		//add menu items for help
-		helpMenu.add(help);
-		//add help menu to the menu bar
-		this.add(helpMenu);
-		//END HELP MENU
-		
 		//make the menu bar visible
 		this.setVisible(true);
 	}
