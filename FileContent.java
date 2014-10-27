@@ -27,7 +27,7 @@ public class FileContent {
 	 * @param cmd
 	 */
 	public void pushCommand(Command cmd){
-		
+		activeFile.pushCommand(cmd);
 	}
 		
 	/**
