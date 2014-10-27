@@ -32,9 +32,7 @@ public class MainView extends JFrame
 		//create ViewListener
 		listener = new ViewListener();
 		//set Size of program
-		this.setSize(600, 400);
-		//makes program appear
-		this.setVisible(true);
+		this.setSize(700, 400);
 		//initialize menu
 		menu.init(this, listener);
 		//initialize buttons
@@ -45,6 +43,8 @@ public class MainView extends JFrame
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		//Adds the btnView Object
 		this.add(buttons);
+		//makes program appear
+		this.setVisible(true);
 	}
 
 }
