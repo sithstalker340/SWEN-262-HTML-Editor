@@ -2,9 +2,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Stack;
 
 public class File{
 	private Deque<Command> commandStack;
+	private Stack<Command> redoStack;
 	private String buffer;
 	private int cursorStart;
 	private int cursorEnd;
@@ -18,6 +20,7 @@ public class File{
 	 */
 	public File(int idNum){
 		commandStack = new ArrayDeque<Command>();
+		redoStack = new Stack<Command>();
 		buffer = "";
 		cursorStart = 0;
 		cursorEnd = 0;
@@ -62,6 +65,7 @@ public class File{
 		cmd.Apply(this);
 		if(cmd.isUndoable){
 			commandStack.addFirst(cmd);
+			redoStack.clear(); 
 		}
 		
 		if(commandStack.size() > stackSize){
@@ -73,6 +77,13 @@ public class File{
 	 * Removes and undo's the command.
 	 */
 	public void popCommand(){
+		commandStack.getFirst().Undo(this);
+		redoStack.push(commandStack.getFirst());
+		commandStack.pop();
+	}
+	
+	public void redoCommand(){
+		this.pushCommand(redoStack.pop()); 
 	}
 	
 	/**
