@@ -27,23 +27,29 @@ public class FileHandler {
 	 * Undoes the most recent command of the active file
 	 */
 	public void popCommand(){
+		mainFileContent.popCommand();
+	}
+	
+	public void redoCommand(){
+		mainFileContent.redoCommand();
 	}
 	
 	/**
 	 * Saves the active file
 	 */
 	public void save(){
-		File newFile = new File(fileNumbers);
-		newFile.setPath("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt");//Will be the normal path.
+		//mainFileContent.getActiveFile();
 		FileWriter fw;
 		BufferedWriter bw;
 		try{
-			fw = new FileWriter(newFile.getPath().toString());
+			fw = new FileWriter(mainFileContent.getActiveFile().getPath().toString());
+			//fw = new FileWriter("C:\\Users\\Adam\\Desktop\\test1.txt");//Test Code
 			bw= new BufferedWriter(fw);
-			bw.write(newFile.getBuffer());
+			bw.write(mainFileContent.getActiveFile().getBuffer());
+			//bw.write("Hey this is a test.");//Test Code
 			bw.close();
 		}catch (IOException e1){
-			System.out.println("Error saving file '" + newFile.getPath().toString() + "'");	
+			System.out.println("Error saving file '" + mainFileContent.getActiveFile().getPath().toString() + "'");	
 			e1.printStackTrace();
 		}
 	}
