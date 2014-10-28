@@ -37,6 +37,10 @@ public class FileContent {
 		
 	}
 		
+	public void redoCommand(){
+		activeFile.redoCommand();
+	}
+	
 	public File getActiveFile(){
 		return activeFile;
 	}

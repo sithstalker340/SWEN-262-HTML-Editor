@@ -29,6 +29,10 @@ public class FileHandler {
 	public void popCommand(){
 	}
 	
+	public void redoCommand(){
+		mainFileContent.redoCommand();
+	}
+	
 	/**
 	 * Saves the active file
 	 */
