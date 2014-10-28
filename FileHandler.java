@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
 public class FileHandler {
 	private FileContent mainFileContent;
 	private int fileNumbers;
@@ -35,7 +34,7 @@ public class FileHandler {
 	 */
 	public void save(){
 		File newFile = new File(fileNumbers);
-		newFile.setPath("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt");
+		newFile.setPath("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt");//Will be the normal path.
 		FileWriter fw;
 		BufferedWriter bw;
 		try{
