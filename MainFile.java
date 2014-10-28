@@ -15,13 +15,9 @@ public class MainFile
 		
 		input = new InputHandler();
 		//mediator.fileHandler.load("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt");
-<<<<<<< HEAD
-		//mediator.fileHandler.save();
-		//mediator.fileHandler.load("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt");
-=======
 		mediator.fileHandler.save();
 		mediator.fileHandler.load("C:\\Users\\Adam\\Desktop\\test1.html");
->>>>>>> 60a4d4b0a152a62286fffc0487eb1f7a96dc3800
+
 		
 	}
 	
