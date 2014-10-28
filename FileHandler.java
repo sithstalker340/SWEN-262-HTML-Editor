@@ -52,7 +52,7 @@ public class FileHandler {
 	/**
 	 * Prompts the user to save the file with a desired name and location
 	 */
-	public void saveAs(){
+	public void saveAs(String path){
 		
 	}
 	
