@@ -23,19 +23,20 @@ public class MenuView extends JMenuBar
 	JMenuItem autoIndent;
 	JMenuItem indent;
 	
-	
-	JMenu helpMenu;
-	JMenuItem help;
+	Mediator mediator;
 	
 	public MenuView(MainView mainView){}
 	
 	/**
+	 * @param med 
 	 * @param args
 	 */
-	public void init(MainView parent, ViewListener listener) 
+	public void init(MainView parent, ViewListener listener, Mediator med) 
 	{
 		//sets size of menu bar
 		this.setSize(parent.getWidth(), 25);
+		//sets medi
+		mediator = med;
 		
 		//START FILE MENU
 		//Creates file menu

@@ -7,7 +7,8 @@ import javax.swing.JMenuItem;
 //Methods to get and relay updates to the other view files
 public class ViewListener implements ActionListener
 {
-
+	Mediator mediator;
+	
 	public ViewListener(){}
 
 	@Override
@@ -38,9 +39,26 @@ public class ViewListener implements ActionListener
 		//MenuView
 		if(arg0.getSource().getClass().isAssignableFrom((new JMenuItem()).getClass()))
 		{
-			System.out.println(((JMenuItem) arg0.getSource()).getText());
+			String txt = ((JMenuItem) arg0.getSource()).getText();
+			//System.out.println(this.getClass().getDeclaringClass().toString());
+			if(txt == "Save")
+			{
+				System.out.println("Save");
+				mediator.fileHandler.save();
+				
+			}
+			else if(txt == "Open File...")
+			{
+				System.out.println("Open File...");
+				mediator.fileHandler.load("");
+			}
 		}
 		
+	}
+	
+	public void setMediator(Mediator med)
+	{
+		mediator = med;
 	}
 
 	/**

@@ -9,6 +9,7 @@ public class MainView extends JFrame
 	ViewListener listener;
 	BtnView buttons;
 	CardLayout cL = new CardLayout();
+	public Mediator med;
 	
 	public MainView()
 	{
@@ -34,9 +35,11 @@ public class MainView extends JFrame
 		//set Size of program
 		this.setSize(700, 400);
 		//initialize menu
-		menu.init(this, listener);
+		menu.init(this, listener, med);
 		//initialize buttons
-		buttons.init(this, listener);
+		buttons.init(this, listener, med);
+		//set mediator of listener
+		listener.setMediator(med);		
 		//sets menu Object as the MenuBar
 		this.setJMenuBar(menu);
 		//Set program to exit on close
