@@ -1,13 +1,15 @@
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class File{
-	private Stack<Command> commandStack;
+	private Deque<Command> commandStack;
 	private String buffer;
 	private int cursorStart;
 	private int cursorEnd;
 	private int id;
+	private int stackSize;
 	private Path location;
 	private boolean isSaved;
 	
@@ -15,11 +17,12 @@ public class File{
 	 * The constructor of the File class.
 	 */
 	public File(int idNum){
-		commandStack = new Stack<Command>();
+		commandStack = new ArrayDeque<Command>();
 		buffer = "";
 		cursorStart = 0;
 		cursorEnd = 0;
 		id = idNum;
+		stackSize = 20;
 		isSaved = true;
 	}
 	
@@ -44,7 +47,7 @@ public class File{
 		return isSaved;
 	}
 	public void setPath(String p){
-		Path path = Paths.get(p);
+		location = Paths.get(p);
 	}
 	
 	public void setBuffer(String s){
@@ -56,6 +59,14 @@ public class File{
    * @param cmd
    */
 	public void pushCommand(Command cmd){
+		cmd.Apply(this);
+		if(cmd.isUndoable){
+			commandStack.addFirst(cmd);
+		}
+		
+		if(commandStack.size() > stackSize){
+			commandStack.removeLast();
+		}
 	}
 	
 	/**
