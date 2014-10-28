@@ -3,19 +3,17 @@ public class Mediator{
 
 	private CommandBuilder builder;
 	public FileHandler fileHandler;
-	private PromptManager prompt;
 	
 	public Mediator(){
 		builder = new CommandBuilder();
 		fileHandler = new FileHandler();
-		prompt = new PromptManager();
 	}
 	
 	/**
 	 * Tells the builder to create a command and then pushes it to fileHandler.
 	 */
-	public void pushCommand(){
-		fileHandler.pushCommand(builder.CreateCommand());
+	public void pushCommand(String text, int start, int end, String type){
+		fileHandler.pushCommand(builder.CreateCommand(text, start, end, type));
 	}
 	
 	/**
