@@ -16,6 +16,14 @@ public class Mediator{
 		fileHandler.pushCommand(builder.CreateCommand(text, start, end, type));
 	}
 	
+	public void popCommand(){
+		fileHandler.popCommand();
+	}
+	
+	public void redoCommand(){
+		fileHandler.redoCommand();
+	}
+	
 	/**
 	 * Updates the view.
 	 */

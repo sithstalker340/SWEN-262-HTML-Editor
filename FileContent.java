@@ -34,9 +34,13 @@ public class FileContent {
 	 * Undoes the most recent command of the active file
 	 */
 	public void popCommand(){
-		
+		activeFile.popCommand();
 	}
 		
+	public void redoCommand(){
+		activeFile.redoCommand();
+	}
+	
 	public File getActiveFile(){
 		return activeFile;
 	}

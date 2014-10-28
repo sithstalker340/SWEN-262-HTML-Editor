@@ -27,6 +27,11 @@ public class FileHandler {
 	 * Undoes the most recent command of the active file
 	 */
 	public void popCommand(){
+		mainFileContent.popCommand();
+	}
+	
+	public void redoCommand(){
+		mainFileContent.redoCommand();
 	}
 	
 	/**
