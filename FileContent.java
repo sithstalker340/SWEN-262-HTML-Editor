@@ -37,6 +37,9 @@ public class FileContent {
 		
 	}
 		
+	public File getActiveFile(){
+		return activeFile;
+	}
 	
 	/**
 	 * Returns the start position of the highlighted string

@@ -33,17 +33,16 @@ public class FileHandler {
 	 * Saves the active file
 	 */
 	public void save(){
-		File newFile = new File(fileNumbers);
-		newFile.setPath("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\test.txt");//Will be the normal path.
+		mainFileContent.getActiveFile();
 		FileWriter fw;
 		BufferedWriter bw;
 		try{
-			fw = new FileWriter(newFile.getPath().toString());
+			fw = new FileWriter(mainFileContent.getActiveFile().getPath().toString());
 			bw= new BufferedWriter(fw);
-			bw.write(newFile.getBuffer());
+			bw.write(mainFileContent.getActiveFile().getBuffer());
 			bw.close();
 		}catch (IOException e1){
-			System.out.println("Error saving file '" + newFile.getPath().toString() + "'");	
+			System.out.println("Error saving file '" + mainFileContent.getActiveFile().getPath().toString() + "'");	
 			e1.printStackTrace();
 		}
 	}
