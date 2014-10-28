@@ -11,8 +11,10 @@ public class MainView extends JFrame
 	CardLayout cL = new CardLayout();
 	public Mediator med;
 	
-	public MainView()
+	public MainView(Mediator m)
 	{
+		med = m;
+		
 		//calls init
 		this.init();
 		//sets layout

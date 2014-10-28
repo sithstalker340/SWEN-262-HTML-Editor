@@ -2,14 +2,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 
 //Methods to get and relay updates to the other view files
 public class ViewListener implements ActionListener
 {
 	Mediator mediator;
+	final JFileChooser fc = new JFileChooser();
 	
-	public ViewListener(){}
+	public ViewListener(){
+		
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
@@ -50,7 +54,12 @@ public class ViewListener implements ActionListener
 			else if(txt == "Open File...")
 			{
 				System.out.println("Open File...");
-				mediator.fileHandler.load("");
+				int returnVal = fc.showOpenDialog(fc);
+				java.io.File file = fc.getSelectedFile();
+			
+				System.out.println(file.getPath());
+				String name = file.getPath().toString();
+				mediator.fileHandler.load(name);
 			}
 		}
 		

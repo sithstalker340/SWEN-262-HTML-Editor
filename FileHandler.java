@@ -71,6 +71,8 @@ public class FileHandler {
 		String allText = "";
 		FileReader fileReader;
 		BufferedReader bufferedReader;
+		System.out.println("testing success");
+	
 		try{
 			fileReader = new FileReader(loc);
 			bufferedReader = new BufferedReader(fileReader);
