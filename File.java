@@ -9,6 +9,7 @@ public class File{
 	private int cursorEnd;
 	private int id;
 	private Path location;
+	private boolean isSaved;
 	
 	/**
 	 * The constructor of the File class.
@@ -19,7 +20,9 @@ public class File{
 		cursorStart = 0;
 		cursorEnd = 0;
 		id = idNum;
+		isSaved = true;
 	}
+	
 	public File(String b,int idNum){
 		this(idNum);
 		buffer = b;
@@ -37,6 +40,9 @@ public class File{
 		return buffer;
 	}
 	
+	public boolean isSaved(){
+		return isSaved;
+	}
 	public void setPath(String p){
 		Path path = Paths.get(p);
 	}
