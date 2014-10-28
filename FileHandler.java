@@ -33,13 +33,15 @@ public class FileHandler {
 	 * Saves the active file
 	 */
 	public void save(){
-		mainFileContent.getActiveFile();
+		//mainFileContent.getActiveFile();
 		FileWriter fw;
 		BufferedWriter bw;
 		try{
 			fw = new FileWriter(mainFileContent.getActiveFile().getPath().toString());
+			//fw = new FileWriter("C:\\Users\\Adam\\Desktop\\test1.txt");//Test Code
 			bw= new BufferedWriter(fw);
 			bw.write(mainFileContent.getActiveFile().getBuffer());
+			//bw.write("Hey this is a test.");//Test Code
 			bw.close();
 		}catch (IOException e1){
 			System.out.println("Error saving file '" + mainFileContent.getActiveFile().getPath().toString() + "'");	
