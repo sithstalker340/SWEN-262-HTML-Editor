@@ -1,6 +1,7 @@
 import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JTextPane;
 
 
 public class MainView extends JFrame
@@ -9,6 +10,7 @@ public class MainView extends JFrame
 	ViewListener listener;
 	BtnView buttons;
 	CardLayout cL = new CardLayout();
+	JTextPane txtFile = new JTextPane();
 	public Mediator med;
 	
 	public MainView(Mediator m)
@@ -48,6 +50,12 @@ public class MainView extends JFrame
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		//Adds the btnView Object
 		this.add(buttons);
+		//TODO mess with set up to get this to display properly.
+		txtFile.setBounds(0, 50, this.getWidth(), (this.getHeight() - 50));
+		txtFile.setVisible(true);
+		
+		//Add txtFile
+		this.add(txtFile);
 		//makes program appear
 		this.setVisible(true);
 	}
