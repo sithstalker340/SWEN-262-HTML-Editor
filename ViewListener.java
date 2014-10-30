@@ -9,10 +9,10 @@ import javax.swing.JMenuItem;
 public class ViewListener implements ActionListener
 {
 	Mediator mediator;
-	final JFileChooser fc = new JFileChooser();
+	final JFileChooser fc;
 	
 	public ViewListener(){
-		
+		fc = new JFileChooser();
 	}
 
 	@Override
@@ -54,13 +54,19 @@ public class ViewListener implements ActionListener
 			else if(txt == "Open File...")
 			{
 				System.out.println("Open File...");
-				java.io.File file = fc.getSelectedFile();
-			
-				String name = file.getPath().toString();
-				mediator.fileHandler.load(name);
+				int returnVal = fc.showOpenDialog(fc);	
+				if(returnVal == JFileChooser.APPROVE_OPTION){
+					java.io.File file = fc.getSelectedFile();
+					String name = file.getPath().toString();
+					System.out.println("path name: " + name);
+					mediator.fileHandler.load(name);
+				}
+				
+				else{
+					System.out.println("Error opening file");
+				}
 			}
 		}
-		
 	}
 	
 	public void setMediator(Mediator med)
