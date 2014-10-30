@@ -9,10 +9,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileHandler {
-	private FileContent mainFileContent;
+	private FileContent fileContent;
 	private int fileNumbers;
+	
 	public FileHandler(){
 		fileNumbers = 0;
+		fileContent = new FileContent();
 	}
 	
 	/**
@@ -20,18 +22,26 @@ public class FileHandler {
 	 * @param cmd
 	 */
 	public void pushCommand(Command cmd){
-		mainFileContent.pushCommand(cmd);
+		fileContent.pushCommand(cmd);
 	}
 		
 	/**
 	 * Undoes the most recent command of the active file
 	 */
 	public void popCommand(){
-		mainFileContent.popCommand();
+		fileContent.popCommand();
 	}
 	
 	public void redoCommand(){
-		mainFileContent.redoCommand();
+		fileContent.redoCommand();
+	}
+	
+	public boolean canSave(){
+		if(fileContent.getActiveFile() == null){
+			return false;
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -42,14 +52,14 @@ public class FileHandler {
 		FileWriter fw;
 		BufferedWriter bw;
 		try{
-			fw = new FileWriter(mainFileContent.getActiveFile().getPath().toString());
+			fw = new FileWriter(fileContent.getActiveFile().getPath().toString());
 			//fw = new FileWriter("C:\\Users\\Adam\\Desktop\\test1.txt");//Test Code
 			bw= new BufferedWriter(fw);
-			bw.write(mainFileContent.getActiveFile().getBuffer());
+			bw.write(fileContent.getActiveFile().getBuffer());
 			//bw.write("Hey this is a test.");//Test Code
 			bw.close();
 		}catch (IOException e1){
-			System.out.println("Error saving file '" + mainFileContent.getActiveFile().getPath().toString() + "'");	
+			System.out.println("Error saving file '" + fileContent.getActiveFile().getPath().toString() + "'");	
 			e1.printStackTrace();
 		}
 	}
@@ -101,7 +111,7 @@ public class FileHandler {
 	 */
 	public boolean wellFormed(){
 		Stack<String> tagStack = new Stack<String>();
-		String allText = mainFileContent.toString(); // the buffer from the file
+		String allText = fileContent.toString(); // the buffer from the file
 		
 		int start = allText.indexOf('<');
 		int end = allText.indexOf('>');

@@ -48,7 +48,9 @@ public class ViewListener implements ActionListener
 			if(txt == "Save")
 			{
 				System.out.println("Save");
-				mediator.fileHandler.save();
+				if(mediator.fileHandler.canSave()){
+					mediator.fileHandler.save();
+				}
 				
 			}
 			else if(txt == "Open File...")
