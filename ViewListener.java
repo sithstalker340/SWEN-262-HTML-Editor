@@ -54,10 +54,8 @@ public class ViewListener implements ActionListener
 			else if(txt == "Open File...")
 			{
 				System.out.println("Open File...");
-				int returnVal = fc.showOpenDialog(fc);
 				java.io.File file = fc.getSelectedFile();
 			
-				System.out.println(file.getPath());
 				String name = file.getPath().toString();
 				mediator.fileHandler.load(name);
 			}
