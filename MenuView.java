@@ -24,17 +24,10 @@ public class MenuView extends JMenuBar
 	JMenuItem indent;
 	
 	
-	public MenuView(MainView mainView){}
-	
-	/**
-	 * @param med 
-	 * @param args
-	 */
-	public void init(MainView parent, ViewListener listener) 
-	{
+	public MenuView(MainView parent, ViewListener listener){
 		//sets size of menu bar
 		this.setSize(parent.getWidth(), 25);
-		
+
 		//START FILE MENU
 		//Creates file menu
 		file = new JMenu();
@@ -69,7 +62,7 @@ public class MenuView extends JMenuBar
 		//add file menu to the menu bar
 		this.add(file);
 		//END FILE MENU
-		
+
 		//START EDIT MENU
 		//Create edit menu
 		edit = new JMenu();
@@ -109,12 +102,8 @@ public class MenuView extends JMenuBar
 		//add edit menu to the menu bar
 		this.add(edit);
 		//END EDIT MENU
-		
+
 		//make the menu bar visible
 		this.setVisible(true);
 	}
-
-	
-	
-
 }
