@@ -66,6 +66,10 @@ public class ViewListener implements ActionListener
 					System.out.println("Error opening file");
 				}
 			}
+			
+			else if(txt == "Exit"){
+				System.exit(0);
+			}
 		}
 	}
 	
