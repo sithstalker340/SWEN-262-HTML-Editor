@@ -24,7 +24,6 @@ public class MainView extends JFrame
 		listener.setMediator(m);
 		
 		menu = new MenuView(this, listener);
-		menu.init(this, listener);
 		buttons = new BtnView(this, listener);
 		
 		this.setSize(700, 400);
