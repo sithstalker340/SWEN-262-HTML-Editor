@@ -1,12 +1,7 @@
 import java.awt.FlowLayout;
-import java.awt.Point;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 
 public class MainView extends JFrame
@@ -14,7 +9,7 @@ public class MainView extends JFrame
 	MenuView menu;
 	ViewListener listener;
 	BtnView buttons;
-	CardLayout cL = new CardLayout();
+	CardLayout cL;
 	JFrame frame;
 	JTextArea txtArea;
 	JPanel panel;
@@ -24,12 +19,15 @@ public class MainView extends JFrame
 		this.setLayout(new FlowLayout()); 
 		this.setTitle("Editor");
 
-		menu = new MenuView(this);
+		cL = new CardLayout();
 		listener = new ViewListener();
-		this.setSize(700, 400);
+		listener.setMediator(m);
+		
+		menu = new MenuView(this, listener);
 		menu.init(this, listener);
 		buttons = new BtnView(this, listener);
-		listener.setMediator(m);		
+		
+		this.setSize(700, 400);
 		this.setJMenuBar(menu);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.add(buttons);
