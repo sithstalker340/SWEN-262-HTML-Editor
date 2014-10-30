@@ -17,15 +17,10 @@ public class BtnView extends JPanel
 	JButton btnImg;//<img>   (Image)
 	
 	ViewListener vListener;
-	Mediator mediator;
 	
-	public BtnView(){}
+	public BtnView(MainView parent, ViewListener listener){
 	
-	public void init(MainView parent, ViewListener listener, Mediator med) 
-	{
 		vListener = listener;
-		//sets mediator
-		mediator = med;
 		
 		this.setSize(parent.getWidth(), 25);
 		this.setLayout(new FlowLayout());
@@ -59,5 +54,4 @@ public class BtnView extends JPanel
 		
 		this.setVisible(true);
 	}
-	
 }
