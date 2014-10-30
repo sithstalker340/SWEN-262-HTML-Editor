@@ -8,7 +8,7 @@ import javax.swing.JMenuItem;
 //Methods to get and relay updates to the other view files
 public class ViewListener implements ActionListener
 {
-	Mediator mediator;
+	Mediator mediator; // ViewListener shouldn't have a mediator object, it should be in InputHandler
 	final JFileChooser fc;
 	
 	public ViewListener(){
@@ -23,58 +23,65 @@ public class ViewListener implements ActionListener
 		{
 			String txt = ((JButton) arg0.getSource()).getText();
 			System.out.println(((JButton) arg0.getSource()).getText());
-			if(txt == "<b>")
-			{
+			
+			switch(txt){
+			case "<b>":
 				System.out.println("BOLD TAG");
-			}
-			else if(txt == "<i>")
-			{
+				break;
+				
+			case "<i>":
 				System.out.println("ITALICS TAG");
-			}
-			else if(txt == "<a>")
-			{
+				break;
+				
+			case "<a>":
 				System.out.println("LINK TAG");
-			}
-			else if(txt == "<Header>")
-			{
+				break;
+				
+			case "<Header>":
 				System.out.println("HEADER TAG");
+				break;
 			}
 		}
+		
 		//MenuView
 		if(arg0.getSource().getClass().isAssignableFrom((new JMenuItem()).getClass()))
 		{
 			String txt = ((JMenuItem) arg0.getSource()).getText();
-			//System.out.println(this.getClass().getDeclaringClass().toString());
-			if(txt == "Save")
-			{
-				System.out.println("Save");
-				if(mediator.fileHandler.canSave()){
-					mediator.fileHandler.save();
-				}
-				
-			}
-			else if(txt == "Open File...")
-			{
-				System.out.println("Open File...");
-				int returnVal = fc.showOpenDialog(fc);	
-				if(returnVal == JFileChooser.APPROVE_OPTION){
-					java.io.File file = fc.getSelectedFile();
-					String name = file.getPath().toString();
-					System.out.println("path name: " + name);
-					mediator.fileHandler.load(name);
-				}
-				
-				else{
-					System.out.println("Error opening file");
-				}
-			}
 			
-			else if(txt == "Exit"){
-				System.exit(0);
+			switch(txt){
+				case "Save":
+					System.out.println("Save");
+					if(mediator.fileHandler.canSave()){
+						mediator.fileHandler.save();
+					}
+					break;
+					
+				case "Open File...":
+					System.out.println("Open File...");
+					int returnVal = fc.showOpenDialog(fc);	
+					
+					if(returnVal == JFileChooser.APPROVE_OPTION){
+						java.io.File file = fc.getSelectedFile();
+						String name = file.getPath().toString();
+						System.out.println("path name: " + name);
+						mediator.fileHandler.load(name);
+					}
+					
+					else System.out.println("Error opening file");
+				break;
+				
+				case "Exit":
+					System.exit(0);
+				break;
 			}
 		}
 	}
 	
+	/**
+	 * ViewListener should not have a mediator object
+	 * This is temporary until it is moved into the InputHandler class
+	 * @param med
+	 */
 	public void setMediator(Mediator med)
 	{
 		mediator = med;
