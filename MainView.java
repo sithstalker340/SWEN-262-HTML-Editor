@@ -16,11 +16,13 @@ public class MainView extends JFrame
 	BtnView buttons;
 	CardLayout cL;
 	JPanel panel;
-	JTextArea textArea;
+	JTextArea textArea; // this contains the text that we want to edit
 	JScrollPane scrollPane;
 	
 	public MainView(Mediator m)
 	{	
+		m.setMainView(this);
+		
 		//this.setLayout(new GridBagLayout()); 
 		this.setTitle("Editor");
 		this.setSize(700, 400);
@@ -28,6 +30,7 @@ public class MainView extends JFrame
 		
 		listener = new ViewListener();
 		listener.setMediator(m);
+		listener.mediator.setMainView(this);
 		
 		menu = new MenuView(this, listener); // menuBar object
 		buttons = new BtnView(this, listener);	// all of the buttons

@@ -64,7 +64,8 @@ public class ViewListener implements ActionListener
 						java.io.File file = fc.getSelectedFile();
 						String name = file.getPath().toString();
 						System.out.println("path name: " + name);
-						mediator.fileHandler.load(name);
+						File openedFile = mediator.fileHandler.load(name);
+						mediator.updateDisplay(openedFile.getBuffer());
 					}
 					
 					else System.out.println("Error opening file");
