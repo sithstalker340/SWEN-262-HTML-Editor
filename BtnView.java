@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 //Methods to display buttons and run attached functions (inserts, HTML constructs)
+@SuppressWarnings("serial")
 public class BtnView extends JPanel
 {
 	JButton btnA;//<a>
