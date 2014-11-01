@@ -36,10 +36,11 @@ public class Mediator{
 	 * Updates the view.
 	 */
 	public void updateDisplay(String s){
-		mainView.textArea.setText(s); // should this create a command to perform this?
+		//mainView.textArea.setText(s); // should this create a command to perform this?
+		//mainView.tav.setAreaText(s);
 	}
 	
 	public String getMainViewText(){
-		return mainView.textArea.getText().toString(); 	
+		return mainView.tav.textArea.getText().toString(); 	
 	}
 }
