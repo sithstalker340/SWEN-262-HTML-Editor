@@ -69,6 +69,8 @@ public class ViewListener implements ActionListener
 						File openedFile = mediator.fileHandler.load(name);
 						System.out.println(openedFile.getBuffer());
 						//to be impletented: updating the window with the file's text
+						
+						mediator.setTextAreaString(openedFile.getBuffer());
 					}
 					
 					else System.out.println("Error opening file");

@@ -45,6 +45,7 @@ public class TextAreaView extends JTextArea{
 			String s = doc.getText(doc.getLength()-1, 1);
 			if(s.equals("\n")){
 				// to be implemented
+				mainView.listener.mediator.updateFileBuffer(doc.getText(0, doc.getLength()));
 			}
 		} 
 		

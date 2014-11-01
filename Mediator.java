@@ -33,14 +33,17 @@ public class Mediator{
 	}
 	
 	/**
-	 * Updates the view.
+	 * Updates the current file's buffer
 	 */
-	public void updateDisplay(String s){
-		//mainView.textArea.setText(s); // should this create a command to perform this?
-		//mainView.tav.setAreaText(s);
+	public void updateFileBuffer(String s){
+		fileHandler.updateFileBuffer(s);
+	}
+	
+	public void setTextAreaString(String s){
+		mainView.textView.textArea.setText(s);
 	}
 	
 	public String getMainViewText(){
-		return mainView.tav.textArea.getText().toString(); 	
+		return mainView.textView.textArea.getText().toString(); 	
 	}
 }
