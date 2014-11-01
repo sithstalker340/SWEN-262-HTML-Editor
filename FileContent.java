@@ -45,6 +45,10 @@ public class FileContent {
 		return activeFile;
 	}
 	
+	public void AddFile(File file){
+		fileList.add(file);
+	}
+	
 	/**
 	 * Returns the start position of the highlighted string
 	 * If there is no highlighted string, it returns the cursor position
@@ -66,5 +70,4 @@ public class FileContent {
 	public void setCursorStart(){
 		
 	}
-	
 }

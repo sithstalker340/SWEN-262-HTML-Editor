@@ -1,11 +1,9 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 //Methods to display and run dropdown menu functions (save, load, button commands)
+@SuppressWarnings("serial")
 public class MenuView extends JMenuBar
 {
 	JMenu file;

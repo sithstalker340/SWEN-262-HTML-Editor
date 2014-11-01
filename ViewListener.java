@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
+import javax.swing.JTextArea;
 
 //Methods to get and relay updates to the other view files
 public class ViewListener implements ActionListener
@@ -50,7 +51,8 @@ public class ViewListener implements ActionListener
 			
 			switch(txt){
 				case "Save":
-					System.out.println("Save");
+					System.out.println("Save Clicked");
+					
 					if(mediator.fileHandler.canSave()){
 						mediator.fileHandler.save();
 					}
@@ -65,7 +67,8 @@ public class ViewListener implements ActionListener
 						String name = file.getPath().toString();
 						System.out.println("path name: " + name);
 						File openedFile = mediator.fileHandler.load(name);
-						mediator.updateDisplay(openedFile.getBuffer());
+						System.out.println(openedFile.getBuffer());
+						//to be impletented: updating the window with the file's text
 					}
 					
 					else System.out.println("Error opening file");
@@ -75,6 +78,10 @@ public class ViewListener implements ActionListener
 					System.exit(0);
 				break;
 			}
+		}
+		
+		if(arg0.getSource().getClass().isAssignableFrom(JTextArea.class)){
+			System.out.println("TextArea updated");
 		}
 	}
 	
