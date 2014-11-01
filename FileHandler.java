@@ -199,6 +199,10 @@ public class FileHandler {
 		return false;
 	}
 	
+	public void updateFileBuffer(String s){
+		fileContent.getActiveFile().setBuffer(s);
+	}
+	
 	/**
 	 * Prompts to save any unsaved work, and then exits the program
 	 */
