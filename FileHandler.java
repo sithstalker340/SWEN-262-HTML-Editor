@@ -1,5 +1,7 @@
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -38,9 +40,11 @@ public class FileHandler {
 	
 	public boolean canSave(){
 		if(fileContent.getActiveFile() == null){
+			System.out.println("Unable to save");
 			return false;
 		}
 		
+		System.out.println("Able to save");
 		return true;
 	}
 	
@@ -48,17 +52,20 @@ public class FileHandler {
 	 * Saves the active file
 	 */
 	public void save(){
-		//mainFileContent.getActiveFile();
+		fileContent.getActiveFile();
+		
 		FileWriter fw;
 		BufferedWriter bw;
+		
 		try{
 			fw = new FileWriter(fileContent.getActiveFile().getPath().toString());
-			//fw = new FileWriter("C:\\Users\\Adam\\Desktop\\test1.txt");//Test Code
 			bw= new BufferedWriter(fw);
+			System.out.println("Data to save: " + fileContent.getActiveFile().getBuffer());
 			bw.write(fileContent.getActiveFile().getBuffer());
-			//bw.write("Hey this is a test.");//Test Code
 			bw.close();
-		}catch (IOException e1){
+		}
+		
+		catch (IOException e1){
 			System.out.println("Error saving file '" + fileContent.getActiveFile().getPath().toString() + "'");	
 			e1.printStackTrace();
 		}
@@ -78,30 +85,49 @@ public class FileHandler {
 	 */
 	public File load(String loc){
 		File newFile;
-		String allText = "";
+		String line = "";
+		List<String> newBuffer = new ArrayList<String>();
 		FileReader fileReader;
 		BufferedReader bufferedReader;
-		System.out.println("testing success");
-	
+		
 		try{
 			fileReader = new FileReader(loc);
 			bufferedReader = new BufferedReader(fileReader);
-			while((allText = bufferedReader.readLine()) != null) {
-	                System.out.println(allText);
-	            }	
+			newBuffer = new ArrayList<String>();
+			
+			// stores each line of the file in a list
+			while((line = bufferedReader.readLine()) != null) {
+	                newBuffer.add(line);
+	        	}	
+			
 			bufferedReader.close();	
-		} catch (FileNotFoundException e) {
+		} 
+		
+		catch (FileNotFoundException e) {
 			System.out.println("Unable to open file '" + loc + "'");
 			e.printStackTrace();
-		} catch (IOException e) {
+		} 
+		
+		catch (IOException e) {
 			System.out.println("Error reading file '" + loc + "'");	
 			e.printStackTrace();
 		}
 		
-		newFile = new File(allText,fileNumbers);
+		// used to append the list of lines into a single line
+		StringBuilder builder = new StringBuilder();
+		for(String s:newBuffer){
+			builder.append(s);
+			builder.append("\n"); // without new line characters it is a 1 line string
+		}
+		
+		// create the new file and increment unique file ID
+		newFile = new File(builder.toString(),fileNumbers);
 		newFile.setPath(loc);
 		fileNumbers +=1;
 		
+		fileContent.AddFile(newFile);
+		fileContent.changeFile(newFile.getID());
+		System.out.println("Active file ID: " + fileContent.getActiveFile().getID());
 		return newFile;
 	}
 	

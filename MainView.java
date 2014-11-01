@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
@@ -14,9 +13,9 @@ public class MainView extends JFrame
 	MenuView menu;
 	ViewListener listener;
 	BtnView buttons;
+	TextAreaView textView;
 	CardLayout cL;
 	JPanel panel;
-	JTextArea textArea; // this contains the text that we want to edit
 	JScrollPane scrollPane;
 	
 	public MainView(Mediator m)
@@ -34,21 +33,16 @@ public class MainView extends JFrame
 		
 		menu = new MenuView(this, listener); // menuBar object
 		buttons = new BtnView(this, listener);	// all of the buttons
+		textView = new TextAreaView(this, listener); // the text box object
 			
 		// make a new panel, give it a border with padding, select the Border layout
 		panel = new JPanel();
 		panel.setBorder(new EmptyBorder(0,15,15,15));
 		panel.setLayout(new BorderLayout(0,0));
 		this.setContentPane(panel);
-		
-		// create a new text box, set options
-		textArea = new JTextArea(25, 50);
-		textArea.setWrapStyleWord(true);
-        textArea.setEditable(true);
-        textArea.setLineWrap(true);
-        
+
         // create a new scrollable window, add the text box to it
-        scrollPane = new JScrollPane(textArea);
+        scrollPane = new JScrollPane(textView.getTextArea());
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         
