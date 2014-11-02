@@ -56,6 +56,10 @@ public class TextAreaView extends JTextArea{
 		});
 	}
 	
+	/**
+	 * Creates a new Document Listener
+	 * When an event is fired, updateLog(Event e) is called
+	 */
 	public void createNewDocListener(){
 		 textArea.getDocument().addDocumentListener(new DocumentListener() {
 	        	public void changedUpdate(DocumentEvent e){
@@ -73,10 +77,18 @@ public class TextAreaView extends JTextArea{
 	        });
 	}
 	
+	/**
+	 * Removes the Document Listener associated with the text area
+	 */
 	public void removeDocListener(){
 		textArea.getDocument().removeDocumentListener(null);
 	}
 	
+	/**
+	 * Gets the last character entered in the text area
+	 * and if it is the ENTER key, updates the current file's buffer
+	 * @param e
+	 */
 	private void updateLog(DocumentEvent e){
 		Document doc = (Document)e.getDocument();
 		try {
@@ -98,6 +110,10 @@ public class TextAreaView extends JTextArea{
 		}
 	}
 		
+	/**
+	 * Returns the text area 
+	 * @return
+	 */
 	public JTextArea getTextArea(){
 		return textArea;
 	}

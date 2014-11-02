@@ -12,6 +12,10 @@ public class InputHandler {
 		fc = new JFileChooser();
 	}
 	
+	/**
+	 * Handles the events fired from a button being pressed
+	 * @param txt
+	 */
 	public void buttonViewInput(String txt){
 		System.out.println(txt);
 		switch(txt){
@@ -33,6 +37,10 @@ public class InputHandler {
 		}
 	}
 	
+	/**
+	 * Handles the events fired from a menu selection
+	 * @param txt
+	 */
 	public void menuViewInput(String txt){
 		System.out.println(txt);
 		switch(txt){
@@ -68,10 +76,18 @@ public class InputHandler {
 		}
 	}
 	
+	/**
+	 * Sets the mainView variable stored in InputHandler
+	 * @param m
+	 */
 	public void setMainView(MainView m){
 		mainView = m;
 	}
 	
+	/**
+	 * Returns the mediator variable stored in InputHandler
+	 * @return
+	 */
 	public Mediator getMediator(){
 		return mediator;
 	}

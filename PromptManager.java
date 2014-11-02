@@ -10,11 +10,12 @@ public class PromptManager{
 	public void setMessage(String m){
 		message = m;
 	}
+	
 	/**
 	 * Displays a message to the user
 	 * @param message
 	 */
-	private void displayMessage(String message){
+	private void displayMessage(String m){
 		
 	}
 	
@@ -25,7 +26,6 @@ public class PromptManager{
 	 */
 	private String[] displayLines2(String message1, String message2){
 		return null;
-		
 	}
 	
 	/**
@@ -33,18 +33,16 @@ public class PromptManager{
 	 * Shows message, text box
 	 * @param message
 	 */
-	private String displayLines1(String message){
+	private String displayLines1(String m){
 		return null;
-		
 	}
 	
 	/**
 	 * Displays dialog with custom prompt
 	 * @param message
 	 */
-	private Boolean displayBool(String message){
+	private Boolean displayBool(String m){
 		return null;
-		
 	}
 }
 

@@ -189,6 +189,12 @@ public class FileHandler {
 		return true;
 	}
 	
+	/**
+	 * Checks to see if a tag is valid despite not following
+	 * the standard tag format
+	 * @param tag
+	 * @return
+	 */
 	private boolean checksSelfClose(String tag){
 		String[] selfClosing = {"meta", "link", "input"};
 		
@@ -199,6 +205,10 @@ public class FileHandler {
 		return false;
 	}
 	
+	/**
+	 * Sets the active file's buffer 
+	 * @param s
+	 */
 	public void updateFileBuffer(String s){
 		fileContent.getActiveFile().setBuffer(s);
 	}

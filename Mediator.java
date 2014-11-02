@@ -10,6 +10,10 @@ public class Mediator{
 		fileHandler = new FileHandler();
 	}
 	
+	/**
+	 * Sets the mainView variable stored in Mediator
+	 * @param m
+	 */
 	public void setMainView(MainView m){
 		mainView = m;
 		if(mainView == null){
@@ -24,10 +28,16 @@ public class Mediator{
 		fileHandler.pushCommand(builder.CreateCommand(text, start, end, type));
 	}
 	
+	/**
+	 * Removes the most recent command
+	 */
 	public void popCommand(){
 		fileHandler.popCommand();
 	}
 	
+	/**
+	 * Reapplies the most recently removed command
+	 */
 	public void redoCommand(){
 		fileHandler.redoCommand();
 	}
@@ -39,10 +49,18 @@ public class Mediator{
 		fileHandler.updateFileBuffer(s);
 	}
 	
+	/**
+	 * Sets the current file's text box's text to the string parameter
+	 * @param s
+	 */
 	public void setTextAreaString(String s){
 		mainView.textView.textArea.setText(s);
 	}
 	
+	/**
+	 * Returns the text from the text box of the current file
+	 * @return
+	 */
 	public String getMainViewText(){
 		return mainView.textView.textArea.getText().toString(); 	
 	}
