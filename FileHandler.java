@@ -75,7 +75,21 @@ public class FileHandler {
 	 * Prompts the user to save the file with a desired name and location
 	 */
 	public void saveAs(String path){
+		FileWriter fw;
+		BufferedWriter bw;
 		
+		try{
+			fw = new FileWriter(path);
+			bw= new BufferedWriter(fw);
+			System.out.println("Data to save: " + fileContent.getActiveFile().getBuffer());
+			bw.write(fileContent.getActiveFile().getBuffer());
+			bw.close();
+		}
+		
+		catch (IOException e1){
+			System.out.println("Error saving file '" + path + "'");	
+			e1.printStackTrace();
+		}
 	}
 	
 	/**

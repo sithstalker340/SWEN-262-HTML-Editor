@@ -52,6 +52,14 @@ public class InputHandler {
 				}
 				break;
 				
+			case "Save As...":
+				System.out.println("Save As Clicked");
+				
+				if(getMediator().fileHandler.canSave()){
+					//getMediator().fileHandler.saveAs(); Need to add a prompt.
+				}
+				break;
+				
 			case "Open File...":
 				//System.out.println("Open File...");
 				int returnVal = fc.showOpenDialog(fc);	
