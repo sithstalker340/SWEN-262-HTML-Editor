@@ -51,7 +51,7 @@ public class TextAreaView extends JTextArea{
 			
 			public void focusLost(FocusEvent e){
 				focus = false;
-				mainView.listener.getInput().getMediator().updateFileBuffer(textArea.getText());
+				mainView.getInputHandler().getMediator().updateFileBuffer(textArea.getText());
 			}
 		});
 	}
@@ -89,7 +89,7 @@ public class TextAreaView extends JTextArea{
 			
 			if(lastCharIn.equals("\n")){	
 				// to be implemented
-				mainView.listener.getInput().getMediator().updateFileBuffer(doc.getText(0, doc.getLength()));
+				mainView.getInputHandler().getMediator().updateFileBuffer(doc.getText(0, doc.getLength()));
 			}
 		} 
 		

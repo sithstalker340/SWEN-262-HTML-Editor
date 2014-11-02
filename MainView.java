@@ -58,4 +58,8 @@ public class MainView extends JFrame
 		this.setLocationByPlatform(true);
 		this.setVisible(true);		
 	}
+	
+	public InputHandler getInputHandler(){
+		return input;
+	}
 }
