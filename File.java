@@ -24,7 +24,7 @@ public class File{
 		cursorEnd = 0;
 		id = idNum;
 		stackSize = 20;
-		isSaved = true;
+		isSaved = false;
 	}
 	
 	public File(String b,int idNum){
@@ -47,6 +47,15 @@ public class File{
 	public boolean isSaved(){
 		return isSaved;
 	}
+	
+	public void setIsSaved(){
+		if(isSaved){
+			isSaved = false;
+		}
+		
+		else isSaved = true;
+	}
+	
 	public void setPath(String p){
 		location = p;
 	}

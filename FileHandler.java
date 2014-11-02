@@ -51,22 +51,30 @@ public class FileHandler {
 	/**
 	 * Saves the active file
 	 */
-	public void save(){
+	public boolean save(){
 		FileWriter fw;
 		BufferedWriter bw;
 		
-		try{
-			fw = new FileWriter(fileContent.getPath());
-			bw= new BufferedWriter(fw);
-			System.out.println("Data to save: " + fileContent.getBuffer());
-			bw.write(fileContent.getBuffer());
-			bw.close();
+		if(fileContent.getPath() != null){
+			try{
+				fw = new FileWriter(fileContent.getPath());
+				bw= new BufferedWriter(fw);
+				System.out.println("Data to save: " + fileContent.getBuffer());
+				bw.write(fileContent.getBuffer());
+				bw.close();
+				
+				fileContent.setIsSaved();
+			}
+			
+			catch (IOException e1){
+				System.out.println("Error saving file '" + fileContent.getPath() + "'");	
+				e1.printStackTrace();
+			}
+			
+			return true;
 		}
 		
-		catch (IOException e1){
-			System.out.println("Error saving file '" + fileContent.getPath() + "'");	
-			e1.printStackTrace();
-		}
+		else return false;
 	}
 	
 	/**

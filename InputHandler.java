@@ -48,13 +48,15 @@ public class InputHandler {
 				System.out.println("Save Clicked");
 				
 				if(getMediator().fileHandler.canSave()){
-					getMediator().fileHandler.save();
+					if(getMediator().fileHandler.save() == true){
+						
+					}
+					
+					else menuViewInput("Save As...");
 				}
 				break;
 				
-			case "Save As...":
-				System.out.println("Save As Clicked");
-				
+			case "Save As...":				
 				if(getMediator().fileHandler.canSave()){
 					int returnVal = fc.showSaveDialog(fc);
 					

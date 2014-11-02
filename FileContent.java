@@ -55,6 +55,10 @@ public class FileContent {
 		return activeFile.getBuffer();
 	}
 	
+	public void setIsSaved(){
+		activeFile.setIsSaved();
+	}
+	
 	public boolean getIsSaved(){
 		return activeFile.isSaved();
 	}
