@@ -9,11 +9,13 @@ import javax.swing.JTextArea;
 //Methods to get and relay updates to the other view files
 public class ViewListener implements ActionListener
 {
-	Mediator mediator; // ViewListener shouldn't have a mediator object, it should be in InputHandler
+	//Mediator mediator; // ViewListener shouldn't have a mediator object, it should be in InputHandler
+	InputHandler input;
 	final JFileChooser fc;
 	
-	public ViewListener(){
+	public ViewListener(InputHandler i){
 		fc = new JFileChooser();
+		input = i;
 	}
 
 	@Override
@@ -53,24 +55,25 @@ public class ViewListener implements ActionListener
 				case "Save":
 					System.out.println("Save Clicked");
 					
-					if(mediator.fileHandler.canSave()){
-						mediator.fileHandler.save();
+					if(input.getMediator().fileHandler.canSave()){
+						input.getMediator().fileHandler.save();
 					}
 					break;
 					
 				case "Open File...":
-					System.out.println("Open File...");
+					//System.out.println("Open File...");
 					int returnVal = fc.showOpenDialog(fc);	
 					
 					if(returnVal == JFileChooser.APPROVE_OPTION){
 						java.io.File file = fc.getSelectedFile();
 						String name = file.getPath().toString();
-						System.out.println("path name: " + name);
-						File openedFile = mediator.fileHandler.load(name);
+						//System.out.println("path name: " + name);
+						File openedFile = input.getMediator().fileHandler.load(name);
 						System.out.println(openedFile.getBuffer());
 						//to be impletented: updating the window with the file's text
 						
-						mediator.setTextAreaString(openedFile.getBuffer());
+						input.mainView.textView.resetLastCharIn();
+						input.getMediator().setTextAreaString(openedFile.getBuffer());
 					}
 					
 					else System.out.println("Error opening file");
@@ -86,19 +89,9 @@ public class ViewListener implements ActionListener
 			System.out.println("TextArea updated");
 		}
 	}
-	
-	/**
-	 * ViewListener should not have a mediator object
-	 * This is temporary until it is moved into the InputHandler class
-	 * @param med
-	 */
-	public void setMediator(Mediator med)
-	{
-		mediator = med;
-	}
 
-	/**
-	 * @param args
-	 */
+	public InputHandler getInput(){
+		return input;
+	}
 	
 }

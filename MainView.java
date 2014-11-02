@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 @SuppressWarnings("serial")
 public class MainView extends JFrame
 {
+	InputHandler input;
+	
 	MenuView menu;
 	ViewListener listener;
 	BtnView buttons;
@@ -18,18 +20,18 @@ public class MainView extends JFrame
 	JPanel panel;
 	JScrollPane scrollPane;
 	
-	public MainView(Mediator m)
+	public MainView(InputHandler i)
 	{	
-		m.setMainView(this);
+		input = i;
+		input.getMediator().setMainView(this);
+		input.setMainView(this);
 		
-		//this.setLayout(new GridBagLayout()); 
 		this.setTitle("Editor");
 		this.setSize(700, 400);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		listener = new ViewListener();
-		listener.setMediator(m);
-		listener.mediator.setMainView(this);
+		listener = new ViewListener(input);
+		listener.input.getMediator().setMainView(this);
 		
 		menu = new MenuView(this, listener); // menuBar object
 		buttons = new BtnView(this, listener);	// all of the buttons

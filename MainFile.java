@@ -9,8 +9,8 @@ public class MainFile
 	public MainFile()
 	{
 		mediator = new Mediator();
-		view = new MainView(mediator);
-		input = new InputHandler();
+		input = new InputHandler(mediator);
+		view = new MainView(input);
 	}
 	
 	public static void main(String args[]){
