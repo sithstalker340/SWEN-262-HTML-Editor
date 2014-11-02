@@ -56,12 +56,18 @@ public class InputHandler {
 				System.out.println("Save As Clicked");
 				
 				if(getMediator().fileHandler.canSave()){
-					//getMediator().fileHandler.saveAs(); Need to add a prompt.
+					int returnVal = fc.showSaveDialog(fc);
+					
+					if(returnVal == JFileChooser.APPROVE_OPTION){
+						java.io.File file = fc.getSelectedFile();
+						String location = file.getPath().toString();
+						
+						getMediator().fileHandler.saveAs(location);
+					}
 				}
 				break;
 				
 			case "Open File...":
-				//System.out.println("Open File...");
 				int returnVal = fc.showOpenDialog(fc);	
 				
 				if(returnVal == JFileChooser.APPROVE_OPTION){
@@ -79,7 +85,7 @@ public class InputHandler {
 			break;
 			
 			case "Exit":
-				System.exit(0);
+				mediator.fileHandler.quit();
 			break;
 		}
 	}
