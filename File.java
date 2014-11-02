@@ -1,5 +1,3 @@
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Stack;
@@ -12,7 +10,7 @@ public class File{
 	private int cursorEnd;
 	private int id;
 	private int stackSize;
-	private Path location;
+	private String location;
 	private boolean isSaved;
 	
 	/**
@@ -38,7 +36,7 @@ public class File{
 		return id;
 	}
 	
-	public Path getPath(){
+	public String getPath(){
 		return location;
 	}
 	
@@ -50,7 +48,7 @@ public class File{
 		return isSaved;
 	}
 	public void setPath(String p){
-		location = Paths.get(p);
+		location = p;
 	}
 	
 	public void setBuffer(String s){

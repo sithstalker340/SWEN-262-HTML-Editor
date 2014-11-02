@@ -48,7 +48,7 @@ public class FileContent {
 		fileList.add(file);
 	}
 	
-	public Path getPath(){
+	public String getPath(){
 		return activeFile.getPath();
 	}
 	

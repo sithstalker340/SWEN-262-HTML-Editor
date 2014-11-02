@@ -56,7 +56,7 @@ public class FileHandler {
 		BufferedWriter bw;
 		
 		try{
-			fw = new FileWriter(fileContent.getPath().toString());
+			fw = new FileWriter(fileContent.getPath());
 			bw= new BufferedWriter(fw);
 			System.out.println("Data to save: " + fileContent.getBuffer());
 			bw.write(fileContent.getBuffer());
@@ -64,7 +64,7 @@ public class FileHandler {
 		}
 		
 		catch (IOException e1){
-			System.out.println("Error saving file '" + fileContent.getPath().toString() + "'");	
+			System.out.println("Error saving file '" + fileContent.getPath() + "'");	
 			e1.printStackTrace();
 		}
 	}
