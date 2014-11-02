@@ -1,3 +1,4 @@
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,14 +42,29 @@ public class FileContent {
 		activeFile.redoCommand();
 	}
 	
-	public File getActiveFile(){
-		return activeFile;
-	}
-	
 	public void AddFile(File file){
 		fileList.add(file);
 	}
 	
+	public Path getPath(){
+		return activeFile.getPath();
+	}
+	
+	public String getBuffer(){
+		return activeFile.getBuffer();
+	}
+	
+	public int getID(){
+		return activeFile.getID();
+	}
+	
+	public void setBuffer(String s){
+		activeFile.setBuffer(s);
+	}
+	
+	public File getActiveFile(){
+		return activeFile;
+	}
 	/**
 	 * Returns the start position of the highlighted string
 	 * If there is no highlighted string, it returns the cursor position

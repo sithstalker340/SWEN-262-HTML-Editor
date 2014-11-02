@@ -52,21 +52,19 @@ public class FileHandler {
 	 * Saves the active file
 	 */
 	public void save(){
-		fileContent.getActiveFile();
-		
 		FileWriter fw;
 		BufferedWriter bw;
 		
 		try{
-			fw = new FileWriter(fileContent.getActiveFile().getPath().toString());
+			fw = new FileWriter(fileContent.getPath().toString());
 			bw= new BufferedWriter(fw);
-			System.out.println("Data to save: " + fileContent.getActiveFile().getBuffer());
-			bw.write(fileContent.getActiveFile().getBuffer());
+			System.out.println("Data to save: " + fileContent.getBuffer());
+			bw.write(fileContent.getBuffer());
 			bw.close();
 		}
 		
 		catch (IOException e1){
-			System.out.println("Error saving file '" + fileContent.getActiveFile().getPath().toString() + "'");	
+			System.out.println("Error saving file '" + fileContent.getPath().toString() + "'");	
 			e1.printStackTrace();
 		}
 	}
@@ -81,8 +79,8 @@ public class FileHandler {
 		try{
 			fw = new FileWriter(path);
 			bw= new BufferedWriter(fw);
-			System.out.println("Data to save: " + fileContent.getActiveFile().getBuffer());
-			bw.write(fileContent.getActiveFile().getBuffer());
+			System.out.println("Data to save: " + fileContent.getBuffer());
+			bw.write(fileContent.getBuffer());
 			bw.close();
 		}
 		
@@ -141,7 +139,7 @@ public class FileHandler {
 		
 		fileContent.AddFile(newFile);
 		fileContent.changeFile(newFile.getID());
-		System.out.println("Active file ID: " + fileContent.getActiveFile().getID());
+		System.out.println("Active file ID: " + fileContent.getID());
 		return newFile;
 	}
 	
@@ -224,7 +222,7 @@ public class FileHandler {
 	 * @param s
 	 */
 	public void updateFileBuffer(String s){
-		fileContent.getActiveFile().setBuffer(s);
+		fileContent.setBuffer(s);
 	}
 	
 	/**
