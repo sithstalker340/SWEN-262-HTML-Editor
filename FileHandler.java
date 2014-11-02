@@ -229,6 +229,10 @@ public class FileHandler {
 	 * Prompts to save any unsaved work, and then exits the program
 	 */
 	public void quit(){
+		if(!fileContent.getIsSaved()){
+			//create prompt to ask to save
+		}
 		
+		System.exit(0);
 	}	
 }

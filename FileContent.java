@@ -1,4 +1,3 @@
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +53,10 @@ public class FileContent {
 	
 	public String getBuffer(){
 		return activeFile.getBuffer();
+	}
+	
+	public boolean getIsSaved(){
+		return activeFile.isSaved();
 	}
 	
 	public int getID(){
