@@ -15,7 +15,7 @@ public class FileHandler {
 	private int fileNumbers;
 	
 	public FileHandler(){
-		fileNumbers = 0;
+		fileNumbers = 1;
 		fileContent = new FileContent();
 	}
 	
@@ -137,7 +137,7 @@ public class FileHandler {
 		newFile.setPath(loc);
 		fileNumbers +=1;
 		
-		fileContent.AddFile(newFile);
+		fileContent.addFile(newFile);
 		fileContent.changeFile(newFile.getID());
 		System.out.println("Active file ID: " + fileContent.getID());
 		return newFile;

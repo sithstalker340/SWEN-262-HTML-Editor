@@ -9,6 +9,8 @@ public class FileContent {
 	
 	public FileContent(){
 		fileList = new ArrayList<File>();
+		activeFile = new File(0);
+		addFile(activeFile);
 	}
 
 	/**
@@ -42,7 +44,7 @@ public class FileContent {
 		activeFile.redoCommand();
 	}
 	
-	public void AddFile(File file){
+	public void addFile(File file){
 		fileList.add(file);
 	}
 	
