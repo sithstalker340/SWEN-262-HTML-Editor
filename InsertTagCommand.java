@@ -17,13 +17,8 @@ public class InsertTagCommand extends Command{
 	 * it with the text + a desired substring
 	 */
 	public void Apply(File file){
-	if(text == "ul"){
-		
-	}
-	else{
-		insertTag(file);
-	}
-		
+		buffer = file.getBuffer();
+		file.setBuffer(buffer.substring(0,startPos) + "<"+ text + ">" + buffer.substring(startPos,endPos) + "</" + text + ">"+ buffer.substring(endPos));
 	}
 	
 	/**
@@ -31,10 +26,5 @@ public class InsertTagCommand extends Command{
 	 */
 	public void Undo(File file){
 		file.setBuffer(buffer);
-	}
-	
-	public void insertTag(File f){
-		buffer = f.getBuffer();
-		f.setBuffer(buffer.substring(0,startPos) + "<"+ text + ">" + buffer.substring(startPos,endPos) + "</" + text + ">"+ buffer.substring(endPos));
 	}
 }
