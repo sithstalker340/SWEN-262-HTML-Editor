@@ -39,10 +39,11 @@ public class PromptManager{
 		case 2: // user enters 1 string
 				displayLines1(m);
 			break;
-		case 3: // user enters 2 strings
-				
-			break;
 		}
+	}
+	
+	public void createNewPrompt(String m1, String m2){
+		displayLines2(m1,m2);
 	}
 	
 	/**
@@ -78,8 +79,30 @@ public class PromptManager{
 	 * Shows message1, text box, message2, text box
 	 * @param message1, message2
 	 */
-	private String[] displayLines2(String message1, String message2){
-		return null;
+	private String[] displayLines2(String m1, String m2){
+		String[] textFields = new String[2];
+		String[] failed = {"",""};
+		JPanel panel = new JPanel(new GridLayout(2,2));
+		Label l1 = new Label(m1);
+		Label l2 = new Label(m2);
+		Object[] options = {"Ok"};
+		JTextField tF1 = new JTextField();
+		JTextField tF2 = new JTextField();
+		panel.add(l1);
+		panel.add(tF1);
+		panel.add(l2);
+		panel.add(tF2);
+		
+		int result = JOptionPane.showOptionDialog(null, panel, message, JOptionPane.OK_CANCEL_OPTION, 
+				JOptionPane.QUESTION_MESSAGE, null, options, null);
+		if(result == JOptionPane.OK_OPTION){
+			System.out.println(tF1.getText());
+			textFields[0] = tF1.getText();
+			System.out.println(tF2.getText());
+			textFields[1] = tF2.getText();
+			return textFields;
+		}
+		else return failed;
 	}
 	
 	/**
@@ -90,7 +113,7 @@ public class PromptManager{
 	private String displayLines1(String m){
 		JPanel panel = new JPanel(new GridLayout(2,1));
 		Label label = new Label(m);
-		Object[] options = {"Yes", "No"};
+		Object[] options = {"OK", "Cancel"};
 		JTextField textField = new JTextField();
 		panel.add(label);
 		panel.add(textField);
