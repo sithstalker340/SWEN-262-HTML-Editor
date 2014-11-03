@@ -113,7 +113,7 @@ public class PromptManager{
 	private String displayLines1(String m){
 		JPanel panel = new JPanel(new GridLayout(2,1));
 		Label label = new Label(m);
-		Object[] options = {"Yes", "No"};
+		Object[] options = {"OK", "Cancel"};
 		JTextField textField = new JTextField();
 		panel.add(label);
 		panel.add(textField);
