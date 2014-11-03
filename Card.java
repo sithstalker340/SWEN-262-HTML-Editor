@@ -73,7 +73,7 @@ public class Card extends JPanel
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = i-1;//-1 places it in first grid space
 		buttonPanel.add(btn.get("File " + i), c);
-		System.out.println((btn.get("File " + i)).toString());
+		//System.out.println((btn.get("File " + i)).toString());
 		
 	    			
 		// create a new scrollable window, add the text box to it
@@ -87,8 +87,8 @@ public class Card extends JPanel
         
         panel.setVisible(true);
         panel.setBackground(Color.BLUE);
-		System.out.println(panel.toString());
-		System.out.println(this.toString());
+		//System.out.println(panel.toString());
+		//System.out.println(this.toString());
         this.add(panel, BorderLayout.CENTER);
         //this.validate();
         //this.repaint();

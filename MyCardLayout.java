@@ -29,7 +29,7 @@ public class MyCardLayout extends JPanel
 		cL.addLayoutComponent(newCard, name);
 		cL.show(this, name);
 		//this.setLayout(cL);
-		System.out.println(cL.toString());
+		//System.out.println(cL.toString());
 		i += 1;
 	}
 
