@@ -4,10 +4,12 @@ public class Mediator{
 	private CommandBuilder builder;
 	public FileHandler fileHandler;
 	private MainView mainView;
+	public PromptManager promptManager;
 	
 	public Mediator(){
-		builder = new CommandBuilder();
-		fileHandler = new FileHandler();
+		builder = new CommandBuilder(this);
+		fileHandler = new FileHandler(this);
+		promptManager = new PromptManager(mainView);
 	}
 	
 	/**
@@ -25,6 +27,9 @@ public class Mediator{
 	 * Tells the builder to create a command and then pushes it to fileHandler.
 	 */
 	public void pushCommand(String text, int start, int end, String type){
+		if(type != "Additive"){
+			fileHandler.pushCommand(builder.CreateCommand(getMainViewText(), 0, getMainViewText().length(), "Additive"));
+		}
 		fileHandler.pushCommand(builder.CreateCommand(text, start, end, type));
 	}
 	
@@ -42,12 +47,7 @@ public class Mediator{
 		fileHandler.redoCommand();
 	}
 	
-	/**
-	 * Updates the current file's buffer
-	 */
-	public void updateFileBuffer(String s){
-		fileHandler.updateFileBuffer(s);
-	}
+
 	
 	/**
 	 * Sets the current file's text box's text to the string parameter
@@ -63,5 +63,5 @@ public class Mediator{
 	 */
 	public String getMainViewText(){
 		return mainView.textView.textArea.getText().toString(); 	
-	}
+	}	
 }

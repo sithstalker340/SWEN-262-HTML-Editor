@@ -13,10 +13,12 @@ import java.io.IOException;
 public class FileHandler {
 	private FileContent fileContent;
 	private int fileNumbers;
+	private Mediator mediator;
 	
-	public FileHandler(){
-		fileNumbers = 0;
+	public FileHandler(Mediator med){
+		fileNumbers = 1;
 		fileContent = new FileContent();
+		mediator = med;
 	}
 	
 	/**
@@ -25,6 +27,7 @@ public class FileHandler {
 	 */
 	public void pushCommand(Command cmd){
 		fileContent.pushCommand(cmd);
+		updateDisplay();
 	}
 		
 	/**
@@ -32,10 +35,12 @@ public class FileHandler {
 	 */
 	public void popCommand(){
 		fileContent.popCommand();
+		updateDisplay();
 	}
 	
 	public void redoCommand(){
 		fileContent.redoCommand();
+		updateDisplay();
 	}
 	
 	public boolean canSave(){
@@ -51,31 +56,53 @@ public class FileHandler {
 	/**
 	 * Saves the active file
 	 */
-	public void save(){
-		fileContent.getActiveFile();
-		
+	public boolean save(){
 		FileWriter fw;
 		BufferedWriter bw;
 		
-		try{
-			fw = new FileWriter(fileContent.getActiveFile().getPath().toString());
-			bw= new BufferedWriter(fw);
-			System.out.println("Data to save: " + fileContent.getActiveFile().getBuffer());
-			bw.write(fileContent.getActiveFile().getBuffer());
-			bw.close();
+		if(fileContent.getPath() != null){
+			try{
+				fw = new FileWriter(fileContent.getPath());
+				bw= new BufferedWriter(fw);
+				//System.out.println("Data to save: " + fileContent.getBuffer());
+				bw.write(fileContent.getBuffer());
+				bw.close();
+				
+				//System.out.println(mediator.getMainViewText());
+				//fileContent.setBuffer(mediator.getMainViewText());
+				fileContent.setIsSaved();
+			}
+			
+			catch (IOException e1){
+				System.out.println("Error saving file '" + fileContent.getPath() + "'");	
+				e1.printStackTrace();
+			}
+			
+			return true;
 		}
 		
-		catch (IOException e1){
-			System.out.println("Error saving file '" + fileContent.getActiveFile().getPath().toString() + "'");	
-			e1.printStackTrace();
-		}
+		else return false;
 	}
 	
 	/**
 	 * Prompts the user to save the file with a desired name and location
 	 */
 	public void saveAs(String path){
+		FileWriter fw;
+		BufferedWriter bw;
 		
+		try{
+			fw = new FileWriter(path);
+			bw= new BufferedWriter(fw);
+			System.out.println("Data to save: " + fileContent.getBuffer());
+			bw.write(fileContent.getBuffer());
+			bw.close();
+		}
+		
+		catch (IOException e1){
+			System.out.println("Error saving file '" + path + "'");	
+			e1.printStackTrace();
+		}
 	}
 	
 	/**
@@ -125,9 +152,9 @@ public class FileHandler {
 		newFile.setPath(loc);
 		fileNumbers +=1;
 		
-		fileContent.AddFile(newFile);
+		fileContent.addFile(newFile);
 		fileContent.changeFile(newFile.getID());
-		System.out.println("Active file ID: " + fileContent.getActiveFile().getID());
+		System.out.println("Active file ID: " + fileContent.getID());
 		return newFile;
 	}
 	
@@ -210,13 +237,21 @@ public class FileHandler {
 	 * @param s
 	 */
 	public void updateFileBuffer(String s){
-		fileContent.getActiveFile().setBuffer(s);
+		fileContent.setBuffer(s);
+	}
+	
+	public void updateDisplay(){
+		mediator.setTextAreaString(fileContent.getBuffer());
 	}
 	
 	/**
 	 * Prompts to save any unsaved work, and then exits the program
 	 */
 	public void quit(){
+		if(!fileContent.getIsSaved()){
+			//create prompt to ask to save
+		}
 		
+		System.exit(0);
 	}	
 }

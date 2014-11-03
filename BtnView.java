@@ -25,33 +25,42 @@ public class BtnView extends JPanel
 		
 		this.setSize(parent.getWidth(), 25);
 		this.setLayout(new FlowLayout());
-		this.add(btnB = new JButton("<b>"));
-		//add actionListener for btnB
+		
+		this.add(btnB = new JButton("b"));
+		btnB.setFocusable(false);
 		btnB.addActionListener(vListener);
-		this.add(btnI = new JButton("<i>"));
-		//add actionListener for btnI
+		
+		this.add(btnI = new JButton("i"));
 		btnI.addActionListener(vListener);
-		this.add(btnA = new JButton("<a>"));
-		//add actionListener for btnA
+		btnI.setFocusable(false);
+		
+		this.add(btnA = new JButton("a"));
 		btnA.addActionListener(vListener);
-		this.add(btnHeader = new JButton("<Header>"));
-		//add actionListener for btnHeader
+		btnA.setFocusable(false);
+		
+		this.add(btnHeader = new JButton("Header"));
 		btnHeader.addActionListener(vListener);
-		this.add(btnOl = new JButton("<ol>"));
-		//add actionListener for btnOl
+		btnHeader.setFocusable(false);
+		
+		this.add(btnOl = new JButton("ol"));
 		btnOl.addActionListener(vListener);
-		this.add(btnUl = new JButton("<ul>"));
-		//add actionListener for btnUl
+		btnOl.setFocusable(false);
+		
+		this.add(btnUl = new JButton("ul"));
 		btnUl.addActionListener(vListener);
-		this.add(btnDl = new JButton("<dl>"));
-		//add actionListener for btnDl
+		btnUl.setFocusable(false);
+		
+		this.add(btnDl = new JButton("dl"));
 		btnDl.addActionListener(vListener);
-		this.add(btnTable = new JButton("<table>"));
-		//add actionListener for btnTable
+		btnDl.setFocusable(false);
+		
+		this.add(btnTable = new JButton("table"));
 		btnTable.addActionListener(vListener);
-		this.add(btnImg = new JButton("<img>"));
-		//add actionListener for btnImg
+		btnTable.setFocusable(false);
+		
+		this.add(btnImg = new JButton("img"));
 		btnImg.addActionListener(vListener);
+		btnImg.setFocusable(false);
 		
 		this.setVisible(true);
 	}

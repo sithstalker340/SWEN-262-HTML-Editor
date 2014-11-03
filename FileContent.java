@@ -8,6 +8,8 @@ public class FileContent {
 	
 	public FileContent(){
 		fileList = new ArrayList<File>();
+		activeFile = new File(0);
+		addFile(activeFile);
 	}
 
 	/**
@@ -41,33 +43,35 @@ public class FileContent {
 		activeFile.redoCommand();
 	}
 	
-	public File getActiveFile(){
-		return activeFile;
-	}
-	
-	public void AddFile(File file){
+	public void addFile(File file){
 		fileList.add(file);
 	}
 	
-	/**
-	 * Returns the start position of the highlighted string
-	 * If there is no highlighted string, it returns the cursor position
-	 */
-	public int getCursorStart(){
-		return activeFile.getCursorStart();
+	public String getPath(){
+		return activeFile.getPath();
 	}
-		
-	/**
-	 * Returns the end position of the highlighted string
-	 */
-	public int getCursorEnd(){
-		return activeFile.getCursorEnd();
+	
+	public String getBuffer(){
+		return activeFile.getBuffer();
 	}
-		
-	/**
-	 * Sets the cursor position
-	 */
-	public void setCursorStart(){
-		
+	
+	public void setIsSaved(){
+		activeFile.setIsSaved();
+	}
+	
+	public boolean getIsSaved(){
+		return activeFile.isSaved();
+	}
+	
+	public int getID(){
+		return activeFile.getID();
+	}
+	
+	public void setBuffer(String s){
+		activeFile.setBuffer(s);
+	}
+	
+	public File getActiveFile(){
+		return activeFile;
 	}
 }

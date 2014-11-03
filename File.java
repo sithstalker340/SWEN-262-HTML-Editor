@@ -1,5 +1,3 @@
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Stack;
@@ -8,11 +6,9 @@ public class File{
 	private Deque<Command> commandStack;
 	private Stack<Command> redoStack;
 	private String buffer;
-	private int cursorStart;
-	private int cursorEnd;
 	private int id;
 	private int stackSize;
-	private Path location;
+	private String location;
 	private boolean isSaved;
 	
 	/**
@@ -22,11 +18,9 @@ public class File{
 		commandStack = new ArrayDeque<Command>();
 		redoStack = new Stack<Command>();
 		buffer = "";
-		cursorStart = 0;
-		cursorEnd = 0;
 		id = idNum;
 		stackSize = 20;
-		isSaved = true;
+		isSaved = false;
 	}
 	
 	public File(String b,int idNum){
@@ -38,7 +32,7 @@ public class File{
 		return id;
 	}
 	
-	public Path getPath(){
+	public String getPath(){
 		return location;
 	}
 	
@@ -49,8 +43,17 @@ public class File{
 	public boolean isSaved(){
 		return isSaved;
 	}
+	
+	public void setIsSaved(){
+		if(isSaved){
+			isSaved = false;
+		}
+		
+		else isSaved = true;
+	}
+	
 	public void setPath(String p){
-		location = Paths.get(p);
+		location = p;
 	}
 	
 	public void setBuffer(String s){
@@ -85,26 +88,4 @@ public class File{
 	public void redoCommand(){
 		this.pushCommand(redoStack.pop()); 
 	}
-	
-	/**
-	 * Returns the position of the cursor
-	 */
-	public int getCursorStart(){
-		return cursorStart;
-	}
-	
-	/**
-	 * Returns the end position of the highlighted string
-	 * If there is no highlighted string, returns the cursor position
-	 */
-	public int getCursorEnd(){
-		return cursorEnd;
-	}
-	
-	/**
-	 * Sets the cursor position
-	 */
-	public void setCursorStart(){
-		
-	}	
 }

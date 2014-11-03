@@ -51,7 +51,7 @@ public class TextAreaView extends JTextArea{
 			
 			public void focusLost(FocusEvent e){
 				focus = false;
-				mainView.getInputHandler().getMediator().updateFileBuffer(textArea.getText());
+				mainView.getInputHandler().getMediator().fileHandler.updateFileBuffer(textArea.getText());
 			}
 		});
 	}
@@ -84,6 +84,7 @@ public class TextAreaView extends JTextArea{
 		textArea.getDocument().removeDocumentListener(null);
 	}
 	
+	//I dont think we need this, it isnt being used
 	/**
 	 * Gets the last character entered in the text area
 	 * and if it is the ENTER key, updates the current file's buffer
@@ -101,7 +102,7 @@ public class TextAreaView extends JTextArea{
 			
 			if(lastCharIn.equals("\n")){	
 				// to be implemented
-				mainView.getInputHandler().getMediator().updateFileBuffer(doc.getText(0, doc.getLength()));
+				//mainView.getInputHandler().getMediator().updateFileBuffer(doc.getText(0, doc.getLength()));
 			}
 		} 
 		
@@ -116,5 +117,13 @@ public class TextAreaView extends JTextArea{
 	 */
 	public JTextArea getTextArea(){
 		return textArea;
+	}
+	
+	public int getCursorStart(){
+		return textArea.getCaret().getDot();
+	}
+	
+	public int getCursorEnd(){
+		return textArea.getCaret().getMark();
 	}
 }
