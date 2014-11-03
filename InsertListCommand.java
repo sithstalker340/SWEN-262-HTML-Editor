@@ -22,14 +22,14 @@ public class InsertListCommand extends Command {
 	    
 		for(int i = 0;i < numberRows;i+=1){
 			if(text == "dl"){
-				builder.append("\n");
+				builder.append('\n');
 				builder.append("<dt>" + " " + "</dt>"); 
-		        builder.append("\n");
+		        builder.append('\n');
 		        builder.append("<dd>"  + " " + "</dd>");   
 		    }
 
 		    else{
-		    	builder.append("\n");
+		    	builder.append('\n');
 		    	builder.append("<li>" + " " + "</li>");
 		    }       
 		}
