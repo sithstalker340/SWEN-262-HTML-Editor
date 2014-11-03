@@ -3,14 +3,12 @@ public class InsertListCommand extends Command {
 
 	private String text;
 	private int startPos;
-	private int endPos;
 	private int numberRows;
 	private String buffer;
 	
-	public InsertListCommand(String textString, int startPosition, int endPosition, int numRows){
+	public InsertListCommand(String textString, int startPosition, int numRows){
 		text = textString;
 		startPos = startPosition;
-		endPos = endPosition;
 		numberRows = numRows;
 	}
 	
@@ -33,13 +31,11 @@ public class InsertListCommand extends Command {
 		    	builder.append("<li>" + " " + "</li>");
 		    }       
 		}
-		file.setBuffer(buffer.substring(0,startPos) + builder.toString() + buffer.substring(endPos));
+		file.setBuffer(buffer.substring(0,startPos) + builder.toString() + buffer.substring(startPos + builder.length()));
 	}
-
 	
 	public void Undo(File file) {
-		
-		
+		file.setBuffer(buffer);		
 	}
 
 }
