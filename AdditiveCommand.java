@@ -21,7 +21,14 @@ public class AdditiveCommand extends Command{
 	 */
 	public void Apply(File file){
 		String buffer = file.getBuffer();
-		file.setBuffer(buffer.substring(0,startPos) + text + buffer.substring(endPos));
+		if(buffer.length() == 0){
+			file.setBuffer(text);
+		}
+		
+		else{
+			String newBuffer = buffer.substring(0,startPos) + text + buffer.substring(endPos);
+			file.setBuffer(newBuffer);
+		}
 	}
 	
 	/**

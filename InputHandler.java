@@ -16,25 +16,8 @@ public class InputHandler {
 	 * Handles the events fired from a button being pressed
 	 * @param txt
 	 */
-	public void buttonViewInput(String txt){
-		System.out.println(txt);
-		switch(txt){
-			case "<b>":
-				System.out.println("BOLD TAG");
-				break;
-				
-			case "<i>":
-				System.out.println("ITALICS TAG");
-				break;
-				
-			case "<a>":
-				System.out.println("LINK TAG");
-				break;
-				
-			case "<Header>":
-				System.out.println("HEADER TAG");
-				break;
-		}
+	public void buttonViewInput(String tag){
+		mediator.pushCommand(tag, mainView.textView.getCursorStart(), mainView.textView.getCursorEnd(), "Tag");
 	}
 	
 	/**

@@ -12,7 +12,9 @@ public class CommandBuilder{
 		if(type == "Additive"){
 			cmd = new AdditiveCommand(text,start,end);
 		}else if(type == "Subtractive"){
-			cmd = new SubtractiveCommand(text,start,end);
+			cmd = new SubtractiveCommand(text,start,end);	
+		}else if(type == "Tag"){
+			cmd = new InsertTagCommand(text, start, end);
 		}else{
 			cmd = null;			
 		}
