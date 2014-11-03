@@ -6,8 +6,6 @@ public class File{
 	private Deque<Command> commandStack;
 	private Stack<Command> redoStack;
 	private String buffer;
-	private int cursorStart;
-	private int cursorEnd;
 	private int id;
 	private int stackSize;
 	private String location;
@@ -20,8 +18,6 @@ public class File{
 		commandStack = new ArrayDeque<Command>();
 		redoStack = new Stack<Command>();
 		buffer = "";
-		cursorStart = 0;
-		cursorEnd = 0;
 		id = idNum;
 		stackSize = 20;
 		isSaved = false;
@@ -92,26 +88,4 @@ public class File{
 	public void redoCommand(){
 		this.pushCommand(redoStack.pop()); 
 	}
-	
-	/**
-	 * Returns the position of the cursor
-	 */
-	public int getCursorStart(){
-		return cursorStart;
-	}
-	
-	/**
-	 * Returns the end position of the highlighted string
-	 * If there is no highlighted string, returns the cursor position
-	 */
-	public int getCursorEnd(){
-		return cursorEnd;
-	}
-	
-	/**
-	 * Sets the cursor position
-	 */
-	public void setCursorStart(){
-		
-	}	
 }

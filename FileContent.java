@@ -74,25 +74,4 @@ public class FileContent {
 	public File getActiveFile(){
 		return activeFile;
 	}
-	/**
-	 * Returns the start position of the highlighted string
-	 * If there is no highlighted string, it returns the cursor position
-	 */
-	public int getCursorStart(){
-		return activeFile.getCursorStart();
-	}
-		
-	/**
-	 * Returns the end position of the highlighted string
-	 */
-	public int getCursorEnd(){
-		return activeFile.getCursorEnd();
-	}
-		
-	/**
-	 * Sets the cursor position
-	 */
-	public void setCursorStart(){
-		
-	}
 }

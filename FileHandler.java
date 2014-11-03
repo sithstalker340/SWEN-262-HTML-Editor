@@ -13,10 +13,12 @@ import java.io.IOException;
 public class FileHandler {
 	private FileContent fileContent;
 	private int fileNumbers;
+	private Mediator mediator;
 	
-	public FileHandler(){
+	public FileHandler(Mediator med){
 		fileNumbers = 1;
 		fileContent = new FileContent();
+		mediator = med;
 	}
 	
 	/**
@@ -25,6 +27,7 @@ public class FileHandler {
 	 */
 	public void pushCommand(Command cmd){
 		fileContent.pushCommand(cmd);
+		updateDisplay();
 	}
 		
 	/**
@@ -32,10 +35,12 @@ public class FileHandler {
 	 */
 	public void popCommand(){
 		fileContent.popCommand();
+		updateDisplay();
 	}
 	
 	public void redoCommand(){
 		fileContent.redoCommand();
+		updateDisplay();
 	}
 	
 	public boolean canSave(){
@@ -231,6 +236,10 @@ public class FileHandler {
 	 */
 	public void updateFileBuffer(String s){
 		fileContent.setBuffer(s);
+	}
+	
+	public void updateDisplay(){
+		mediator.setTextAreaString(fileContent.getBuffer());
 	}
 	
 	/**
