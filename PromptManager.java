@@ -16,41 +16,20 @@ public class PromptManager{
 	String message;
 	MainView mainView;
 	JFrame parent;
+    boolean returnType;
+	
 	
 	//PromptHandler constructor
 	public PromptManager(MainView m){
 		message = "";
 		mainView = m;
 	}
-	
-	public void createNewPrompt(int options, String m){
-		message = m;
 		
-		switch(options){
-		case 0: // no user feedback
-				displayMessage(m);
-				System.out.println("0 selected");
-			break;
-			
-		case 1: // user selects yes or no
-				displayBool(m);
-			break;
-			
-		case 2: // user enters 1 string
-				displayLines1(m);
-			break;
-		}
-	}
-	
-	public void createNewPrompt(String m1, String m2){
-		displayLines2(m1,m2);
-	}
-	
 	/**
 	 * Displays a message to the user
 	 * @param message
 	 */
-	private void displayMessage(String m){
+	public void displayMessage(String m){
 		parent = new JFrame();
 		
 		JOptionPane pane = new JOptionPane();
@@ -62,7 +41,6 @@ public class PromptManager{
         
         ok.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e){
-        		returnBoolPrompt("true");
         		parent.dispose();
         	}
         });
@@ -79,7 +57,7 @@ public class PromptManager{
 	 * Shows message1, text box, message2, text box
 	 * @param message1, message2
 	 */
-	private String[] displayLines2(String m1, String m2){
+	public String[] displayLines2(String m1, String m2){
 		String[] textFields = new String[2];
 		String[] failed = {"",""};
 		JPanel panel = new JPanel(new GridLayout(2,2));
@@ -110,7 +88,7 @@ public class PromptManager{
 	 * Shows message, text box
 	 * @param message
 	 */
-	private String displayLines1(String m){
+	public String displayLines1(String m){
 		JPanel panel = new JPanel(new GridLayout(2,1));
 		Label label = new Label(m);
 		Object[] options = {"OK", "Cancel"};
@@ -131,7 +109,7 @@ public class PromptManager{
 	 * Displays dialog with custom prompt
 	 * @param message
 	 */
-	private void displayBool(String m){
+	public boolean displayBool(String m){
 		parent = new JFrame();
 		
 		JOptionPane pane = new JOptionPane();
@@ -140,17 +118,17 @@ public class PromptManager{
         JButton no = new JButton("No");
         Object[] options = {yes, no};
         pane.setOptions(options);
-        
+                
         yes.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e){
-        		returnBoolPrompt("true");
+        		returnBoolPrompt(true);
         		parent.dispose();
         	}
         });
         
         no.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e){
-        		returnBoolPrompt("false");
+        		returnBoolPrompt(false);
         		parent.dispose();
         	}
         });
@@ -161,16 +139,12 @@ public class PromptManager{
         parent.setLocationRelativeTo(null);
 		parent.setVisible(true);	
 		parent.setFocusable(true);
+		
+		return returnType;
 	}
 	
-	public boolean returnBoolPrompt(String b){
-		System.out.println(b);
-		
-		if(b == "true"){ 
-			return true;
-		}
-		
-		else return false;
+	public void returnBoolPrompt(boolean b){		
+		returnType = b;
 	}
 }
 

@@ -22,15 +22,14 @@ public class CommandBuilder{
 		}
 		else if(type == "Link"){
 			//prompt user for link url
-			cmd = new InsertTagCommand(text, start, end);
+			cmd = new InsertTagCommand( mediator.promptManager.displayLines1("Please enter your url:"), start, end);
 		}
 		else if(type == "List"){
-			//prompt user for number of items in list
-			cmd = new InsertTagCommand(text, start, end);
+			cmd = new InsertTagCommand(text, start,  Integer.parseInt(mediator.promptManager.displayLines1("How many items do you want in your list?")));
 		}		
 		else if(type == "Table"){
-			//prompt user for number of rows and columns 
-			cmd = new InsertTableCommand(start, 1, 1);
+			String[] userInput = mediator.promptManager.displayLines2("Number of rows:", "Number of columns:"); 
+			cmd = new InsertTableCommand(start, Integer.parseInt(userInput[0]), Integer.parseInt(userInput[1]));
 		}		
 		else{
 			cmd = null;			
