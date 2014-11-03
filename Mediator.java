@@ -4,10 +4,12 @@ public class Mediator{
 	private CommandBuilder builder;
 	public FileHandler fileHandler;
 	private MainView mainView;
+	public PromptManager promptManager;
 	
 	public Mediator(){
-		builder = new CommandBuilder();
+		builder = new CommandBuilder(this);
 		fileHandler = new FileHandler(this);
+		promptManager = new PromptManager(mainView);
 	}
 	
 	/**
@@ -62,4 +64,5 @@ public class Mediator{
 	public String getMainViewText(){
 		return mainView.textView.textArea.getText().toString(); 	
 	}
+	
 }
