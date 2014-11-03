@@ -1,13 +1,13 @@
 
 public class InsertLinkCommand extends Command {
 	
-	private String text;
+	private String url;
 	private int startPos;
 	private int endPos;
 	private String buffer;
 	
-	public InsertLinkCommand(String textString, int startPosition, int endPosition){
-		text = textString;
+	public InsertLinkCommand(String url, int startPosition, int endPosition){
+		this.url = url;
 		startPos = startPosition;
 		endPos = endPosition;
 	}
@@ -18,7 +18,7 @@ public class InsertLinkCommand extends Command {
 	 */
 	public void Apply(File file){
 		buffer = file.getBuffer();
-		file.setBuffer(buffer.substring(0,startPos) + "<a href=" + "\"" + text + "\"" + ">" + buffer.substring(startPos,endPos) + "</a>"+ buffer.substring(endPos));
+		file.setBuffer(buffer.substring(0,startPos) + "<a href=" + "\"" + url + "\"" + ">" + buffer.substring(startPos,endPos) + "</a>"+ buffer.substring(endPos));
 	}
 	
 	/**
