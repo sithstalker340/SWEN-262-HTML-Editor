@@ -25,33 +25,42 @@ public class BtnView extends JPanel
 		
 		this.setSize(parent.getWidth(), 25);
 		this.setLayout(new FlowLayout());
+		
 		this.add(btnB = new JButton("b"));
-		//add actionListener for btnB
+		btnB.setFocusable(false);
 		btnB.addActionListener(vListener);
+		
 		this.add(btnI = new JButton("i"));
-		//add actionListener for btnI
 		btnI.addActionListener(vListener);
+		btnI.setFocusable(false);
+		
 		this.add(btnA = new JButton("a"));
-		//add actionListener for btnA
 		btnA.addActionListener(vListener);
+		btnA.setFocusable(false);
+		
 		this.add(btnHeader = new JButton("Header"));
-		//add actionListener for btnHeader
 		btnHeader.addActionListener(vListener);
+		btnHeader.setFocusable(false);
+		
 		this.add(btnOl = new JButton("ol"));
-		//add actionListener for btnOl
 		btnOl.addActionListener(vListener);
+		btnOl.setFocusable(false);
+		
 		this.add(btnUl = new JButton("ul"));
-		//add actionListener for btnUl
 		btnUl.addActionListener(vListener);
+		btnUl.setFocusable(false);
+		
 		this.add(btnDl = new JButton("dl"));
-		//add actionListener for btnDl
 		btnDl.addActionListener(vListener);
+		btnDl.setFocusable(false);
+		
 		this.add(btnTable = new JButton("table"));
-		//add actionListener for btnTable
 		btnTable.addActionListener(vListener);
+		btnTable.setFocusable(false);
+		
 		this.add(btnImg = new JButton("img"));
-		//add actionListener for btnImg
 		btnImg.addActionListener(vListener);
+		btnImg.setFocusable(false);
 		
 		this.setVisible(true);
 	}
