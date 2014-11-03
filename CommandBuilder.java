@@ -30,7 +30,7 @@ public class CommandBuilder{
 		}		
 		else if(type == "Table"){
 			//prompt user for number of rows and columns 
-			cmd = new InsertTagCommand(text, start, end);
+			cmd = new InsertTableCommand(start, 1, 1);
 		}		
 		else{
 			cmd = null;			
