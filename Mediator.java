@@ -6,7 +6,7 @@ public class Mediator{
 	private MainView mainView;
 	
 	public Mediator(){
-		builder = new CommandBuilder();
+		builder = new CommandBuilder(this);
 		fileHandler = new FileHandler(this);
 	}
 	
