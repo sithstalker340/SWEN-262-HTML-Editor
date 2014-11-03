@@ -64,10 +64,12 @@ public class FileHandler {
 			try{
 				fw = new FileWriter(fileContent.getPath());
 				bw= new BufferedWriter(fw);
-				System.out.println("Data to save: " + fileContent.getBuffer());
+				//System.out.println("Data to save: " + fileContent.getBuffer());
 				bw.write(fileContent.getBuffer());
 				bw.close();
 				
+				//System.out.println(mediator.getMainViewText());
+				//fileContent.setBuffer(mediator.getMainViewText());
 				fileContent.setIsSaved();
 			}
 			
