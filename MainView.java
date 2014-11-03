@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -16,7 +17,7 @@ public class MainView extends JFrame
 	ViewListener listener;
 	BtnView buttons;
 	TextAreaView textView;
-	CardLayout cL;
+	MyCardLayout cL;
 	JPanel panel;
 	JScrollPane scrollPane;
 	
@@ -35,6 +36,7 @@ public class MainView extends JFrame
 		
 		menu = new MenuView(this, listener); // menuBar object
 		buttons = new BtnView(this, listener);	// all of the buttons
+		cL = new MyCardLayout(listener, this);
 		textView = new TextAreaView(this, listener); // the text box object
 			
 		// make a new panel, give it a border with padding, select the Border layout
@@ -52,14 +54,20 @@ public class MainView extends JFrame
         this.setJMenuBar(menu);
         panel.add(buttons, BorderLayout.NORTH);    
         panel.add(scrollPane, BorderLayout.CENTER);
+        cL.addCard("Test1", null);
+        cL.addCard("Test2", null);
+        //cL.show("Test1");
+        //panel.add(cL, BorderLayout.CENTER);
+        //((MyCardLayout)panel.getComponent(2)).show("Test");
         
         this.setMinimumSize(new Dimension(300,300));
 		this.pack();
 		this.setLocationByPlatform(true);
-		this.setVisible(true);		
+		this.setVisible(true);	
 	}
 	
-	public InputHandler getInputHandler(){
+	public InputHandler getInputHandler()
+	{
 		return input;
 	}
 }

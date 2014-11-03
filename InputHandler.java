@@ -1,13 +1,15 @@
 import javax.swing.JFileChooser;
 
 
-public class InputHandler {
+public class InputHandler 
+{
 
 	private Mediator mediator; 
 	public MainView mainView;
 	final JFileChooser fc;
 	
-	public InputHandler(Mediator m){
+	public InputHandler(Mediator m)
+	{
 		mediator = m;
 		fc = new JFileChooser();
 	}
@@ -16,9 +18,11 @@ public class InputHandler {
 	 * Handles the events fired from a button being pressed
 	 * @param txt
 	 */
-	public void buttonViewInput(String txt){
+	public void buttonViewInput(String txt)
+	{
 		System.out.println(txt);
-		switch(txt){
+		switch(txt)
+		{
 			case "<b>":
 				System.out.println("BOLD TAG");
 				break;
@@ -41,13 +45,16 @@ public class InputHandler {
 	 * Handles the events fired from a menu selection
 	 * @param txt
 	 */
-	public void menuViewInput(String txt){
+	public void menuViewInput(String txt)
+	{
 		System.out.println(txt);
-		switch(txt){
+		switch(txt)
+		{
 			case "Save":
 				System.out.println("Save Clicked");
 				
-				if(getMediator().fileHandler.canSave()){
+				if(getMediator().fileHandler.canSave())
+				{
 					getMediator().fileHandler.save();
 				}
 				break;
@@ -56,7 +63,8 @@ public class InputHandler {
 				//System.out.println("Open File...");
 				int returnVal = fc.showOpenDialog(fc);	
 				
-				if(returnVal == JFileChooser.APPROVE_OPTION){
+				if(returnVal == JFileChooser.APPROVE_OPTION)
+				{
 					java.io.File file = fc.getSelectedFile();
 					String name = file.getPath().toString();
 
@@ -80,7 +88,8 @@ public class InputHandler {
 	 * Sets the mainView variable stored in InputHandler
 	 * @param m
 	 */
-	public void setMainView(MainView m){
+	public void setMainView(MainView m)
+	{
 		mainView = m;
 	}
 	
@@ -88,7 +97,8 @@ public class InputHandler {
 	 * Returns the mediator variable stored in InputHandler
 	 * @return
 	 */
-	public Mediator getMediator(){
+	public Mediator getMediator()
+	{
 		return mediator;
 	}
 }
