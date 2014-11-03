@@ -63,6 +63,5 @@ public class Mediator{
 	 */
 	public String getMainViewText(){
 		return mainView.textView.textArea.getText().toString(); 	
-	}
-	
+	}	
 }
