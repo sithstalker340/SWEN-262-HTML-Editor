@@ -17,7 +17,17 @@ public class InputHandler {
 	 * @param txt
 	 */
 	public void buttonViewInput(String tag){
-		mediator.pushCommand(tag, mainView.textView.getCursorStart(), mainView.textView.getCursorEnd(), "Tag");
+		String type = "tag";
+		
+		switch(tag){
+			case "a": type = "link";break;
+			case "ol": type = "list";break;		
+			case "ul": type = "list";break;
+			case "dl": type = "list";break;				
+			case "img": type = "img";break;				
+		}
+		
+		mediator.pushCommand(tag, mainView.textView.getCursorStart(), mainView.textView.getCursorEnd(), type);
 	}
 	
 	/**
