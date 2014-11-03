@@ -16,7 +16,7 @@ public class InsertListCommand extends Command {
 		buffer = file.getBuffer();
 	    StringBuilder builder = new StringBuilder();
 	    builder.append("\n");
-	    builder.append("</" + text + ">");
+	    builder.append("<" + text + ">");
 	    
 		for(int i = 0;i < numberRows;i+=1){
 			if(text == "dl"){
@@ -31,6 +31,10 @@ public class InsertListCommand extends Command {
 		    	builder.append("<li>" + " " + "</li>");
 		    }       
 		}
+		
+		builder.append('\n');
+	    builder.append("</" + text + ">");
+	    
 		file.setBuffer(buffer.substring(0,startPos) + builder.toString() + buffer.substring(startPos + builder.length()));
 	}
 	
