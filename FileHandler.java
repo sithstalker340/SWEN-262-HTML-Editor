@@ -111,6 +111,7 @@ public class FileHandler {
 				
 		fileContent.addFile(newFile);
 		fileContent.changeFile(newFile.getID());
+		newFile.setIsFunctional(true);
 		return newFile;
 	}
 	
@@ -161,8 +162,12 @@ public class FileHandler {
 		newFile.setPath(loc);
 		fileNumbers +=1;
 		
+		//System.out.println(getIsFunctional());
+		//System.out.println(getIsFunctional());
+				
 		fileContent.addFile(newFile);
 		fileContent.changeFile(newFile.getID());
+		setIsFunctional(wellFormed(newFile));
 		return newFile;
 	}
 	
@@ -170,9 +175,9 @@ public class FileHandler {
 	 * Checks to see if the text in the current file is valid HTML
 	 * @return boolean
 	 */
-	public boolean wellFormed(){
-		Stack<String> tagStack = new Stack<String>();
-		String allText = fileContent.toString(); // the buffer from the file
+	public boolean wellFormed(File file){
+		/*Stack<String> tagStack = new Stack<String>();
+		String allText = file.getBuffer(); // the buffer from the file
 		
 		int start = allText.indexOf('<');
 		int end = allText.indexOf('>');
@@ -204,7 +209,7 @@ public class FileHandler {
 			else{
 				int endIndex = allText.indexOf(' ');
 				if(endIndex == -1){
-					tag = tag.substring(0, endIndex);
+					tag = tag.substring(0, endIndex+1);
 				}
 				
 				if(tag.indexOf(0) != '!'){
@@ -219,7 +224,7 @@ public class FileHandler {
 		
 		if(tagStack.size() != 0 && checksSelfClose(tag)){
 			return false;
-		}
+		}*/
 		
 		return true;
 	}
@@ -272,5 +277,13 @@ public class FileHandler {
 	
 	public void setIsSaved(boolean b){
 		fileContent.setIsSaved(b);
+	}
+	
+	public boolean getIsFunctional(){
+		return fileContent.getIsFunctional();
+	}
+	
+	public void setIsFunctional(boolean b){
+		fileContent.setIsFunctional(b);
 	}
 }

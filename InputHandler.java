@@ -15,6 +15,11 @@ public class InputHandler {
 	 * @param txt
 	 */
 	public void buttonViewInput(String tag){
+		
+		if(!mediator.getIsFunctional()){
+			return;
+		}
+		
 		String type = "tag";
 		
 		switch(tag){

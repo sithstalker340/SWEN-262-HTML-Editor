@@ -108,4 +108,12 @@ public class Mediator{
 	public void updateFileBuffer(){
 		fileHandler.updateFileBuffer(getMainViewText());
 	}
+	
+	public boolean getIsFunctional(){
+		return fileHandler.getIsFunctional();
+	}
+	
+	public void setIsFunctional(boolean b){
+		fileHandler.setIsFunctional(b);
+	}
 }
