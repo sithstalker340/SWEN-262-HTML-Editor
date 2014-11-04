@@ -17,17 +17,17 @@ public class CommandBuilder{
 		else if(type == "Subtractive"){
 			cmd = new SubtractiveCommand(text,start,end);	
 		}
-		else if(type == "Tag"){
+		else if(type == "tag"){
 			cmd = new InsertTagCommand(text, start, end);
 		}
-		else if(type == "Link"){
+		else if(type == "link"){
 			//prompt user for link url
 			cmd = new InsertTagCommand( mediator.promptManager.displayLines1("Please enter your url:"), start, end);
 		}
-		else if(type == "List"){
+		else if(type == "list"){
 			cmd = new InsertTagCommand(text, start,  Integer.parseInt(mediator.promptManager.displayLines1("How many items do you want in your list?")));
 		}		
-		else if(type == "Table"){
+		else if(type == "table"){
 			String[] userInput = mediator.promptManager.displayLines2("Number of rows:", "Number of columns:"); 
 			cmd = new InsertTableCommand(start, Integer.parseInt(userInput[0]), Integer.parseInt(userInput[1]));
 		}		

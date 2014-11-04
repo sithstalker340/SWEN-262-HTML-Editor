@@ -3,7 +3,6 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
@@ -16,21 +15,17 @@ public class MainView extends JFrame
 	BtnView buttons;
 	MyCardLayout cL;
 	JPanel panel;
-	JTabbedPane tabPane;
 	TabView tabView;
 	
 	public MainView(InputHandler i)
 	{	
 		input = i;
-		input.getMediator().setMainView(this);
-		input.setMainView(this);
 		
 		this.setTitle("Editor");
 		this.setSize(700, 400);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		listener = new ViewListener(input);
-		listener.input.getMediator().setMainView(this);
 		
 		menu = new MenuView(this, listener); // menuBar object
 		buttons = new BtnView(this, listener);	// all of the buttons
@@ -73,5 +68,9 @@ public class MainView extends JFrame
 			System.out.println("null text view");
 		}
 		return tabView.getTextView();
+	}
+	
+	public void addTab(String name, int id){
+		tabView.createNewTab(name, id);
 	}
 }

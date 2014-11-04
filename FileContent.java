@@ -8,8 +8,7 @@ public class FileContent {
 	
 	public FileContent(){
 		fileList = new ArrayList<File>();
-		activeFile = new File(0);
-		addFile(activeFile);
+		activeFile = null;
 	}
 
 	/**

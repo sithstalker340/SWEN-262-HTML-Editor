@@ -3,7 +3,6 @@ import javax.swing.JFileChooser;
 public class InputHandler {
 
 	private Mediator mediator; 
-	public MainView mainView;
 	final JFileChooser fc;
 	
 	public InputHandler(Mediator m){
@@ -23,18 +22,11 @@ public class InputHandler {
 			case "ol": type = "list";break;		
 			case "ul": type = "list";break;
 			case "dl": type = "list";break;				
-			case "img": type = "img";break;				
+			case "img": type = "img";break;
+			case "update": type = "Additive"; break;
 		}
 		
-		
-		if(mainView.getCurrentTextView() == null){
-			System.out.println("null");
-		}
-		
-		else{
-		//mediator.pushCommand(tag, mainView.getCurrentTextView().getCursorStart(),
-				//mainView.getCurrentTextView().getCursorEnd(), type);
-		}
+		mediator.pushCommand(tag, type);
 	}
 	
 	/**
@@ -42,29 +34,25 @@ public class InputHandler {
 	 * @param txt
 	 */
 	public void menuViewInput(String txt){
-		System.out.println(txt);
 		switch(txt){
-			case "Save":
-				System.out.println("Save Clicked");
-				
-				if(getMediator().fileHandler.canSave()){
-					if(getMediator().fileHandler.save() == true){
+			case "Save":				
+				if(mediator.canSave()){
+					if(mediator.save() == true){
 						
 					}
-					
 					else menuViewInput("Save As...");
 				}
 				break;
 				
 			case "Save As...":				
-				if(getMediator().fileHandler.canSave()){
+				if(mediator.canSave()){
 					int returnVal = fc.showSaveDialog(fc);
 					
 					if(returnVal == JFileChooser.APPROVE_OPTION){
 						java.io.File file = fc.getSelectedFile();
 						String location = file.getPath().toString();
 						
-						getMediator().fileHandler.saveAs(location);
+						mediator.saveAs(location);
 					}
 				}
 				break;
@@ -74,36 +62,15 @@ public class InputHandler {
 				
 				if(returnVal == JFileChooser.APPROVE_OPTION){
 					java.io.File file = fc.getSelectedFile();
-					String name = file.getPath().toString();
-
-					File openedFile = getMediator().fileHandler.load(name);
-					System.out.println(openedFile.getBuffer());
-
-					getMediator().setTextAreaString(openedFile.getBuffer());
+					mediator.openFile(file.getName(), file.getPath());
 				}
 				
 				else System.out.println("Error opening file");
 			break;
 			
 			case "Exit":
-				mediator.fileHandler.quit();
+				mediator.quit();
 			break;
 		}
-	}
-	
-	/**
-	 * Sets the mainView variable stored in InputHandler
-	 * @param m
-	 */
-	public void setMainView(MainView m){
-		mainView = m;
-	}
-	
-	/**
-	 * Returns the mediator variable stored in InputHandler
-	 * @return
-	 */
-	public Mediator getMediator(){
-		return mediator;
 	}
 }

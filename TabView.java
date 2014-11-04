@@ -22,13 +22,11 @@ public class TabView extends JPanel{
 		listener = vListener;
 		
 		textAreaList = new ArrayList<TextAreaView>();
-		
 		tabPane = new JTabbedPane();
-		
-		tabPane.addTab("Tab 1", createNewTab("", 0));
 	}
 	
-	private JPanel createNewTab(String loc, int index){
+	public void createNewTab(String name, int index){
+
 		JPanel innerPane = new JPanel();
 		
 		TextAreaView textView = new TextAreaView(mainView, listener);
@@ -44,7 +42,8 @@ public class TabView extends JPanel{
 	    innerPane.setName(Integer.toString(index));
 		innerPane.add(scrollPane);
 		innerPane.setLayout(new GridLayout(1,1));
-		return innerPane;
+		
+		tabPane.addTab(name, innerPane);
 	}
 	
 	public JTabbedPane getTabPane(){

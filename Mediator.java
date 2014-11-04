@@ -2,7 +2,7 @@
 public class Mediator{
 
 	private CommandBuilder builder;
-	public FileHandler fileHandler;
+	private FileHandler fileHandler;
 	private MainView mainView;
 	public PromptManager promptManager;
 	
@@ -18,20 +18,17 @@ public class Mediator{
 	 */
 	public void setMainView(MainView m){
 		mainView = m;
-		if(mainView == null){
-			System.out.println("MainView in Mediator is null.");
-		}
 	}
 	
 	/**
 	 * Tells the builder to create a command and then pushes it to fileHandler.
 	 */
-	public void pushCommand(String text, int start, int end, String type){
-		if(type != "Additive"){
-			fileHandler.pushCommand(builder.CreateCommand(getMainViewText(), 0, getMainViewText().length(), "Additive"));
-		}
+	public void pushCommand(String text, String type){
+		fileHandler.pushCommand(builder.CreateCommand(getMainViewText(), 0, getMainViewText().length(), "Additive"));
 		
-		fileHandler.pushCommand(builder.CreateCommand(text, start, end, type));
+		if(type != "Additive"){
+			fileHandler.pushCommand(builder.CreateCommand(text, mainView.getCurrentTextView().getCursorStart() , mainView.getCurrentTextView().getCursorEnd(), type));
+		}		
 	}
 	
 	/**
@@ -65,4 +62,26 @@ public class Mediator{
 	public String getMainViewText(){
 		return mainView.getCurrentTextView().textArea.getText().toString();
 	}	
+	
+	public boolean canSave(){
+		return fileHandler.canSave();
+	}
+	
+	public boolean save(){
+		return fileHandler.save();
+	}
+	
+	public void saveAs(String path){
+		fileHandler.saveAs(path);
+	}
+	
+	public void quit(){
+		fileHandler.quit();		
+	}
+	
+	public void openFile(String name, String path){
+		File file = fileHandler.load(path);
+		mainView.addTab(name, file.getID());
+		setTextAreaString(file.getBuffer());
+	}
 }

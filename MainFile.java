@@ -11,6 +11,7 @@ public class MainFile
 		mediator = new Mediator();
 		input = new InputHandler(mediator);
 		view = new MainView(input);
+		mediator.setMainView(view);
 	}
 	
 	public static void main(String args[]){

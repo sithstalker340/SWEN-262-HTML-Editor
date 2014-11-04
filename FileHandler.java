@@ -16,7 +16,7 @@ public class FileHandler {
 	private Mediator mediator;
 	
 	public FileHandler(Mediator med){
-		fileNumbers = 1;
+		fileNumbers = 0;
 		fileContent = new FileContent();
 		mediator = med;
 	}
@@ -154,7 +154,6 @@ public class FileHandler {
 		
 		fileContent.addFile(newFile);
 		fileContent.changeFile(newFile.getID());
-		System.out.println("Active file ID: " + fileContent.getID());
 		return newFile;
 	}
 	
