@@ -2,5 +2,5 @@ import java.util.List;
 
 public interface LinkedViewStrategy {
 
-	public List sort();
+	public List<String> parse(String buffer);
 }

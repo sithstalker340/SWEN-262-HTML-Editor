@@ -10,7 +10,7 @@ public class SortByAppear implements LinkedViewStrategy{
 		urlList = new ArrayList<String>();
 	}
 
-	public List sort() {
-		return null;
+	public List<String> parse(String buffer) {
+		return urlList;
 	}
 }

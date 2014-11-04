@@ -82,6 +82,6 @@ public class MainView extends JFrame
 	}
 	
 	public void newLinkedView(LinkedViewStrategy s){
-		linkedView = new LinkedView(s);
+		linkedView = new LinkedView(s,getCurrentTextArea().getText());
 	}
 }

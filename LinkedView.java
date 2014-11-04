@@ -10,9 +10,11 @@ public class LinkedView extends JFrame {
 	JTextArea linkedViewList;
 	JPanel contentPane;
 	LinkedViewStrategy strategy;
-	public LinkedView(LinkedViewStrategy strategy){
+	String fileBuffer;
+	
+	public LinkedView(LinkedViewStrategy strategy,String text){
 		this.strategy = strategy;
-		
+		fileBuffer = text;
 		this.setMinimumSize(new Dimension(300,450));
 		this.setTitle("Linked View");
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -23,6 +25,8 @@ public class LinkedView extends JFrame {
         linkedViewList = new JTextArea();
         linkedViewList.setEditable(false);
         contentPane.add(linkedViewList);
+        for(String s: strategy.parse(fileBuffer))
+        	linkedViewList.append(s);
         this.setContentPane(contentPane);      
         this.pack();
 	}
