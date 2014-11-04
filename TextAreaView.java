@@ -4,6 +4,7 @@ import java.awt.event.FocusListener;
 import javax.swing.JTextArea;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
 
 @SuppressWarnings("serial")
 public class TextAreaView extends JTextArea{
@@ -15,6 +16,7 @@ public class TextAreaView extends JTextArea{
 	String lastCharIn;
 	int prevCharPos;
 	boolean focus;
+	final Document document;
 	
 	public TextAreaView(MainView parent, ViewListener listener){
 		vListener = listener;
@@ -24,9 +26,12 @@ public class TextAreaView extends JTextArea{
 		textArea.setWrapStyleWord(true);
         textArea.setLineWrap(true);
       
+        document = textArea.getDocument();
         focus = true;
         
         createFocusListener();
+        createDocumentListener();
+        System.out.println("asdasd");
 	}
 	
 	/**
@@ -47,10 +52,11 @@ public class TextAreaView extends JTextArea{
 		});
 	}
 	
-	public void createDocumentListener(){
-		textArea.getDocument().addDocumentListener(new DocumentListener() {
+	private void createDocumentListener(){
+			document.addDocumentListener(new DocumentListener() {
 			public void insertUpdate(DocumentEvent e) {
 				mainView.setIsSaved(false);
+				//System.out.println(mainView.getCursorStart());
 		    }
 		    public void removeUpdate(DocumentEvent e) {
 		    	mainView.setIsSaved(false);
@@ -59,6 +65,8 @@ public class TextAreaView extends JTextArea{
 		        //Plain text components do not fire these events
 		    }
 		});
+		
+		System.out.println("created");
 	}
 			
 	/**
