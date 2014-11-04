@@ -65,6 +65,7 @@ public class BtnView extends JPanel
 		
 		this.add(btnLinkView = new JButton("Linked View"));
 		btnLinkView.addActionListener(vListener);
+		btnLinkView.setFocusable(false);
 		
 		this.setVisible(true);
 	}

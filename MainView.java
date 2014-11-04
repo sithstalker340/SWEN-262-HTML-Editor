@@ -16,6 +16,7 @@ public class MainView extends JFrame
 	BtnView buttons;
 	JPanel panel;
 	TabView tabView;
+	LinkedView linkedView;
 	
 	public MainView(InputHandler i)
 	{	
@@ -78,5 +79,9 @@ public class MainView extends JFrame
 	
 	public void setIsSaved(boolean b){
 		input.setIsSaved(b);
+	}
+	
+	public void newLinkedView(){
+		linkedView = new LinkedView();
 	}
 }

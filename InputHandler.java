@@ -24,9 +24,14 @@ public class InputHandler {
 			case "dl": type = "list";break;				
 			case "img": type = "img";break;
 			case "update": type = "Additive"; break;
+			case "Linked View":
+				mediator.createNewLinkedView();
+				break;
 		}
 		
-		mediator.pushCommand(tag, type);
+		if(mediator.getMainViewText() != null){
+			mediator.pushCommand(tag, type);
+		}
 	}
 	
 	/**

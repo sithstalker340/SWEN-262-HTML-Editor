@@ -97,6 +97,10 @@ public class Mediator{
 		fileHandler.setIsSaved(b);
 	}
 	
+	public void createNewLinkedView(){
+		mainView.newLinkedView();
+	}
+	
 	public void updateFileBuffer(){
 		fileHandler.updateFileBuffer(getMainViewText());
 	}
