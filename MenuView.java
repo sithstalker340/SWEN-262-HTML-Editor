@@ -1,17 +1,22 @@
+import java.awt.event.ActionEvent;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 
 //Methods to display and run dropdown menu functions (save, load, button commands)
 @SuppressWarnings("serial")
 public class MenuView extends JMenuBar
 {
 	JMenu file;
-	JMenuItem newdoc;
+	JMenuItem newDoc;
 	JMenuItem open;
 	JMenuItem save;
 	JMenuItem saveAs;
-	JMenuItem Exit;
+	JMenuItem exit;
 	
 	JMenu edit;
 	JMenuItem undo;
@@ -22,44 +27,62 @@ public class MenuView extends JMenuBar
 	JMenuItem indent;
 	
 	
-	public MenuView(MainView parent, ViewListener listener){
-		//sets size of menu bar
+	public MenuView(final MainView parent, ViewListener listener){
 		this.setSize(parent.getWidth(), 25);
 
-		//START FILE MENU
-		//Creates file menu
+		Action actionNew = new AbstractAction("new") {
+			public void actionPerformed(ActionEvent e){}
+		};
+		Action actionOpen = new AbstractAction("Open File...") {
+			public void actionPerformed(ActionEvent e){}
+		};
+		Action actionSave = new AbstractAction("Save") {
+			public void actionPerformed(ActionEvent e){}
+		};
+		Action actionSaveAs = new AbstractAction("Save As...") {
+			public void actionPerformed(ActionEvent e){}
+		};
+		Action actionExit = new AbstractAction("Exit") {
+			public void actionPerformed(ActionEvent e){}
+		};
+		
+		actionNew.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control N"));
+		actionOpen.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control O"));
+		actionSave.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control S"));
+		actionSaveAs.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control E"));
+		actionExit.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control Q"));
+		
 		file = new JMenu();
-		//Creates "New" menu Item
-		newdoc = new JMenuItem("New");
-		//add actionListener for new
-		newdoc.addActionListener(listener);
-		//Creates "Open File" menu Item
-		open = new JMenuItem("Open File...");
-		//add actionListener for open
+		
+		newDoc = new JMenuItem(actionNew);
+		newDoc.setText("New");
+		newDoc.addActionListener(listener);
+		
+		open = new JMenuItem(actionOpen);
+		open.setText("Open File...");
 		open.addActionListener(listener);
-		//Creates "Save" menu Item
-		save = new JMenuItem("Save");
-		//add actionListener for save
+
+		save = new JMenuItem(actionSave);
+		save.setText("Save");
 		save.addActionListener(listener);
-		//Creates "Save As" menu Item
-		saveAs = new JMenuItem("Save As...");
-		//add actionListener for saveAs
+
+		saveAs = new JMenuItem(actionSaveAs);
+		saveAs.setText("Save As...");
 		saveAs.addActionListener(listener);
-		//Creates "Exit" menu Item
-		Exit = new JMenuItem("Exit");
-		//add actionListener for Exit
-		Exit.addActionListener(listener);
-		//Set Text of file menu
+
+		exit = new JMenuItem(actionExit);
+		exit.setText("Exit");
+		exit.addActionListener(listener);	
+		
 		file.setText("File");
-		//add menu items for file
-		file.add(newdoc);
+
+		file.add(newDoc);
 		file.add(open);
 		file.add(save);
 		file.add(saveAs);
-		file.add(Exit);
-		//add file menu to the menu bar
+		file.add(exit);
+
 		this.add(file);
-		//END FILE MENU
 
 		//START EDIT MENU
 		//Create edit menu
