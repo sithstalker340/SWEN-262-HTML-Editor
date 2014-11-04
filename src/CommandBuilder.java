@@ -29,8 +29,8 @@ public class CommandBuilder{
 		else if(type == "link"){
 			cmd = new InsertLinkCommand(mediator.promptManager.displayLines1("Enter the url:"), start, end);
 		}
-		else if(type == "list"){
-			cmd = new InsertListCommand(text, start,  Integer.parseInt(mediator.promptManager.displayLines1("How many items do you want in your list?")));
+		else if(type == "list"){ 
+			cmd = new InsertListCommand(text, start, Integer.parseInt(mediator.promptManager.displayLines1("How many items do you want in your list?")));
 		}		
 		else if(type == "table"){
 			String[] userInput = new String[2];
