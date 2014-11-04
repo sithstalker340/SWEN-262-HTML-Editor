@@ -270,7 +270,7 @@ public class FileHandler {
 		}
 		
 		else{
-			mediator.exit();
+			
 		}
 	}	
 	

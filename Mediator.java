@@ -106,8 +106,4 @@ public class Mediator{
 	public void updateFileBuffer(){
 		fileHandler.updateFileBuffer(getMainViewText());
 	}
-	
-	public void exit(){
-		mainView.exit();
-	}
 }
