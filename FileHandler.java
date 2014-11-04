@@ -69,7 +69,7 @@ public class FileHandler {
 				bw.close();
 				
 				//System.out.println(mediator.getMainViewText());
-				//fileContent.setBuffer(mediator.getMainViewText());
+				fileContent.setBuffer(mediator.getMainViewText());
 				fileContent.setIsSaved();
 			}
 			

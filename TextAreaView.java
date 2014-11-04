@@ -2,10 +2,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.JTextArea;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
 
 @SuppressWarnings("serial")
 public class TextAreaView extends JTextArea{
@@ -22,7 +18,7 @@ public class TextAreaView extends JTextArea{
 		vListener = listener;
 		mainView = parent;
 		
-		textArea = new JTextArea(25, 50);
+		textArea = new JTextArea(50, 50);
 		textArea.setWrapStyleWord(true);
         textArea.setLineWrap(true);
       
@@ -43,7 +39,7 @@ public class TextAreaView extends JTextArea{
 			
 			public void focusLost(FocusEvent e){
 				focus = false;
-				mainView.getInputHandler().buttonViewInput("update");
+				mainView.getInputHandler().menuViewInput("Save"); // this is saving the file every time it loses focus...
 			}
 		});
 	}
@@ -55,7 +51,6 @@ public class TextAreaView extends JTextArea{
 	public JTextArea getTextArea(){
 		return textArea;
 	}
-	
 	
 	public int getCursorStart(){
 		return textArea.getCaret().getDot();

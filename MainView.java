@@ -3,6 +3,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
@@ -20,8 +21,8 @@ public class MainView extends JFrame
 	{	
 		input = i;
 		
+		this.setMinimumSize(new Dimension(650,450));
 		this.setTitle("Editor");
-		this.setSize(700, 400);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		listener = new ViewListener(input);
@@ -36,6 +37,7 @@ public class MainView extends JFrame
 		this.setContentPane(panel);
 
 		tabView = new TabView(this, listener);
+		tabView.setSize(new Dimension(800,400));
 		
 		panel.add(tabView.getTabPane());
 		   
@@ -43,9 +45,9 @@ public class MainView extends JFrame
         this.setJMenuBar(menu);
         panel.add(buttons, BorderLayout.NORTH);    
         
-        this.setMinimumSize(new Dimension(300,300));
+        //this.setMinimumSize(new Dimension(300,300));
 		this.pack();
-		this.setLocationByPlatform(true);
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);	
 	}
 	
@@ -56,5 +58,21 @@ public class MainView extends JFrame
 	
 	public void addTab(String name, int id){
 		tabView.createNewTab(name, id);
+	}
+	
+	public JTextArea getCurrentTextArea(){
+		return tabView.getCurrentTextArea();
+	}
+	
+	public void setCurrentText(String text){
+		tabView.setCurrentText(text);
+	}
+	
+	public int getCursorStart(){
+		return tabView.getCursorStart();
+	}
+	
+	public int getCursorEnd(){
+		return tabView.getCursorEnd();
 	}
 }

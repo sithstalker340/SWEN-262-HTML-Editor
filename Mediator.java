@@ -27,7 +27,7 @@ public class Mediator{
 		fileHandler.pushCommand(builder.CreateCommand(getMainViewText(), 0, getMainViewText().length(), "Additive"));
 		
 		if(type != "Additive"){
-			//fileHandler.pushCommand(builder.CreateCommand(text, mainView.getCurrentTextView().getCursorStart() , mainView.getCurrentTextView().getCursorEnd(), type));
+			fileHandler.pushCommand(builder.CreateCommand(text, mainView.getCursorStart() , mainView.getCursorEnd(), type));
 		}		
 	}
 	
@@ -45,14 +45,12 @@ public class Mediator{
 		fileHandler.redoCommand();
 	}
 
-	
 	/**
 	 * Sets the current file's text box's text to the string parameter
 	 * @param s
 	 */
 	public void setTextAreaString(String s){
-		//mainView.getCurrentTextView().textArea.setText(s);
-		
+		mainView.setCurrentText(s);
 	}
 	
 	/**
@@ -60,8 +58,7 @@ public class Mediator{
 	 * @return
 	 */
 	public String getMainViewText(){
-		return "";
-		//return mainView.getCurrentTextView().textArea.getText().toString();
+		return mainView.getCurrentTextArea().getText();
 	}	
 	
 	public boolean canSave(){
