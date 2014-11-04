@@ -1,8 +1,6 @@
+import java.util.List;
 
-public class LinkedViewStrategy {
+public interface LinkedViewStrategy {
 
-	public LinkedViewStrategy()
-	{
-		
-	}
+	public List<String> parse(String buffer);
 }
