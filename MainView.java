@@ -67,6 +67,7 @@ public class MainView extends JFrame
 		if(tabView.getTextView() == null){
 			System.out.println("null text view");
 		}
+		
 		return tabView.getTextView();
 	}
 	

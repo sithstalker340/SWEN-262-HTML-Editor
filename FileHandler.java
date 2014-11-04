@@ -253,4 +253,8 @@ public class FileHandler {
 		
 		System.exit(0);
 	}	
+	
+	public void changeCurrentFile(int id){
+		fileContent.changeFile(id);
+	}
 }

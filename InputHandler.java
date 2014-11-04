@@ -73,4 +73,8 @@ public class InputHandler {
 			break;
 		}
 	}
+	
+	public void changeCurrentFile(int id){
+		mediator.changeCurrentFile(id);
+	}
 }

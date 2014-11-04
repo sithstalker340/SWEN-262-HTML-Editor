@@ -84,4 +84,8 @@ public class Mediator{
 		mainView.addTab(name, file.getID());
 		setTextAreaString(file.getBuffer());
 	}
+	
+	public void changeCurrentFile(int id){
+		fileHandler.changeCurrentFile(id);
+	}
 }

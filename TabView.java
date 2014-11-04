@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 @SuppressWarnings("serial")
 public class TabView extends JPanel{
@@ -15,6 +17,7 @@ public class TabView extends JPanel{
 	ViewListener listener;
 	
 	List<TextAreaView> textAreaList;
+	TextAreaView currentTextArea;
 	JTabbedPane tabPane;
 	
 	public TabView(MainView parent, ViewListener vListener){
@@ -23,6 +26,24 @@ public class TabView extends JPanel{
 		
 		textAreaList = new ArrayList<TextAreaView>();
 		tabPane = new JTabbedPane();
+		
+		tabPane.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				//System.out.println("Tab: " + tabPane.getSelectedIndex());
+				
+				//System.out.println("name: " + textAreaList.get(i).getName());
+				//System.out.println("current tab: " + tabPane.getSelectedComponent().getName());
+				
+				int idName = Integer.parseInt(tabPane.getSelectedComponent().getName());
+				for(int i = 0; i < textAreaList.size(); i++){
+					if(idName == i){
+						//mainView.getInputHandler().changeCurrentFile(idName);
+						currentTextArea = textAreaList.get(idName);
+						mainView.getInputHandler().changeCurrentFile(idName);
+					}
+				}
+			}
+		});
 	}
 	
 	public void createNewTab(String name, int index){
@@ -31,7 +52,9 @@ public class TabView extends JPanel{
 		
 		TextAreaView textView = new TextAreaView(mainView, listener);
 		textView.setName(Integer.toString(index));
+		System.out.println(textView.getName());
 		textAreaList.add(textView);
+		setCurrentTextView(index);
 		
 		JScrollPane scrollPane = new JScrollPane(textView.getTextArea());
 		scrollPane.setName("scrollPane");
@@ -53,12 +76,11 @@ public class TabView extends JPanel{
 		return tabPane;
 	}
 	
-	public TextAreaView getTextView(){
-		 int index = Integer.parseInt(tabPane.getComponentAt(tabPane.getSelectedIndex()).getName());
-		 if(textAreaList.get(index) == null){
-				System.out.println("textAreaView is null");
-			}
-		 System.out.println("im being called");
-		 return textAreaList.get(index);
+	public void setCurrentTextView(int id){
+		currentTextArea = textAreaList.get(id);
 	}
+	
+	public TextAreaView getTextView(){
+		return currentTextArea;
+	}	
 }
