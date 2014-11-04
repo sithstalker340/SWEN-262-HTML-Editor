@@ -1,5 +1,16 @@
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -35,7 +46,6 @@ public class TabView extends JPanel{
 		JPanel innerPane = new JPanel();
 		
 		TextAreaView textView = new TextAreaView(mainView, listener);
-		textView.setName(Integer.toString(index));
 
 		JScrollPane scrollPane = new JScrollPane(textView.getTextArea());
 		scrollPane.setName("scrollPane");
@@ -48,7 +58,75 @@ public class TabView extends JPanel{
 	
 		tabPane.addTab(name, innerPane);
 		tabPane.setSelectedIndex(tabPane.getTabCount()-1);
+		
+		Image img = null;
+		//get icon
+		try {
+		    img = ImageIO.read(getClass().getResource("resources/closeIcon.png"));
+		} catch (IOException ex) {}
+		
+		//set title with close button
+		tabPane.setTabComponentAt(
+				tabPane.getTabCount()-1, 
+				getTitlePanel(tabPane, innerPane, name, index, img)
+		);
 	}
+	
+	private static JPanel getTitlePanel(final JTabbedPane tabbedPane, final JPanel panel, String title, int id, Image img){
+		JPanel titlePanel = new JPanel();
+		titlePanel.setOpaque(false);
+		JLabel titleLbl = new JLabel(title);
+		titleLbl.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
+		titlePanel.add(titleLbl);
+		JButton closeButton = new JButton();
+		closeButton.setOpaque(true);
+		int size = 14;
+		
+		if(img != null){
+			closeButton.setIcon(new ImageIcon(img));
+		}else{
+			closeButton.setText("x");
+		}
+		
+		closeButton.setPreferredSize(new Dimension(size, size));
+		//closeButton.setContentAreaFilled(false);
+		//closeButton.setBorderPainted(false);
+		
+		/*
+        int size = 17;
+        setPreferredSize(new Dimension(size, size));
+        setToolTipText("close this tab");
+        //Make the button looks the same for all Laf's
+        setUI(new BasicButtonUI());
+        //Make it transparent
+        setContentAreaFilled(false);
+        //No need to be focusable
+        setFocusable(false);
+        setBorder(BorderFactory.createEtchedBorder());
+        setBorderPainted(false);
+        //Making nice rollover effect
+        //we use the same listener for all buttons
+        addMouseListener(buttonMouseListener);
+        setRolloverEnabled(true);
+        //Close the proper tab by clicking the button
+        addActionListener(this);
+        */
+		
+		
+		
+		closeButton.addActionListener( new ActionListener(){
+			@Override	
+			public void actionPerformed(ActionEvent e) {
+				//if(mediator.closeTab(id))	
+					tabbedPane.remove(panel);
+			}
+	  	});
+	  
+	  titlePanel.add(closeButton);
+
+	  return titlePanel;
+	 }
+	
 	
 	public JTabbedPane getTabPane(){
 		return tabPane;
