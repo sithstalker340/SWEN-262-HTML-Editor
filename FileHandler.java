@@ -167,7 +167,7 @@ public class FileHandler {
 				
 		fileContent.addFile(newFile);
 		fileContent.changeFile(newFile.getID());
-		setIsFunctional(wellFormed(newFile));
+		setIsFunctional();
 		return newFile;
 	}
 	
@@ -176,57 +176,75 @@ public class FileHandler {
 	 * @return boolean
 	 */
 	public boolean wellFormed(File file){
-		/*Stack<String> tagStack = new Stack<String>();
-		String allText = file.getBuffer(); // the buffer from the file
+		if(file == null){
+			return false;
+		}
+		
+		List<String> leftOverTags = new ArrayList<String>();
+		Stack<String> tagStack = new Stack<String>();
+		String allText = file.getBuffer(); // the buffer from the file		
 		
 		int start = allText.indexOf('<');
 		int end = allText.indexOf('>');
 		String tag = "";
 		
-		if(start == -1 || end == -1){
+		if((start == -1 || end == -1) || start > end){
 			if(start == -1 && end == -1){
+				//if there are no html tags in the file
 				return true;
 			}
 			
+			//missing a > or <
 			return false;
 		}
 		
-		while(start != -1 && end != -1){
-			tag = allText.substring(start + 1, end);
+		while((start != -1 && end != -1)){
 			
-			if(tag.indexOf(0) == '/'){
-				tag = tag.substring(1);
-				
-				if(tagStack.peek() == tag){
-					tagStack.pop();
+			if(start >= end){
+				return false;
+			}
+			
+			tag = allText.substring(start + 1, end); // changes tag from <b> to b>
+			
+			//if it is an open tag
+			if(tag.charAt(0) != '/'){
+				if(tag.charAt(0) != '!'){ //ignores the opening <!HTMLDOC> tag
+					if(checksSelfClose(tag)){
+						leftOverTags.add(tag);
+					}
+					
+					else tagStack.push(tag);
+				}
+			}
+			
+			//if it is a close tag
+			else if(tag.charAt(0) == '/'){
+				tag = tag.substring(tag.indexOf('/') + 1); //find the actual tag by removing the close character
+				if(tagStack.peek().equals(tag)){ //check to see if the most recent tag is the open tag for this close tag
+					tagStack.pop(); //if it is remove the open tag
 				}
 				
 				else{
+					//a mismatched close tag has been found
 					return false;
 				}
 			}
 			
-			else{
-				int endIndex = allText.indexOf(' ');
-				if(endIndex == -1){
-					tag = tag.substring(0, endIndex+1);
-				}
-				
-				if(tag.indexOf(0) != '!'){
-					tagStack.push(tag);
-				}
-			}
-			
-			allText = allText.substring(end + 1);
-			start = allText.indexOf('<');
+			//update the text to go through
+			allText = allText.substring(end+1);
+			start = allText.indexOf('<'); //find the next tag start and end
 			end = allText.indexOf('>');
 		}
 		
-		if(tagStack.size() != 0 && checksSelfClose(tag)){
+		//if there are leftover tags that arent closed, and they aren't self closing tags  
+		if(tagStack.size() != 0 || tagStack.size() != leftOverTags.size()){
 			return false;
-		}*/
+		}
 		
-		return true;
+		//if nothing goes wrong return true
+		else{
+			return true;
+		}
 	}
 	
 	/**
@@ -280,10 +298,11 @@ public class FileHandler {
 	}
 	
 	public boolean getIsFunctional(){
+		setIsFunctional();
 		return fileContent.getIsFunctional();
 	}
 	
-	public void setIsFunctional(boolean b){
-		fileContent.setIsFunctional(b);
+	public void setIsFunctional(){
+		fileContent.setIsFunctional(wellFormed(fileContent.getActiveFile()));
 	}
 }

@@ -110,10 +110,11 @@ public class Mediator{
 	}
 	
 	public boolean getIsFunctional(){
+		updateFileBuffer();
 		return fileHandler.getIsFunctional();
 	}
 	
-	public void setIsFunctional(boolean b){
-		fileHandler.setIsFunctional(b);
+	public void setIsFunctional(){
+		fileHandler.setIsFunctional();
 	}
 }
