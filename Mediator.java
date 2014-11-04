@@ -1,3 +1,5 @@
+import java.util.logging.FileHandler;
+
 
 public class Mediator{
 
@@ -116,5 +118,9 @@ public class Mediator{
 	
 	public void setIsFunctional(){
 		fileHandler.setIsFunctional();
+	}
+	
+	public boolean closeTab(int id){
+		fileHandler.close(id);
 	}
 }

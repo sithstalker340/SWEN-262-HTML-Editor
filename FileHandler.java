@@ -165,6 +165,10 @@ public class FileHandler {
 		return newFile;
 	}
 	
+	public boolean close(int id){
+		return true;
+	}
+	
 	/**
 	 * Checks to see if the text in the current file is valid HTML
 	 * @return boolean
