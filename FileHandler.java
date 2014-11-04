@@ -263,10 +263,7 @@ public class FileHandler {
 	public void quit(){
 		if(!fileContent.getIsSaved()){
 			//create prompt to ask to save
-			PromptManager pm = mediator.promptManager;
-			String message = "There is unsaved work. Would you like to quit without saving?";
-			
-			pm.displayBool(message);
+
 		}
 		
 		else{
