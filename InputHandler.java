@@ -21,12 +21,11 @@ public class InputHandler {
 			case "a": type = "link";break;
 			case "ol": type = "list";break;		
 			case "ul": type = "list";break;
-			case "dl": type = "list";break;				
+			case "dl": type = "list";break;
+			case "table": type = "table";break;
 			case "img": type = "img";break;
 			case "update": type = "Additive"; break;
-			case "Linked View":
-				mediator.createNewLinkedView();
-				break;
+			case "Linked View":	mediator.createNewLinkedView();	break;
 		}
 		
 		if(mediator.getMainViewText() != null){
