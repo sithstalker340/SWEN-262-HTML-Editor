@@ -43,13 +43,7 @@ public class FileHandler {
 	}
 	
 	public boolean canSave(){
-		if(fileContent.getActiveFile() == null){
-			System.out.println("Unable to save");
-			return false;
-		}
-		
-		System.out.println("Able to save");
-		return true;
+		return fileContent.getActive() != null;
 	}
 	
 	/**
