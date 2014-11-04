@@ -56,6 +56,7 @@ public class TextAreaView extends JTextArea{
 		return textArea;
 	}
 	
+	
 	public int getCursorStart(){
 		return textArea.getCaret().getDot();
 	}
