@@ -16,6 +16,7 @@ public class MainView extends JFrame
 	BtnView buttons;
 	JPanel panel;
 	TabView tabView;
+	LinkedView linkedView;
 	
 	public MainView(InputHandler i)
 	{	
@@ -23,7 +24,7 @@ public class MainView extends JFrame
 		
 		this.setMinimumSize(new Dimension(650,450));
 		this.setTitle("Editor");
-		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		listener = new ViewListener(input);
 		
@@ -80,11 +81,7 @@ public class MainView extends JFrame
 		input.setIsSaved(b);
 	}
 	
-	public void saveFile(){
-		input.menuViewInput("save");
-	}
-	
-	public void exit(){
-		this.dispose();
+	public void newLinkedView(){
+		linkedView = new LinkedView();
 	}
 }
