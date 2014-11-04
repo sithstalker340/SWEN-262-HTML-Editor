@@ -1,6 +1,3 @@
-import java.util.logging.FileHandler;
-
-
 public class Mediator{
 
 	private CommandBuilder builder;
@@ -121,6 +118,6 @@ public class Mediator{
 	}
 	
 	public boolean closeTab(int id){
-		fileHandler.close(id);
+		return fileHandler.close(id);
 	}
 }

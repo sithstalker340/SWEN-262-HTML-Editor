@@ -43,7 +43,7 @@ public class FileHandler {
 	}
 	
 	public boolean canSave(){
-		return fileContent.getActive() != null;
+		return fileContent.getActiveFile() != null;
 	}
 	
 	/**

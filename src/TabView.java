@@ -93,8 +93,8 @@ public class TabView extends JPanel{
 		closeButton.addActionListener( new ActionListener(){
 			@Override	
 			public void actionPerformed(ActionEvent e) {
-				if(mediator.closeTab(id))	
-					tabbedPane.remove(panel);
+				//if(mediator.closeTab(id))	
+					//tabbedPane.remove(panel);
 			}
 	  	});
 	  
