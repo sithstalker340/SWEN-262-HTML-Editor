@@ -6,9 +6,9 @@ public class InsertListCommand extends Command {
 	private int numberRows;
 	private String buffer;
 	
-	public InsertListCommand(String textString, int startPosition, int numRows){
+	public InsertListCommand(String textString, int start, int numRows){
 		text = textString;
-		startPos = startPosition;
+		startPos = start;
 		numberRows = numRows;
 	}
 	
@@ -18,7 +18,7 @@ public class InsertListCommand extends Command {
 	    builder.append("\n");
 	    builder.append("<" + text + ">");
 	    
-		for(int i = 0;i < numberRows;i+=1){
+		for(int i = 0; i < numberRows; i++){
 			if(text == "dl"){
 				builder.append('\n');
 				builder.append("<dt>" + " " + "</dt>"); 
@@ -35,7 +35,7 @@ public class InsertListCommand extends Command {
 		builder.append('\n');
 	    builder.append("</" + text + ">");
 	    
-		file.setBuffer(buffer.substring(0,startPos) + builder.toString() + buffer.substring(startPos + builder.length()));
+		file.setBuffer(buffer.substring(0,startPos) + builder.toString() + buffer.substring(startPos));
 	}
 	
 	public void Undo(File file) {

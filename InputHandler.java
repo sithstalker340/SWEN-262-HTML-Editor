@@ -15,18 +15,22 @@ public class InputHandler {
 	 * @param txt
 	 */
 	public void buttonViewInput(String tag){
+		
+		if(!mediator.getIsFunctional()){
+			return;
+		}
+		
 		String type = "tag";
 		
 		switch(tag){
 			case "a": type = "link";break;
 			case "ol": type = "list";break;		
 			case "ul": type = "list";break;
-			case "dl": type = "list";break;				
+			case "dl": type = "list";break;
+			case "table": type = "table";break;
 			case "img": type = "img";break;
 			case "update": type = "Additive"; break;
-			case "Linked View":
-				mediator.createNewLinkedView();
-				break;
+			case "Linked View":	mediator.createNewLinkedView();	break;
 		}
 		
 		if(mediator.getMainViewText() != null){

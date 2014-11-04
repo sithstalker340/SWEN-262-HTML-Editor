@@ -10,6 +10,7 @@ public class File{
 	private int stackSize;
 	private String location;
 	private boolean isSaved;
+	private boolean isFunctional;
 	
 	/**
 	 * The constructor of the File class.
@@ -21,6 +22,7 @@ public class File{
 		id = idNum;
 		stackSize = 20;
 		isSaved = false;
+		isFunctional = false;
 	}
 	
 	public File(String b,int idNum){
@@ -87,5 +89,13 @@ public class File{
 	
 	public void redoCommand(){
 		this.pushCommand(redoStack.pop()); 
+	}
+	
+	public boolean getIsFunctional(){
+		return isFunctional;
+	}
+	
+	public void setIsFunctional(boolean b){
+		isFunctional = b;
 	}
 }

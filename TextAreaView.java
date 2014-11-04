@@ -31,7 +31,6 @@ public class TextAreaView extends JTextArea{
         
         createFocusListener();
         createDocumentListener();
-        System.out.println("asdasd");
 	}
 	
 	/**
@@ -65,8 +64,6 @@ public class TextAreaView extends JTextArea{
 		        //Plain text components do not fire these events
 		    }
 		});
-		
-		System.out.println("created");
 	}
 			
 	/**

@@ -73,4 +73,19 @@ public class FileContent {
 	public File getActiveFile(){
 		return activeFile;
 	}
+	
+	public void setIsFunctional(boolean b){
+		if(activeFile == null){
+			return;
+		}
+		activeFile.setIsFunctional(b);
+	}
+	
+	public boolean getIsFunctional(){
+		if(activeFile == null){
+			return false;
+		}
+		
+		return activeFile.getIsFunctional();
+	}
 }

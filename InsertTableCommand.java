@@ -24,7 +24,7 @@ public class InsertTableCommand extends Command {
 	 */
 	public void Apply(File file){
 		buffer = file.getBuffer();
-		file.setBuffer(buffer.substring(0,startPos) + text + buffer.substring(startPos + 1));
+		file.setBuffer(buffer.substring(0,startPos) + text + buffer.substring(startPos));
 	}
 	
 	
