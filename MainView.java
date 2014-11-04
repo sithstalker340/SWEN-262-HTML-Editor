@@ -23,7 +23,7 @@ public class MainView extends JFrame
 		
 		this.setMinimumSize(new Dimension(650,450));
 		this.setTitle("Editor");
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		listener = new ViewListener(input);
 		
@@ -78,5 +78,13 @@ public class MainView extends JFrame
 	
 	public void setIsSaved(boolean b){
 		input.setIsSaved(b);
+	}
+	
+	public void saveFile(){
+		input.menuViewInput("save");
+	}
+	
+	public void exit(){
+		this.dispose();
 	}
 }

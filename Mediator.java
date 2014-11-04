@@ -9,7 +9,8 @@ public class Mediator{
 	public Mediator(){
 		builder = new CommandBuilder(this);
 		fileHandler = new FileHandler(this);
-		promptManager = new PromptManager(mainView);
+
+		//promptManager = new PromptManager(mainView);
 	}
 	
 	/**
@@ -18,6 +19,7 @@ public class Mediator{
 	 */
 	public void setMainView(MainView m){
 		mainView = m;
+		promptManager = new PromptManager(mainView);
 	}
 	
 	/**
@@ -99,5 +101,9 @@ public class Mediator{
 	
 	public void updateFileBuffer(){
 		fileHandler.updateFileBuffer(getMainViewText());
+	}
+	
+	public void exit(){
+		mainView.exit();
 	}
 }

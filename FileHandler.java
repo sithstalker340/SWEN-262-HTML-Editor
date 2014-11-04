@@ -10,6 +10,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javafx.stage.FileChooser;
+
+import javax.swing.JFileChooser;
+
 public class FileHandler {
 	private FileContent fileContent;
 	private int fileNumbers;
@@ -259,9 +263,15 @@ public class FileHandler {
 	public void quit(){
 		if(!fileContent.getIsSaved()){
 			//create prompt to ask to save
+			PromptManager pm = mediator.promptManager;
+			String message = "There is unsaved work. Would you like to quit without saving?";
+			
+			pm.displayBool(message);
 		}
 		
-		System.exit(0);
+		else{
+			mediator.exit();
+		}
 	}	
 	
 	public void changeCurrentFile(int id){
