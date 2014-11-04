@@ -12,10 +12,10 @@ public class InsertTableCommand extends Command {
 		for(int r = 0; r < _rows; r++){
 			text += "\n <tr>";
 			for(int c = 0; c < _cols; c++){
-				text += "\n <td> <td>";
+				text += "\n <td> </td>";
 			}			
 		}
-		text += "\n </table";
+		text += "\n </table>";
 	}
 	
 	

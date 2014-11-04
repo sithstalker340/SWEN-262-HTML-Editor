@@ -174,76 +174,89 @@ public class FileHandler {
 	 * @return boolean
 	 */
 	public boolean wellFormed(File file){
-		if(file == null){
-			return false;
-		}
-		
-		List<String> leftOverTags = new ArrayList<String>();
-		Stack<String> tagStack = new Stack<String>();
-		String allText = file.getBuffer(); // the buffer from the file		
-		
-		int start = allText.indexOf('<');
-		int end = allText.indexOf('>');
-		String tag = "";
-		
-		if((start == -1 || end == -1) || start > end){
-			if(start == -1 && end == -1){
-				//if there are no html tags in the file
-				return true;
-			}
-			
-			//missing a > or <
-			return false;
-		}
-		
-		while((start != -1 && end != -1)){
-			
-			if(start >= end){
+			if(file == null){
 				return false;
 			}
+		
+			List<String> leftOverTags = new ArrayList<String>();
+			Stack<String> tagStack = new Stack<String>();
+			String allText = file.getBuffer(); // the buffer from the file		
 			
-			tag = allText.substring(start + 1, end); // changes tag from <b> to b>
+			int start = allText.indexOf('<');
+			int end = allText.indexOf('>');
+			String tag = "";
 			
-			//if it is an open tag
-			if(tag.charAt(0) != '/'){
-				if(tag.charAt(0) != '!'){ //ignores the opening <!HTMLDOC> tag
-					if(checksSelfClose(tag)){
-						leftOverTags.add(tag);
-					}
-					
-					else tagStack.push(tag);
-				}
-			}
-			
-			//if it is a close tag
-			else if(tag.charAt(0) == '/'){
-				tag = tag.substring(tag.indexOf('/') + 1); //find the actual tag by removing the close character
-				if(tagStack.peek().equals(tag)){ //check to see if the most recent tag is the open tag for this close tag
-					tagStack.pop(); //if it is remove the open tag
+			if((start == -1 || end == -1) || start > end){
+				if(start == -1 && end == -1){
+					//if there are no html tags in the file
+					return true;
 				}
 				
-				else{
-					//a mismatched close tag has been found
+				//missing a > or <
+				return false;
+			}
+		
+			while((start != -1 && end != -1)){
+				
+				if(start >= end){
 					return false;
 				}
+				
+				tag = allText.substring(start + 1, end); // changes tag from <b> to b>
+				//if it is an open tag
+				if(tag.charAt(0) != '/'){				
+					if(tag.charAt(0) != '!'){ //ignores the opening <!HTMLDOC> tag
+						System.out.println("tag: " + tag);
+						if(checksSelfClose(tag)){
+							leftOverTags.add(tag);
+							//System.out.println("tag is self closing");
+						}			
+						
+						else if(tag.contains("img src")){ //for <img src...> tags
+							tag = "img";
+							tagStack.push(tag);
+						}
+						
+						else if(tag.contains("a href")){ //for <a href...> tags
+							tag = "a";
+							tagStack.push(tag);
+						}			
+						
+						else{ tagStack.push(tag); //System.out.println("tag pushed: " + tag); }
+					}
+				}
+				
+				//if it is a close tag
+				else if(tag.charAt(0) == '/'){
+					tag = tag.substring(tag.indexOf('/') + 1); //find the actual tag by removing the close character
+					if(tagStack.peek().equals(tag)){ //check to see if the most recent tag is the open tag for this close tag
+						tagStack.pop(); //if it is remove the open tag
+						//System.out.println("tag popped: " + tag);
+					}
+					
+					else{
+						//a mismatched close tag has been found
+						return false;
+					}
+				}
+				
+				//update the text to go through
+				allText = allText.substring(end+1);
+				start = allText.indexOf('<'); //find the next tag start and end
+				end = allText.indexOf('>');
 			}
-			
-			//update the text to go through
-			allText = allText.substring(end+1);
-			start = allText.indexOf('<'); //find the next tag start and end
-			end = allText.indexOf('>');
-		}
 		
-		//if there are leftover tags that arent closed, and they aren't self closing tags  
-		if(tagStack.size() != 0 || tagStack.size() != leftOverTags.size()){
-			return false;
-		}
+			//if there are leftover tags that arent closed, and they aren't self closing tags  
+			if(tagStack.size() != 0 && tagStack.size() != leftOverTags.size()){
+				return false;
+			}
 		
+		}
 		//if nothing goes wrong return true
-		else{
-			return true;
-		}
+		return true; 
 	}
+		
+		
 	
 	/**
 	 * Checks to see if a tag is valid despite not following
@@ -252,10 +265,12 @@ public class FileHandler {
 	 * @return
 	 */
 	private boolean checksSelfClose(String tag){
-		String[] selfClosing = {"meta", "link", "input"};
+		String[] selfClosing = {"meta", "link", "input", "tr"};
 		
-		if(Arrays.asList(selfClosing).indexOf(tag) > -1){
-			return true;
+		for(int i = 0; i < selfClosing.length; i++){
+			if(selfClosing[i].equals(tag)){
+				return true;
+			}
 		}
 		
 		return false;
