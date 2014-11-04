@@ -100,7 +100,7 @@ public class Mediator{
 	}
 	
 	public void createNewLinkedView(){
-		mainView.newLinkedView();
+		//mainView.newLinkedView();
 	}
 	
 	public void updateFileBuffer(){

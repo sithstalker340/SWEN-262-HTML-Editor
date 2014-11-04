@@ -81,7 +81,7 @@ public class MainView extends JFrame
 		input.setIsSaved(b);
 	}
 	
-	public void newLinkedView(){
-		linkedView = new LinkedView();
+	public void newLinkedView(LinkedViewStrategy s){
+		linkedView = new LinkedView(s);
 	}
 }

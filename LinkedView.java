@@ -9,8 +9,10 @@ import javax.swing.JTextArea;
 public class LinkedView extends JFrame {
 	JTextArea linkedViewList;
 	JPanel contentPane;
-	public LinkedView(){
-
+	LinkedViewStrategy strategy;
+	public LinkedView(LinkedViewStrategy strategy){
+		this.strategy = strategy;
+		
 		this.setMinimumSize(new Dimension(300,450));
 		this.setTitle("Linked View");
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
