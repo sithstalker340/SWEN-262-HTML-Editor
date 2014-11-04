@@ -3,7 +3,6 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -94,7 +93,7 @@ public class TabView extends JPanel{
 			@Override	
 			public void actionPerformed(ActionEvent e) {
 				//if(mediator.closeTab(id))	
-					//tabbedPane.remove(panel);
+					tabbedPane.remove(panel);
 			}
 	  	});
 	  
