@@ -11,6 +11,18 @@ public class CommandBuilder{
 	public Command CreateCommand(String text, int start, int end, String type){
 		Command cmd;
 		
+		System.out.println("Start: " + start);
+		System.out.println("End: " + end);
+		
+		int temp = start;
+		if(start > end){
+			start = end;
+			end = temp;
+		}
+		
+		System.out.println("Start: " + start);
+		System.out.println("End: " + end);
+		
 		if(type == "Additive"){
 			cmd = new AdditiveCommand(text,start,end);
 		}

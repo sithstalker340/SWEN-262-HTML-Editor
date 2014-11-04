@@ -18,6 +18,13 @@ public class InsertTagCommand extends Command{
 	 */
 	public void Apply(File file){
 		buffer = file.getBuffer();
+			
+		int temp = startPos;
+		if(startPos > endPos){
+			startPos = endPos;
+			endPos = temp;
+		}
+		
 		file.setBuffer(buffer.substring(0,startPos) + "<"+ text + ">" + buffer.substring(startPos,endPos) + "</" + text + ">"+ buffer.substring(endPos));
 	}
 	
