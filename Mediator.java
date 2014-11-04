@@ -83,7 +83,17 @@ public class Mediator{
 		setTextAreaString(file.getBuffer());
 	}
 	
+	public void createNewFile(String name){
+		File file = fileHandler.createNewFile(name);
+		mainView.addTab(name, file.getID());
+		setTextAreaString("");
+	}
+	
 	public void changeCurrentFile(int id){
 		fileHandler.changeCurrentFile(id);
+	}
+	
+	public void setIsSaved(boolean b){
+		fileHandler.setIsSaved(b);
 	}
 }

@@ -35,10 +35,14 @@ public class InputHandler {
 	 */
 	public void menuViewInput(String txt){
 		switch(txt){
+			case "New":
+				mediator.createNewFile("new");
+				break;
+				
 			case "Save":				
 				if(mediator.canSave()){
 					if(mediator.save() == true){
-						
+						mediator.setIsSaved(true);
 					}
 					else menuViewInput("Save As...");
 				}
@@ -53,6 +57,7 @@ public class InputHandler {
 						String location = file.getPath().toString();
 						
 						mediator.saveAs(location);
+						mediator.setIsSaved(true);
 					}
 				}
 				break;
@@ -76,5 +81,9 @@ public class InputHandler {
 	
 	public void changeCurrentFile(int id){
 		mediator.changeCurrentFile(id);
+	}
+	
+	public void setIsSaved(boolean b){
+		mediator.setIsSaved(b);
 	}
 }

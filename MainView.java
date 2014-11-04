@@ -75,4 +75,8 @@ public class MainView extends JFrame
 	public int getCursorEnd(){
 		return tabView.getCursorEnd();
 	}
+	
+	public void setIsSaved(boolean b){
+		input.setIsSaved(b);
+	}
 }

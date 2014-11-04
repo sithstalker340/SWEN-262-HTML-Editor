@@ -70,7 +70,7 @@ public class FileHandler {
 				
 				//System.out.println(mediator.getMainViewText());
 				fileContent.setBuffer(mediator.getMainViewText());
-				fileContent.setIsSaved();
+				fileContent.setIsSaved(true);
 			}
 			
 			catch (IOException e1){
@@ -103,6 +103,16 @@ public class FileHandler {
 			System.out.println("Error saving file '" + path + "'");	
 			e1.printStackTrace();
 		}
+	}
+	
+	public File createNewFile(String name){
+		File newFile;
+		newFile = new File("",fileNumbers);
+		fileNumbers +=1;
+				
+		fileContent.addFile(newFile);
+		fileContent.changeFile(newFile.getID());
+		return newFile;
 	}
 	
 	/**
@@ -256,5 +266,9 @@ public class FileHandler {
 	
 	public void changeCurrentFile(int id){
 		fileContent.changeFile(id);
+	}
+	
+	public void setIsSaved(boolean b){
+		fileContent.setIsSaved(b);
 	}
 }

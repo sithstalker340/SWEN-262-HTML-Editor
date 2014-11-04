@@ -1,6 +1,9 @@
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -45,7 +48,7 @@ public class TabView extends JPanel{
 	    
 	    innerPane.setName(Integer.toString(index));
 		innerPane.add(scrollPane);
-		innerPane.setLayout(new GridLayout(1,1));
+		innerPane.setLayout(new GridLayout(1,2));		
 	
 		tabPane.addTab(name, innerPane);
 		tabPane.setSelectedIndex(tabPane.getTabCount()-1);

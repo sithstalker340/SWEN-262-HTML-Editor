@@ -44,12 +44,8 @@ public class File{
 		return isSaved;
 	}
 	
-	public void setIsSaved(){
-		if(isSaved){
-			isSaved = false;
-		}
-		
-		else isSaved = true;
+	public void setIsSaved(boolean b){
+		isSaved = b;
 	}
 	
 	public void setPath(String p){
