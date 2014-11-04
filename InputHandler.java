@@ -83,6 +83,10 @@ public class InputHandler {
 		mediator.changeCurrentFile(id);
 	}
 	
+	public void updateFileBuffer(){
+		mediator.updateFileBuffer();
+	}
+	
 	public void setIsSaved(boolean b){
 		mediator.setIsSaved(b);
 	}

@@ -41,7 +41,8 @@ public class TextAreaView extends JTextArea{
 			
 			public void focusLost(FocusEvent e){
 				focus = false;
-				mainView.getInputHandler().menuViewInput("Save"); // this is saving the file every time it loses focus...
+				//mainView.getInputHandler().menuViewInput("Save"); // this is saving the file every time it loses focus...
+				mainView.getInputHandler().updateFileBuffer();
 			}
 		});
 	}

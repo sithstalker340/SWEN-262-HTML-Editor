@@ -96,4 +96,8 @@ public class Mediator{
 	public void setIsSaved(boolean b){
 		fileHandler.setIsSaved(b);
 	}
+	
+	public void updateFileBuffer(){
+		fileHandler.updateFileBuffer(getMainViewText());
+	}
 }
