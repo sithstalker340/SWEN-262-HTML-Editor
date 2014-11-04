@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,10 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
-import javafx.stage.FileChooser;
-
-import javax.swing.JFileChooser;
 
 public class FileHandler {
 	private FileContent fileContent;

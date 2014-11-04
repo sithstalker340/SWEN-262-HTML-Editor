@@ -1,5 +1,3 @@
-import java.awt.Dialog;
-import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
