@@ -89,35 +89,11 @@ public class TabView extends JPanel{
 		}
 		
 		closeButton.setPreferredSize(new Dimension(size, size));
-		//closeButton.setContentAreaFilled(false);
-		//closeButton.setBorderPainted(false);
-		
-		/*
-        int size = 17;
-        setPreferredSize(new Dimension(size, size));
-        setToolTipText("close this tab");
-        //Make the button looks the same for all Laf's
-        setUI(new BasicButtonUI());
-        //Make it transparent
-        setContentAreaFilled(false);
-        //No need to be focusable
-        setFocusable(false);
-        setBorder(BorderFactory.createEtchedBorder());
-        setBorderPainted(false);
-        //Making nice rollover effect
-        //we use the same listener for all buttons
-        addMouseListener(buttonMouseListener);
-        setRolloverEnabled(true);
-        //Close the proper tab by clicking the button
-        addActionListener(this);
-        */
-		
-		
 		
 		closeButton.addActionListener( new ActionListener(){
 			@Override	
 			public void actionPerformed(ActionEvent e) {
-				//if(mediator.closeTab(id))	
+				if(mediator.closeTab(id))	
 					tabbedPane.remove(panel);
 			}
 	  	});
