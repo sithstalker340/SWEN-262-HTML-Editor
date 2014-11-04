@@ -1,6 +1,5 @@
 import javax.swing.JFileChooser;
 
-
 public class InputHandler {
 
 	private Mediator mediator; 
@@ -27,7 +26,15 @@ public class InputHandler {
 			case "img": type = "img";break;				
 		}
 		
-		mediator.pushCommand(tag, mainView.textView.getCursorStart(), mainView.textView.getCursorEnd(), type);
+		
+		if(mainView.getCurrentTextView() == null){
+			System.out.println("null");
+		}
+		
+		else{
+		//mediator.pushCommand(tag, mainView.getCurrentTextView().getCursorStart(),
+				//mainView.getCurrentTextView().getCursorEnd(), type);
+		}
 	}
 	
 	/**
@@ -72,7 +79,6 @@ public class InputHandler {
 					File openedFile = getMediator().fileHandler.load(name);
 					System.out.println(openedFile.getBuffer());
 
-					mainView.textView.resetLastCharIn();
 					getMediator().setTextAreaString(openedFile.getBuffer());
 				}
 				

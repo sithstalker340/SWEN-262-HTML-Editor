@@ -1,11 +1,9 @@
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
@@ -16,10 +14,10 @@ public class MainView extends JFrame
 	MenuView menu;
 	ViewListener listener;
 	BtnView buttons;
-	TextAreaView textView;
 	MyCardLayout cL;
 	JPanel panel;
-	JScrollPane scrollPane;
+	JTabbedPane tabPane;
+	TabView tabView;
 	
 	public MainView(InputHandler i)
 	{	
@@ -37,7 +35,7 @@ public class MainView extends JFrame
 		menu = new MenuView(this, listener); // menuBar object
 		buttons = new BtnView(this, listener);	// all of the buttons
 		cL = new MyCardLayout(listener, this);
-		textView = new TextAreaView(this, listener); // the text box object
+		//textView = new TextAreaView(this, listener); // the text box object
 			
 		// make a new panel, give it a border with padding, select the Border layout
 		panel = new JPanel();
@@ -45,15 +43,14 @@ public class MainView extends JFrame
 		panel.setLayout(new BorderLayout(0,0));
 		this.setContentPane(panel);
 
-        // create a new scrollable window, add the text box to it
-        scrollPane = new JScrollPane(textView.getTextArea());
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        
+		tabView = new TabView(this, listener);
+		
+		panel.add(tabView.getTabPane());
+		   
         // add each item to the content panel 
         this.setJMenuBar(menu);
         panel.add(buttons, BorderLayout.NORTH);    
-        panel.add(scrollPane, BorderLayout.CENTER);
+        //panel.add(scrollPane, BorderLayout.CENTER);
         cL.addCard("Test1", null);
         cL.addCard("Test2", null);
         //cL.show("Test1");
@@ -69,5 +66,12 @@ public class MainView extends JFrame
 	public InputHandler getInputHandler()
 	{
 		return input;
+	}
+	
+	public TextAreaView getCurrentTextView(){
+		if(tabView.getTextView() == null){
+			System.out.println("null text view");
+		}
+		return tabView.getTextView();
 	}
 }

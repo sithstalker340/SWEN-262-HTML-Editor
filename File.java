@@ -65,6 +65,10 @@ public class File{
    * @param cmd
    */
 	public void pushCommand(Command cmd){
+		if(cmd == null){
+			System.out.println("cmd is null");
+			
+		}
 		cmd.Apply(this);
 		if(cmd.isUndoable){
 			commandStack.addFirst(cmd);
