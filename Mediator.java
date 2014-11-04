@@ -26,13 +26,12 @@ public class Mediator{
 	 * Tells the builder to create a command and then pushes it to fileHandler.
 	 */
 	public void pushCommand(String text, String type){
-		//updateFileBuffer();
+		updateFileBuffer();
 		//fileHandler.pushCommand(builder.CreateCommand(getMainViewText(), 0, getMainViewText().length(), "Additive"));
 		
 		if(type != "Additive"){
-			updateFileBuffer();
+	
 			fileHandler.pushCommand(builder.CreateCommand(text, mainView.getCursorStart() , mainView.getCursorEnd(), type));
-			//System.out.println("in mediator cursor start = " + mainView.getCursorStart() + "  end = " + mainView.getCursorEnd());
 		}		
 	}
 	

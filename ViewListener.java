@@ -20,7 +20,6 @@ public class ViewListener implements ActionListener
 		//ButtonView
 		if(arg0.getSource().getClass().isAssignableFrom((new JButton()).getClass())){
 			String txt = ((JButton) arg0.getSource()).getText();
-			System.out.println(txt);
 			input.buttonViewInput(txt);
 		}
 		
