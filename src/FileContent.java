@@ -97,4 +97,8 @@ public class FileContent {
 		}
 		return null; 		//File doesn't exist, return NULL
 	}
+	
+	public void removeFile(File file){
+		fileList.remove(file);
+	}
 }
