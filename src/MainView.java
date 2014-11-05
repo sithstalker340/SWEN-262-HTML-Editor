@@ -49,6 +49,12 @@ public class MainView extends JFrame
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);	
+		
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
+			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		      listener.input.quit();
+			}
+		});
 	}
 	
 	public void quit(){
