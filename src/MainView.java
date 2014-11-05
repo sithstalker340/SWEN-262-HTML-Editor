@@ -94,4 +94,8 @@ public class MainView extends JFrame
 			linkedView = new LinkedView(new SortByAlpha(), getText());
 		}
 	}
+	
+	public void updateFileName(String name){
+		tabView.updateFileName(name);
+	}
 }

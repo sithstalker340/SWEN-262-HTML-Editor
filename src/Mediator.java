@@ -122,4 +122,8 @@ public class Mediator{
 	public boolean closeTab(int id){
 		return fileHandler.close(id);
 	}
+	
+	public void updateTabName(String name){
+		mainView.updateFileName(name);
+	}
 }
