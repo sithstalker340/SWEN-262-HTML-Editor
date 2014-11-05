@@ -21,10 +21,7 @@ public class MenuView extends JMenuBar
 	JMenu edit;
 	JMenuItem undo;
 	JMenuItem redo;
-	JMenuItem delete;
 	JMenuItem wordWrap;
-	JMenuItem autoIndent;
-	JMenuItem indent;
 	
 	
 	public MenuView(final MainView parent, ViewListener listener){
@@ -84,47 +81,42 @@ public class MenuView extends JMenuBar
 
 		this.add(file);
 
-		//START EDIT MENU
-		//Create edit menu
+		
+		Action actionUndo = new AbstractAction("Undo") {
+			public void actionPerformed(ActionEvent e){}
+		};
+		Action actionRedo = new AbstractAction("Redo") {
+			public void actionPerformed(ActionEvent e){}
+		};
+		Action actionWordWrap = new AbstractAction("WordWrap") {
+			public void actionPerformed(ActionEvent e){}
+		};		
+		
+		actionUndo.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control Z"));
+		actionRedo.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control Y"));
+		actionWordWrap.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control W"));
+		
 		edit = new JMenu();
-		//Creates "Undo" menu Item
-		undo = new JMenuItem("Undo");
-		//add actionListener for undo
+
+		undo = new JMenuItem(actionUndo);
+		undo.setText("Undo");
 		undo.addActionListener(listener);
-		//Creates "Redo" menu Item
-		redo = new JMenuItem("Redo");
-		//add actionListener for redo
+
+		redo = new JMenuItem(actionRedo);
+		redo.setText("Redo");
 		redo.addActionListener(listener);
-		//Creates "Delete" menu Item
-		delete = new JMenuItem("Delete");
-		//add actionListener for delete
-		delete.addActionListener(listener);
-		//Creates "Word Wrap" menu Item
-		wordWrap = new JMenuItem("Word Wrap");
-		//add actionListener for wordWrap
+
+		wordWrap = new JMenuItem(actionWordWrap);
+		wordWrap.setText("Word Wrap");
 		wordWrap.addActionListener(listener);
-		//Creates "autoIndent" menu Item
-		autoIndent = new JMenuItem("Auto-Indent");
-		//add actionListener for autoIndent
-		autoIndent.addActionListener(listener);
-		//Creates "Indent" menu Item
-		indent = new JMenuItem("Indent");
-		//add actionListener for indent
-		indent.addActionListener(listener);
-		//Set Text of edit menu
+
 		edit.setText("Edit");
-		//add menu items for edit
 		edit.add(undo);
 		edit.add(redo);
-		edit.add(delete);
 		edit.add(wordWrap);
-		edit.add(autoIndent);
-		edit.add(indent);
-		//add edit menu to the menu bar
-		this.add(edit);
-		//END EDIT MENU
 
-		//make the menu bar visible
+		this.add(edit);
+
 		this.setVisible(true);
 	}
 }
