@@ -89,12 +89,26 @@ public class FileHandler {
 			System.out.println("Data to save: " + fileContent.getBuffer());
 			bw.write(fileContent.getBuffer());
 			bw.close();
+			
+			//Update Name
+			mediator.updateTabName(getNameFromPath(path));
 		}
 		
 		catch (IOException e1){
 			System.out.println("Error saving file '" + path + "'");	
 			e1.printStackTrace();
 		}
+	}
+	
+	private String getNameFromPath( String path ){
+		String name = "";
+		
+		int lastPos = path.indexOf("\\");
+		while(lastPos != -1){
+			name = path.substring(lastPos + 1);
+			lastPos = path.indexOf("\\", lastPos + 2);
+		}
+		return name;
 	}
 	
 	public File createNewFile(String name){
