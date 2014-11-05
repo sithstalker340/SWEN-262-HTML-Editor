@@ -24,7 +24,6 @@ public class TabView extends JPanel{
 	
 	MainView mainView;
 	ViewListener listener;
-
 	JTabbedPane tabPane;
 	
 	public TabView(MainView parent, ViewListener vListener){
@@ -107,7 +106,15 @@ public class TabView extends JPanel{
 		return tabPane;
 	}
 
-	public JTextArea getCurrentTextArea(){
+	public String getText(){
+		return getTextArea().getText();
+	}
+	
+	public void setText(String text){
+		getTextArea().setText(text);
+	}
+	
+	private JTextArea getTextArea(){
 		int index = tabPane.getSelectedIndex();
 		JPanel tab = (JPanel)tabPane.getComponentAt(index);
 		JScrollPane scrollPane = (JScrollPane)tab.getComponent(0);
@@ -116,16 +123,11 @@ public class TabView extends JPanel{
 		return textArea;
 	}
 	
-	public void setCurrentText(String text){
-		JTextArea textArea = getCurrentTextArea();
-		textArea.setText(text);
-	}
-	
 	public int getCursorStart(){
-		return getCurrentTextArea().getCaret().getDot();
+		return getTextArea().getCaret().getDot();
 	}
 	
 	public int getCursorEnd(){
-		return getCurrentTextArea().getCaret().getMark();
+		return getTextArea().getCaret().getMark();
 	}
 }

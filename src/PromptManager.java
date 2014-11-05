@@ -121,7 +121,7 @@ public class PromptManager{
 					message,
 					"Confirm",
 					JOptionPane.YES_NO_OPTION
-			    ) == 0;
+				) == 0;
 	}
 	
 	/**
