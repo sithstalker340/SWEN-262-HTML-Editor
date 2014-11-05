@@ -42,6 +42,7 @@ public class Mediator{
 	 */
 	public void popCommand(){
 		fileHandler.popCommand();
+		updateLinkedView();
 	}
 	
 	/**
@@ -105,7 +106,7 @@ public class Mediator{
 	
 	public void createNewLinkedView(){
 		int strategy;
-		strategy = promptManager.displayChoice("Please choice the display","Alphabetical","Apperence");
+		strategy = promptManager.displayChoice("Please choice the display","Alphabetical","Appearance");
 		if(strategy > -1){
 			mainView.newLinkedView(strategy);
 		}
@@ -134,6 +135,8 @@ public class Mediator{
 	
 	public void updateLinkedView(){
 		if(mainView.linkedView != null){
+			updateFileBuffer();
+			System.out.println("current buffer: " + getMainViewText());
 			mainView.linkedView.updateLinkList(getMainViewText());
 		}
 	}

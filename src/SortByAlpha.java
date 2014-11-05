@@ -5,10 +5,12 @@ public class SortByAlpha implements LinkedViewStrategy{
 	private String[] splitText;
 	private List<String> urlList;
 	private List<Integer> urlOccurance;
+	private String name;
 	
 	public SortByAlpha(){
 		urlList = new ArrayList<String>();
 		urlOccurance = new ArrayList<Integer>();
+		this.name = "Alphabetical Sort";
 	}
 
 	public List<String> parse(String buffer) {
@@ -75,5 +77,9 @@ public class SortByAlpha implements LinkedViewStrategy{
 	
 	public List<Integer> numOccur() {
 		return urlOccurance;
+	}
+	
+	public String getName(){
+		return name;
 	}
 }

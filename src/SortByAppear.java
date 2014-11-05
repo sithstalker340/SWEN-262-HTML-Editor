@@ -5,10 +5,12 @@ import java.util.List;
 public class SortByAppear implements LinkedViewStrategy{
 	private String[] splitText;
 	private List<String> urlList;
+	private String name;
 	
 	public SortByAppear()
 	{
 		urlList = new ArrayList<String>();
+		this.name = "Appearance Sort";
 	}
 
 	public List<String> parse(String buffer){
@@ -40,5 +42,9 @@ public class SortByAppear implements LinkedViewStrategy{
 
 	public List<Integer> numOccur() {
 		return null;
+	}
+	
+	public String getName(){
+		return name;
 	}
 }
