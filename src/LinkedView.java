@@ -11,7 +11,6 @@ public class LinkedView extends JFrame {
 	JPanel contentPane;
 	LinkedViewStrategy strategy;
 	String fileBuffer;
-	String newLine = "\n";
 	
 	public LinkedView(LinkedViewStrategy strategy,String text){
 		this.strategy = strategy;

@@ -13,11 +13,14 @@ public class SortByAppear implements LinkedViewStrategy{
 
 	public List<String> parse(String buffer) {
 		splitText = buffer.split("[\n]+");
+		String[] tempList;
 		for(int i = 0;i < splitText.length;i++){
-			if(splitText[i].contains("<a href=")){
-				urlList.add(splitText[i]);
+			tempList = splitText[i].split("<a href=+");
+			for(int j = 0;j<tempList.length;j++){
+				urlList.add(tempList[j]);
 			}
 		}
+		
 		return urlList;
 	}
 }
