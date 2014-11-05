@@ -10,6 +10,7 @@ public class SortByAlpha implements LinkedViewStrategy{
 	
 	public SortByAlpha(){
 		urlList = new ArrayList<String>();
+		urlOccurance = new ArrayList<Integer>();
 	}
 
 	public List<String> parse(String buffer) {
@@ -20,7 +21,7 @@ public class SortByAlpha implements LinkedViewStrategy{
 			for(int j = 0;j<tempList.length;j++){
 				if(tempList[j].startsWith("\"")){
 					if(urlList.contains(tempList[j])){
-						urlOccurance.set(j,urlOccurance.get(j)+1);
+						urlOccurance.set(urlOccurance.indexOf(tempList[j]),urlOccurance.get(urlOccurance.indexOf(tempList[j]))+1);
 					}
 				
 					else{
@@ -37,5 +38,9 @@ public class SortByAlpha implements LinkedViewStrategy{
 		}
 		Collections.sort(urlList);
 		return urlList;
+	}
+	
+	public List<Integer> numOccur() {
+		return urlOccurance;
 	}
 }

@@ -31,4 +31,8 @@ public class SortByAppear implements LinkedViewStrategy{
 		
 		return urlList;
 	}
+
+	public List<Integer> numOccur() {
+		return null;
+	}
 }
