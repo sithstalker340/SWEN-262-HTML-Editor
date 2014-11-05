@@ -94,10 +94,18 @@ public class PromptManager{
 		panel.add(label);
 		panel.add(textField);
 		
-		int result = JOptionPane.showOptionDialog(null, panel, "Testing", JOptionPane.OK_CANCEL_OPTION,
-				JOptionPane.QUESTION_MESSAGE, null, options, null);
+		int result = JOptionPane.showOptionDialog(
+						null, 
+						panel, 
+						"Input", 
+						JOptionPane.OK_CANCEL_OPTION,
+						JOptionPane.QUESTION_MESSAGE, 
+						null, 
+						options, 
+						null
+					);
+		
 		if(result == JOptionPane.OK_OPTION){
-			System.out.println(textField.getText());
 			return textField.getText();
 		}
 		else return "";
