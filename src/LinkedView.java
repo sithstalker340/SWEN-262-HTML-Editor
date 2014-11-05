@@ -11,6 +11,7 @@ public class LinkedView extends JFrame {
 	JPanel contentPane;
 	LinkedViewStrategy strategy;
 	String fileBuffer;
+	String newLine = "\n";
 	
 	public LinkedView(LinkedViewStrategy strategy,String text){
 		this.strategy = strategy;
@@ -26,7 +27,7 @@ public class LinkedView extends JFrame {
         linkedViewList.setEditable(false);
         contentPane.add(linkedViewList);
         for(String s: strategy.parse(fileBuffer))
-        	linkedViewList.append(s);
+        	linkedViewList.append(s + '\n');
         this.setContentPane(contentPane);      
         this.pack();
 	}
