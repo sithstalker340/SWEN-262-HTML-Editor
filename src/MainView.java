@@ -3,7 +3,6 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
@@ -50,6 +49,12 @@ public class MainView extends JFrame
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);	
+	}
+	
+	public void quit(){
+		if( tabView.closeAll() ){
+			//close program
+		}		
 	}
 	
 	public InputHandler getInputHandler()

@@ -101,6 +101,21 @@ public class TabView extends JPanel{
 	  return titlePanel;
 	 }
 	
+	// closes all tabs return true if all are closed, false if user aborted the quit
+	public boolean closeAll(){
+		String s = "";
+		for(int i = 0; i < tabPane.getTabCount(); i++){
+			JPanel tab = (JPanel)tabPane.getComponentAt(i);
+			int id = Integer.parseInt(tab.getName());
+			if(mainView.getInputHandler().closeTab(id)){
+				tabPane.remove(tab);
+			}else{
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	
 	public JTabbedPane getTabPane(){
 		return tabPane;

@@ -77,7 +77,7 @@ public class Mediator{
 	}
 	
 	public void quit(){
-		fileHandler.quit();		
+		mainView.quit();
 	}
 	
 	public void openFile(String name, String path){

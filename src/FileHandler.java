@@ -309,20 +309,6 @@ public class FileHandler {
 		mediator.setTextAreaString(fileContent.getBuffer());
 	}
 	
-	/**
-	 * Prompts to save any unsaved work, and then exits the program
-	 */
-	public void quit(){
-		if(!fileContent.getIsSaved()){
-			//create prompt to ask to save
-
-		}
-		
-		else{
-			
-		}
-	}	
-	
 	public void changeCurrentFile(int id){
 		fileContent.changeFile(id);
 	}
