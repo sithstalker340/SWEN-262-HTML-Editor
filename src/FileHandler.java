@@ -172,7 +172,13 @@ public class FileHandler {
 			fileContent.removeFile(file); //removes the file from the list
 			return true; //tells tabView to remove Tab
 		}else{
-			return mediator.promptManager.displayBool("The file you are attempting to close is not saved. Do you wish to proceed?");
+			if( mediator.promptManager.displayBool(
+					"The file you are attempting to close is not saved. Do you wish to proceed?")){
+				fileContent.removeFile(file); //removes the file from the list
+				return true; //tells tabView to remove Tab
+			}else{
+				return false;
+			}
 		}
 	}
 	
