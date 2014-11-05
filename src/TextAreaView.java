@@ -1,6 +1,5 @@
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-
 import javax.swing.JTextArea;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -37,7 +36,7 @@ public class TextAreaView extends JTextArea{
 	 * Creates a listener for the focus of the text box.
 	 * Any time the box loses focus, its text is saved to the file it belongs to
 	 */
-	public void createFocusListener(){
+	private  void createFocusListener(){
 		textArea.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 				focus = true;
@@ -45,7 +44,6 @@ public class TextAreaView extends JTextArea{
 			
 			public void focusLost(FocusEvent e){
 				focus = false;
-				//mainView.getInputHandler().menuViewInput("Save"); // this is saving the file every time it loses focus...
 				mainView.getInputHandler().updateFileBuffer();
 			}
 		});
@@ -55,7 +53,6 @@ public class TextAreaView extends JTextArea{
 			document.addDocumentListener(new DocumentListener() {
 			public void insertUpdate(DocumentEvent e) {
 				mainView.setIsSaved(false);
-				//System.out.println(mainView.getCursorStart());
 		    }
 		    public void removeUpdate(DocumentEvent e) {
 		    	mainView.setIsSaved(false);
@@ -65,6 +62,7 @@ public class TextAreaView extends JTextArea{
 		    }
 		});
 	}
+		
 			
 	/**
 	 * Returns the text area 
