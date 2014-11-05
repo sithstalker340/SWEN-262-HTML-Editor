@@ -95,7 +95,7 @@ public class FileContent {
 				return f; //file is found, return the file
 			}
 		}
-		return null; 		//File doesn't exist, return NULL
+		return null;//File doesn't exist, return NULL
 	}
 	
 	public void removeFile(File file){

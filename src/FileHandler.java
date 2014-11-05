@@ -166,7 +166,15 @@ public class FileHandler {
 	}
 	
 	public boolean close(int id){
-		return true;
+		//If the file is unsaved, then prompt user to continue
+		File file = fileContent.getFileByID(id);
+		
+		if(file.isSaved()){
+			fileContent.removeFile(file); //removes the file from the list
+			return true; //tells tabView to remove Tab
+		}else{
+			return mediator.promptManager.displayBool("The file you are attempting to close is not saved. Do you wish to proceed?");
+		}
 	}
 	
 	/**
