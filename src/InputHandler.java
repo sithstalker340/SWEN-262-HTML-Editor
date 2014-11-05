@@ -87,6 +87,7 @@ public class InputHandler {
 			
 			case "Undo":
 				System.out.println("Undo");
+				mediator.popCommand();
 			break;
 			
 			case "Redo":

@@ -10,6 +10,7 @@ public class InsertLinkCommand extends Command {
 		this.url = url;
 		startPos = startPosition;
 		endPos = endPosition;
+		this.isUndoable = true;
 	}
 	
 	/**

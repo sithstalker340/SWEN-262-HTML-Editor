@@ -13,6 +13,8 @@ public class AdditiveCommand extends Command{
 		if(endPos == startPos){
 			endPos = startPos + text.length();
 		}
+		
+		this.isUndoable = false;
 	}
 	
 	/**
@@ -21,13 +23,19 @@ public class AdditiveCommand extends Command{
 	 */
 	public void Apply(File file){
 		String buffer = file.getBuffer();
+		String newBuffer = "";
+		
 		if(buffer.length() == 0){
 			file.setBuffer(text);
 		}
 		
 		else{
-			String newBuffer = buffer.substring(0,startPos) + text + buffer.substring(endPos);
+			newBuffer = buffer.substring(0,startPos) + text + buffer.substring(endPos);
 			file.setBuffer(newBuffer);
+		}
+		
+		if(newBuffer != buffer){
+			this.isUndoable = true;
 		}
 	}
 	
