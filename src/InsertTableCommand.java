@@ -16,6 +16,7 @@ public class InsertTableCommand extends Command {
 			}			
 		}
 		text += "\n </table>";
+		this.isUndoable = true;
 	}
 	
 	

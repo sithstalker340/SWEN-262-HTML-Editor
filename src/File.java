@@ -70,6 +70,7 @@ public class File{
 		cmd.Apply(this);
 		if(cmd.isUndoable){
 			commandStack.addFirst(cmd);
+			System.out.println("command pushed");
 			redoStack.clear(); 
 		}
 		
@@ -82,9 +83,11 @@ public class File{
 	 * Removes and undo's the command.
 	 */
 	public void popCommand(){
-		commandStack.getFirst().Undo(this);
-		redoStack.push(commandStack.getFirst());
-		commandStack.pop();
+		if(!commandStack.isEmpty()){
+			commandStack.getFirst().Undo(this);
+			redoStack.push(commandStack.getFirst());
+			commandStack.pop();
+		}
 	}
 	
 	public void redoCommand(){

@@ -10,6 +10,7 @@ public class InsertImageCommand extends Command {
 		this.src = src;
 		startPos = startPosition;
 		endPos = endPosition;
+		this.isUndoable = true;
 	}
 	
 	@Override

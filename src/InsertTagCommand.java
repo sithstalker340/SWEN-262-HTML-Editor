@@ -10,6 +10,7 @@ public class InsertTagCommand extends Command{
 		text = textString;
 		startPos = startPosition;
 		endPos = endPosition;
+		this.isUndoable = true;
 	}
 	
 	/**

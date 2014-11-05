@@ -10,6 +10,7 @@ public class InsertListCommand extends Command {
 		text = textString;
 		startPos = start;
 		numberRows = numRows;
+		this.isUndoable = true;
 	}
 	
 	public void Apply(File file) {
