@@ -20,7 +20,7 @@ public class SortByAlpha implements LinkedViewStrategy{
 			for(int j = 0;j<tempList.length;j++){
 				if(tempList[j].startsWith("\"")){
 					if(urlList.contains(tempList[j])){
-						
+						urlOccurance.set(j,urlOccurance.get(j)+1);
 					}
 				
 					else{
