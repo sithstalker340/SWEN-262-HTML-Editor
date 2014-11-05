@@ -29,7 +29,6 @@ public class TabView extends JPanel{
 	public TabView(MainView parent, ViewListener vListener){
 		mainView = parent;
 		listener = vListener;
-		
 		tabPane = new JTabbedPane();
 		
 		tabPane.addChangeListener(new ChangeListener() {
@@ -173,5 +172,11 @@ public class TabView extends JPanel{
 			return -1; // no tabs exist
 		}
 		return textArea.getCaret().getMark();
+	}
+	
+	public void updateFileName(String name){
+		int index = tabPane.getSelectedIndex();
+		tabPane.setTitleAt(index, name);
+		//tabPane.setComponentAt(index, tab);
 	}
 }
