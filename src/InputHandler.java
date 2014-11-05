@@ -15,7 +15,6 @@ public class InputHandler {
 	 * @param txt
 	 */
 	public void buttonViewInput(String tag){
-		quit();
 		if(!mediator.getIsFunctional()){
 			return;
 		}
