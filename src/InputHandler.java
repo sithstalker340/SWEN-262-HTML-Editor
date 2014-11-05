@@ -99,4 +99,8 @@ public class InputHandler {
 	public void setIsSaved(boolean b){
 		mediator.setIsSaved(b);
 	}
+	
+	public boolean closeTab(int id){
+		return mediator.closeTab(id);
+	}
 }

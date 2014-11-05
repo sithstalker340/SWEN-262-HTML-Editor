@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 import java.io.BufferedReader;
@@ -166,7 +165,15 @@ public class FileHandler {
 	}
 	
 	public boolean close(int id){
-		return true;
+		//If the file is unsaved, then prompt user to continue
+		File file = fileContent.getFileByID(id);
+		
+		if(file.isSaved()){
+			fileContent.removeFile(file); //removes the file from the list
+			return true; //tells tabView to remove Tab
+		}else{
+			return mediator.promptManager.displayBool("The file you are attempting to close is not saved. Do you wish to proceed?");
+		}
 	}
 	
 	/**
@@ -193,12 +200,14 @@ public class FileHandler {
 			}
 				
 			//missing a > or <
+			notifyIllformed();
 			return false;
 		}
 		
 	
 		while((start != -1 && end != -1)){
 			if(start >= end){
+				notifyIllformed();
 				return false;
 			}
 			
@@ -238,6 +247,7 @@ public class FileHandler {
 				
 				else{
 					//a mismatched close tag has been found
+					notifyIllformed();
 					return false;
 				}
 			}
@@ -252,12 +262,16 @@ public class FileHandler {
 		
 		//if there are leftover tags that arent closed, and they aren't self closing tags  
 		if(tagStack.size() != 0 && tagStack.size() != leftOverTags.size()){
+			notifyIllformed();
 			return false;
 		}
 		
 		else return true;
 	}
 	
+	private void notifyIllformed(){
+		mediator.promptManager.displayMessage("Your file contains illformed HTML, some functionality may be disabled till this is corrected");
+	}
 	
 	/**
 	 * Checks to see if a tag is valid despite not following
@@ -265,7 +279,7 @@ public class FileHandler {
 	 * @param tag
 	 * @return
 	 */
-	private boolean checksSelfClose(String tag){
+ 	private boolean checksSelfClose(String tag){
 		String[] selfClosing = {"meta", "link", "input", "tr"};
 		
 		for(int i = 0; i < selfClosing.length; i++){

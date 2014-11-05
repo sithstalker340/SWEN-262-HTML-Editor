@@ -88,4 +88,17 @@ public class FileContent {
 		
 		return activeFile.getIsFunctional();
 	}
+	
+	public File getFileByID(int id){
+		for(File f : fileList){
+			if(f.getID() == id){
+				return f; //file is found, return the file
+			}
+		}
+		return null;//File doesn't exist, return NULL
+	}
+	
+	public void removeFile(File file){
+		fileList.remove(file);
+	}
 }
