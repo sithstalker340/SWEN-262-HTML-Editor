@@ -45,4 +45,23 @@ public class LinkedView extends JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
 	}
+	
+	public void updateLinkList(String newBuffer){
+		fileBuffer = newBuffer;
+		linkedViewList.setText("");
+		
+		List<String> bufferList = strategy.parse(fileBuffer);
+	    List<Integer> intList = strategy.numOccur();
+	       
+	    for(int i = 0; i < bufferList.size(); i++){
+	    	if(intList != null){ //for alphabetical
+	    		linkedViewList.append("url: " + bufferList.get(i) + " count: " + intList.get(i) + '\n');
+	        }
+	        
+	        //for appearance
+	        else{ 
+	        	linkedViewList.append("url: " + bufferList.get(i) + '\n'); 
+	        }
+	    }	        
+	}
 }

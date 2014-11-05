@@ -12,13 +12,15 @@ public class SortByAppear implements LinkedViewStrategy{
 	}
 
 	public List<String> parse(String buffer){
+		urlList = new ArrayList<String>();
+		
 		splitText = buffer.split("[\n]+");
 		String[] tempList;
 		
 		for(int i = 0; i < splitText.length; i++){
 			tempList = splitText[i].split("<a href=+");
-	
-			for(int j = 0; j<tempList.length; j++){
+			
+			for(int j = 0; j < tempList.length; j++){
 				if(tempList[j].startsWith("\"")){
 					urlList.add(tempList[j]);
 				}
@@ -27,8 +29,10 @@ public class SortByAppear implements LinkedViewStrategy{
 		
 		int end;
 		for(int i = 0; i < urlList.size(); i++){
-			end = urlList.get(i).indexOf("></a>");
-			urlList.set(i, urlList.get(i).substring(0,end));
+			end = urlList.get(i).indexOf(">");
+			if(end > 0){
+				urlList.set(i, urlList.get(i).substring(0,end));
+			}
 		}
 		
 		return urlList;

@@ -12,6 +12,9 @@ public class SortByAlpha implements LinkedViewStrategy{
 	}
 
 	public List<String> parse(String buffer) {
+		urlList = new ArrayList<String>();
+		urlOccurance = new ArrayList<Integer>();
+		
 		splitText = buffer.split("[\n]+");
 		String[] tempList;
 		
@@ -36,11 +39,12 @@ public class SortByAlpha implements LinkedViewStrategy{
 		int end = 0;
 		
 		for(int i = 0; i < urlList.size(); i++){
-			end = urlList.get(i).indexOf("></a>");
-			urlList.set(i, urlList.get(i).substring(0,end));
+			end = urlList.get(i).indexOf(">");
+			if(end > 0){
+				urlList.set(i, urlList.get(i).substring(0,end));
+			}
 		}
-		
-		//Collections.sort(urlList);
+
 		sort();
 		return urlList;
 	}

@@ -8,8 +8,6 @@ public class Mediator{
 	public Mediator(){
 		builder = new CommandBuilder(this);
 		fileHandler = new FileHandler(this);
-
-		//promptManager = new PromptManager(mainView);
 	}
 	
 	/**
@@ -25,7 +23,6 @@ public class Mediator{
 	 * Tells the builder to create a command and then pushes it to fileHandler.
 	 */
 	public void pushCommand(String text, String type){
-		//updateFileBuffer();
 		
 		if(type == "Additive"){
 			fileHandler.pushCommand(builder.CreateCommand(getMainViewText(), 0, getMainViewText().length(), "Additive"));
@@ -33,6 +30,10 @@ public class Mediator{
 		
 		else{
 			fileHandler.pushCommand(builder.CreateCommand(text, mainView.getCursorStart() , mainView.getCursorEnd(), type));
+			
+			if(type == "link"){
+				updateLinkedView();
+			}
 		}		
 	}
 	
@@ -129,5 +130,11 @@ public class Mediator{
 	
 	public void updateTabName(String name){
 		mainView.updateFileName(name);
+	}
+	
+	public void updateLinkedView(){
+		if(mainView.linkedView != null){
+			mainView.linkedView.updateLinkList(getMainViewText());
+		}
 	}
 }
