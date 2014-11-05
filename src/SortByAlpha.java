@@ -6,6 +6,7 @@ import java.util.List;
 public class SortByAlpha implements LinkedViewStrategy{
 	private String[] splitText;
 	private List<String> urlList;
+	private List<Integer> urlOccurance;
 	
 	public SortByAlpha(){
 		urlList = new ArrayList<String>();
@@ -18,7 +19,13 @@ public class SortByAlpha implements LinkedViewStrategy{
 			tempList = splitText[i].split("<a href=+");
 			for(int j = 0;j<tempList.length;j++){
 				if(tempList[j].startsWith("\"")){
-					urlList.add(tempList[j]);
+					if(urlList.contains(tempList[j])){
+						
+					}
+				
+					else{
+						urlList.add(tempList[j]);
+					}
 				}
 			}
 		}
