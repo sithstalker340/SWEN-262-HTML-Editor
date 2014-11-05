@@ -84,6 +84,19 @@ public class InputHandler {
 			case "Exit":
 				mediator.quit();
 			break;
+			
+			case "Undo":
+				System.out.println("Undo");
+				mediator.popCommand();
+			break;
+			
+			case "Redo":
+				System.out.println("Redo");
+			break;
+			
+			case "Word Wrap":
+				System.out.println("Word wrap toggled");
+			break;
 		}
 	}
 	

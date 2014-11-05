@@ -3,6 +3,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
@@ -49,11 +50,19 @@ public class MainView extends JFrame
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);	
+		
+		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
+			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		      listener.input.quit();
+			}
+		});
 	}
 	
 	public void quit(){
 		if( tabView.closeAll() ){
 			//close program
+			this.dispose();
 		}		
 	}
 	
