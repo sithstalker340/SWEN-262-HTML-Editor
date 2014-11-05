@@ -107,27 +107,56 @@ public class TabView extends JPanel{
 	}
 
 	public String getText(){
-		return getTextArea().getText();
+		JTextArea textArea = getTextArea();
+		
+		if(textArea == null){
+			return ""; // no tabs exist
+		}
+		
+		return textArea.getText();
 	}
 	
 	public void setText(String text){
-		getTextArea().setText(text);
+		JTextArea textArea = getTextArea();
+		
+		if(textArea == null){
+			return; // no tabs exist
+		}
+		
+		textArea.setText(text);
 	}
 	
 	private JTextArea getTextArea(){
 		int index = tabPane.getSelectedIndex();
+		
+		if(index == -1){
+			return null; // no tabs exist
+		}
+		
 		JPanel tab = (JPanel)tabPane.getComponentAt(index);
 		JScrollPane scrollPane = (JScrollPane)tab.getComponent(0);
 		JViewport viewport = (JViewport)scrollPane.getComponent(0);
 		JTextArea textArea = (JTextArea)viewport.getComponent(0);
+		
 		return textArea;
 	}
 	
 	public int getCursorStart(){
-		return getTextArea().getCaret().getDot();
+		JTextArea textArea = getTextArea();
+		
+		if(textArea == null){
+			return -1; // no tabs exist
+		}
+		
+		return textArea.getCaret().getDot();
 	}
 	
 	public int getCursorEnd(){
-		return getTextArea().getCaret().getMark();
+		JTextArea textArea = getTextArea();
+		
+		if(textArea == null){
+			return -1; // no tabs exist
+		}
+		return textArea.getCaret().getMark();
 	}
 }

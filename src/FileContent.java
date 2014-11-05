@@ -67,7 +67,8 @@ public class FileContent {
 	}
 	
 	public void setBuffer(String s){
-		activeFile.setBuffer(s);
+		if( s != null && activeFile != null)
+			activeFile.setBuffer(s);
 	}
 	
 	public File getActiveFile(){
