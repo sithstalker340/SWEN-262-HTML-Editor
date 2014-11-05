@@ -56,7 +56,6 @@ public class FileHandler {
 			try{
 				fw = new FileWriter(fileContent.getPath());
 				bw= new BufferedWriter(fw);
-				//System.out.println("Data to save: " + fileContent.getBuffer());
 				bw.write(fileContent.getBuffer());
 				bw.close();
 				
@@ -86,12 +85,13 @@ public class FileHandler {
 		try{
 			fw = new FileWriter(path);
 			bw= new BufferedWriter(fw);
-			System.out.println("Data to save: " + fileContent.getBuffer());
 			bw.write(fileContent.getBuffer());
 			bw.close();
 			
 			//Update Name
 			mediator.updateTabName(getNameFromPath(path));
+			//Update file path
+			fileContent.setPath(path);
 		}
 		
 		catch (IOException e1){

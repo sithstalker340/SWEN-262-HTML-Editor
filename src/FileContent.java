@@ -110,4 +110,9 @@ public class FileContent {
 			
 		}
 	}
+	
+	public void setPath( String path){
+		if(activeFile != null)
+			activeFile.setPath(path);
+	}
 }
