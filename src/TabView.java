@@ -105,8 +105,10 @@ public class TabView extends JPanel{
 	public boolean closeAll(){
 		int tabCount = tabPane.getTabCount();
 		for(int i = 0; i < tabCount; i++){
-			JPanel tab = (JPanel)tabPane.getComponentAt(i);
+
+			JPanel tab = (JPanel)tabPane.getComponentAt( tabPane.getSelectedIndex());
 			int id = Integer.parseInt(tab.getName());
+			
 			if(mainView.getInputHandler().closeTab(id)){
 				tabPane.remove(tab);
 			}else{
