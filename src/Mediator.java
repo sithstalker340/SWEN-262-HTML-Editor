@@ -105,7 +105,9 @@ public class Mediator{
 	public void createNewLinkedView(){
 		int strategy;
 		strategy = promptManager.displayChoice("Please choice the display","Alphabetical","Apperence");
-		mainView.newLinkedView(strategy);
+		if(strategy > -1){
+			mainView.newLinkedView(strategy);
+		}
 	}
 	 
 	public void updateFileBuffer(){
