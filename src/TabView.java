@@ -25,11 +25,18 @@ public class TabView extends JPanel{
 	MainView mainView;
 	ViewListener listener;
 	JTabbedPane tabPane;
+	static Image img;
 	
 	public TabView(MainView parent, ViewListener vListener){
 		mainView = parent;
 		listener = vListener;
 		tabPane = new JTabbedPane();
+		
+		img = null;
+		//get icon
+		try {
+		    img = ImageIO.read(getClass().getResource("resources/closeIcon.png"));
+		} catch (IOException ex) {}
 		
 		tabPane.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
@@ -56,20 +63,14 @@ public class TabView extends JPanel{
 		tabPane.addTab(name, innerPane);
 		tabPane.setSelectedIndex(tabPane.getTabCount()-1);
 		
-		Image img = null;
-		//get icon
-		try {
-		    img = ImageIO.read(getClass().getResource("resources/closeIcon.png"));
-		} catch (IOException ex) {}
-		
 		//set title with close button
 		tabPane.setTabComponentAt(
 				tabPane.getTabCount()-1, 
-				getTitlePanel(tabPane, innerPane, name, index, img, mainView.getInputHandler())
+				getTitlePanel(tabPane, innerPane, name, index, mainView.getInputHandler())
 		);
 	}
 	
-	private static JPanel getTitlePanel(final JTabbedPane tabbedPane, final JPanel panel, String title, final int id, Image img, final InputHandler input){
+	private static JPanel getTitlePanel(final JTabbedPane tabbedPane, final JPanel panel, String title, final int id, final InputHandler input){
 		JPanel titlePanel = new JPanel();
 		titlePanel.setOpaque(false);
 		JLabel titleLbl = new JLabel(title);
@@ -176,7 +177,8 @@ public class TabView extends JPanel{
 	
 	public void updateFileName(String name){
 		int index = tabPane.getSelectedIndex();
-		tabPane.setTitleAt(index, name);
-		//tabPane.setComponentAt(index, tab);
+		JPanel innerPane = (JPanel)tabPane.getTabComponentAt(index);
+		JLabel label = (JLabel)innerPane.getComponent(0);
+		label.setText(name);
 	}
 }
