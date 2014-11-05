@@ -96,6 +96,7 @@ public class MainView extends JFrame
 	}
 	
 	public void newLinkedView(int strategy ){
+		System.out.println("strategy: " + strategy);
 		if(strategy == 1){
 			linkedView = new LinkedView(new SortByAppear(), getText());
 		}

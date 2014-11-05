@@ -29,13 +29,18 @@ public class LinkedView extends JFrame {
         
         List<String> bufferList = strategy.parse(fileBuffer);
         List<Integer> intList = strategy.numOccur();
+        
         for(int i = 0; i < bufferList.size(); i++){
-        	System.out.println("int list values: " + intList.get(i));
-        	linkedViewList.append("url: " + bufferList.get(i) + " count: " + intList.get(i) + '\n');
+        	if(intList != null){ //for alphabetical
+        		linkedViewList.append("url: " + bufferList.get(i) + " count: " + intList.get(i) + '\n');
+        	}
+        	
+        	//for appearance
+        	else{ 
+        		linkedViewList.append("url: " + bufferList.get(i) + '\n'); 
+        	}
         }
-        /*
-        for(String s: strategy.parse(fileBuffer))
-        	linkedViewList.append(s + '\n' + strategy.numOccur());*/
+
         this.setContentPane(contentPane);      
         this.pack();
         this.setLocationRelativeTo(null);
