@@ -108,22 +108,12 @@ public class PromptManager{
 	 * @param message
 	 */
 	public boolean displayBool(String message){
-		parent = new JFrame();
-		JOptionPane pane = new JOptionPane();
-		
-		//create dialog box.  Store user responce
-		int responce = JOptionPane.showConfirmDialog(
-			    parent,
-			    message,
-			    "Confirm",
-			    JOptionPane.YES_NO_OPTION);
-		
-		//convert responce to boolean value
-		if(responce == 0){
-			return true;
-		}else{
-			return false;
-		}
+		return JOptionPane.showConfirmDialog(
+					new JFrame(),
+					message,
+					"Confirm",
+					JOptionPane.YES_NO_OPTION
+			    ) == 0;
 	}
 	
 	/**
@@ -131,31 +121,19 @@ public class PromptManager{
 	 * @param message
 	 */
 	public int displayChoice(String message, String option1, String option2){
-		parent = new JFrame();
-		JOptionPane pane = new JOptionPane();
-		
-		//set options
 		Object[] options = {option1, option2};
 		
-		pane.setOptions(options);
-		
 		//create dialog box.  Store user responce
-		int responce = JOptionPane.showOptionDialog(
-			    parent,
-			    message,
-			    "Confirm",
-			    JOptionPane.YES_NO_OPTION,
-			    JOptionPane.QUESTION_MESSAGE,
-			    null,
-			    options,
-			    options[0]
-		);
-		
-		return responce;
-	}
-	
-	public void returnBoolPrompt(boolean b){		
-		returnType = b;
+		return JOptionPane.showOptionDialog(
+					new JFrame(),
+			    	message,
+			    	"Confirm",
+			    	JOptionPane.YES_NO_OPTION,
+			    	JOptionPane.QUESTION_MESSAGE,
+			    	null,
+			    	options,
+			    	options[0]
+				);
 	}
 }
 
