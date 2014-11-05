@@ -59,7 +59,6 @@ public class FileHandler {
 				bw.write(fileContent.getBuffer());
 				bw.close();
 				
-				//System.out.println(mediator.getMainViewText());
 				fileContent.setBuffer(mediator.getMainViewText());
 				fileContent.setIsSaved(true);
 			}
@@ -168,9 +167,6 @@ public class FileHandler {
 		newFile = new File(builder.toString(),fileNumbers);
 		newFile.setPath(loc);
 		fileNumbers +=1;
-		
-		//System.out.println(getIsFunctional());
-		//System.out.println(getIsFunctional());
 				
 		fileContent.addFile(newFile);
 		fileContent.changeFile(newFile.getID());
@@ -223,7 +219,6 @@ public class FileHandler {
 			notifyIllformed();
 			return false;
 		}
-		
 	
 		while((start != -1 && end != -1)){
 			if(start >= end){
@@ -235,10 +230,8 @@ public class FileHandler {
 			//if it is an open tag
 			if(tag.charAt(0) != '/'){				
 				if(tag.charAt(0) != '!'){ //ignores the opening <!HTMLDOC> tag
-					System.out.println("tag: " + tag);
 					if(checksSelfClose(tag)){
 						leftOverTags.add(tag);
-						//System.out.println("tag is self closing");
 					}			
 					
 					else if(tag.contains("img src")){ //for <img src...> tags
@@ -251,18 +244,17 @@ public class FileHandler {
 						tagStack.push(tag);
 					}			
 					
-					else{ tagStack.push(tag); //System.out.println("tag pushed: " + tag); 
+					else{
+						tagStack.push(tag);
 					}
 				}
 			}
 			
-
 			//if it is a close tag
 			else if(tag.charAt(0) == '/'){
 				tag = tag.substring(tag.indexOf('/') + 1); //find the actual tag by removing the close character
 				if(tagStack.peek().equals(tag)){ //check to see if the most recent tag is the open tag for this close tag
 					tagStack.pop(); //if it is remove the open tag
-					//System.out.println("tag popped: " + tag);
 				}
 				
 				else{
@@ -272,14 +264,12 @@ public class FileHandler {
 				}
 			}
 				
-				
 			//update the text to go through
 			allText = allText.substring(end+1);
 			start = allText.indexOf('<'); //find the next tag start and end
 			end = allText.indexOf('>');	
 		}
 			
-		
 		//if there are leftover tags that arent closed, and they aren't self closing tags  
 		if(tagStack.size() != 0 && tagStack.size() != leftOverTags.size()){
 			notifyIllformed();

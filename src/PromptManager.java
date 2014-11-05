@@ -72,9 +72,9 @@ public class PromptManager{
 		int result = JOptionPane.showOptionDialog(null, panel, message, JOptionPane.OK_CANCEL_OPTION, 
 				JOptionPane.QUESTION_MESSAGE, null, options, null);
 		if(result == JOptionPane.OK_OPTION){
-			System.out.println(tF1.getText());
+			//System.out.println(tF1.getText());
 			textFields[0] = tF1.getText();
-			System.out.println(tF2.getText());
+			//System.out.println(tF2.getText());
 			textFields[1] = tF2.getText();
 			return textFields;
 		}

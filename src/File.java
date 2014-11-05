@@ -70,7 +70,6 @@ public class File{
 		cmd.Apply(this);
 		if(cmd.isUndoable){
 			commandStack.addFirst(cmd);
-			System.out.println("command pushed");
 			redoStack.clear(); 
 		}
 		
