@@ -126,28 +126,34 @@ public class PromptManager{
 		}
 	}
 	
-	public boolean linkedListChoice(String m){
-		parent = new JFrame();
-        Object[] options = {"yes", "no"};
-
+	/**
+	 * Displays dialog with custom prompt
+	 * @param message
+	 */
+	public int displayChoice(String message, String option1, String option2){
 		parent = new JFrame();
 		JOptionPane pane = new JOptionPane();
-        //pane.setOptions(options);
-        
+		
+		//set options
+		Object[] options = {option1, option2};
+		
+		pane.setOptions(options);
+		
 		//create dialog box.  Store user responce
-		int responce = JOptionPane.showConfirmDialog(
+		int responce = JOptionPane.showOptionDialog(
 			    parent,
 			    message,
 			    "Confirm",
-			    JOptionPane.YES_NO_OPTION);
+			    JOptionPane.YES_NO_OPTION,
+			    JOptionPane.QUESTION_MESSAGE,
+			    null,
+			    options,
+			    options[0]
+		);
 		
-		//convert responce to boolean value
-		if(responce == 0){
-			return true;
-		}else{
-			return false;
-		}
+		return responce;
 	}
+	
 	public void returnBoolPrompt(boolean b){		
 		returnType = b;
 	}
