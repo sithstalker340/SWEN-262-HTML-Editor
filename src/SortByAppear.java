@@ -5,6 +5,7 @@ import java.util.List;
 public class SortByAppear implements LinkedViewStrategy{
 	private String[] splitText;
 	private List<String> urlList;
+	
 	public SortByAppear()
 	{
 		urlList = new ArrayList<String>();

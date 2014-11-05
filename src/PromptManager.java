@@ -141,6 +141,39 @@ public class PromptManager{
 		return returnType;
 	}
 	
+	public boolean linkedListChoice(String m){
+		parent = new JFrame();
+		
+		JOptionPane pane = new JOptionPane();
+        pane.setMessage(m);
+        JButton yes = new JButton("Apperence");
+        JButton no = new JButton("Alpha");
+        Object[] options = {yes, no};
+        pane.setOptions(options);
+                
+        yes.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e){
+        		returnBoolPrompt(true);
+        		parent.dispose();
+        	}
+        });
+        
+        no.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e){
+        		returnBoolPrompt(false);
+        		parent.dispose();
+        	}
+        });
+        
+        parent.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        parent.add(pane);
+        parent.pack();
+        parent.setLocationRelativeTo(null);
+		parent.setVisible(true);	
+		parent.setFocusable(true);
+		
+		return returnType;
+	}
 	public void returnBoolPrompt(boolean b){		
 		returnType = b;
 	}

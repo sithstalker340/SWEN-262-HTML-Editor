@@ -81,7 +81,12 @@ public class MainView extends JFrame
 		input.setIsSaved(b);
 	}
 	
-	public void newLinkedView(LinkedViewStrategy s){
-		linkedView = new LinkedView(s,getCurrentTextArea().getText());
+	public void newLinkedView(boolean s){
+		if(s){
+			linkedView = new LinkedView(new SortByAppear(),getCurrentTextArea().getText());
+		}
+		else{
+			linkedView = new LinkedView(new SortByAlpha(),getCurrentTextArea().getText());
+		}
 	}
 }

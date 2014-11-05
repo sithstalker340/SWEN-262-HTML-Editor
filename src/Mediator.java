@@ -101,9 +101,11 @@ public class Mediator{
 	}
 	
 	public void createNewLinkedView(){
-		//mainView.newLinkedView();
+		boolean strategy;
+		strategy = promptManager.linkedListChoice("Please choice the display");
+		mainView.newLinkedView(strategy);
 	}
-	
+	 
 	public void updateFileBuffer(){
 		fileHandler.updateFileBuffer(getMainViewText());
 	}

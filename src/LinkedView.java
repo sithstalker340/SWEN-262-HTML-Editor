@@ -30,4 +30,11 @@ public class LinkedView extends JFrame {
         this.setContentPane(contentPane);      
         this.pack();
 	}
+	public SortByAppear getAppear(){
+		return new SortByAppear();
+	}
+	
+	public SortByAlpha getAlpha(){
+		return new SortByAlpha();
+	}
 }
