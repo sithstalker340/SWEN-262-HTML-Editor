@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,9 +26,18 @@ public class LinkedView extends JFrame {
         linkedViewList = new JTextArea();
         linkedViewList.setEditable(false);
         contentPane.add(linkedViewList);
+        
+        List<String> bufferList = strategy.parse(fileBuffer);
+        List<Integer> intList = strategy.numOccur();
+        for(int i = 0; i < bufferList.size(); i++){
+        	System.out.println("int list values: " + intList.get(i));
+        	linkedViewList.append("url: " + bufferList.get(i) + " count: " + intList.get(i) + '\n');
+        }
+        /*
         for(String s: strategy.parse(fileBuffer))
-        	linkedViewList.append(s + '\n' + strategy.numOccur());
+        	linkedViewList.append(s + '\n' + strategy.numOccur());*/
         this.setContentPane(contentPane);      
         this.pack();
+        this.setLocationRelativeTo(null);
 	}
 }
