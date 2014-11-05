@@ -128,36 +128,25 @@ public class PromptManager{
 	
 	public boolean linkedListChoice(String m){
 		parent = new JFrame();
-		
+        Object[] options = {"yes", "no"};
+
+		parent = new JFrame();
 		JOptionPane pane = new JOptionPane();
-        pane.setMessage(m);
-        JButton yes = new JButton("Apperence");
-        JButton no = new JButton("Alpha");
-        Object[] options = {yes, no};
-        pane.setOptions(options);
-                
-        yes.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e){
-        		returnBoolPrompt(true);
-        		parent.dispose();
-        	}
-        });
+        //pane.setOptions(options);
         
-        no.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e){
-        		returnBoolPrompt(false);
-        		parent.dispose();
-        	}
-        });
-        
-        parent.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        parent.add(pane);
-        parent.pack();
-        parent.setLocationRelativeTo(null);
-		parent.setVisible(true);	
-		parent.setFocusable(true);
+		//create dialog box.  Store user responce
+		int responce = JOptionPane.showConfirmDialog(
+			    parent,
+			    message,
+			    "Confirm",
+			    JOptionPane.YES_NO_OPTION);
 		
-		return returnType;
+		//convert responce to boolean value
+		if(responce == 0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	public void returnBoolPrompt(boolean b){		
 		returnType = b;

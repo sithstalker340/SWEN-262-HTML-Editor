@@ -30,7 +30,7 @@ public class InputHandler {
 			case "table": type = "table";break;
 			case "img": type = "img";break;
 			case "update": type = "Additive"; break;
-			case "Linked View":	mediator.createNewLinkedView();	break;
+			case "Linked View":	mediator.createNewLinkedView();	return;
 		}
 		
 		if(mediator.getMainViewText() != null){
