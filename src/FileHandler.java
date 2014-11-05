@@ -172,7 +172,13 @@ public class FileHandler {
 			fileContent.removeFile(file); //removes the file from the list
 			return true; //tells tabView to remove Tab
 		}else{
-			return mediator.promptManager.displayBool("The file you are attempting to close is not saved. Do you wish to proceed?");
+			if( mediator.promptManager.displayBool(
+					"The file you are attempting to close is not saved. Do you wish to proceed?")){
+				fileContent.removeFile(file); //removes the file from the list
+				return true; //tells tabView to remove Tab
+			}else{
+				return false;
+			}
 		}
 	}
 	
@@ -302,20 +308,6 @@ public class FileHandler {
 	public void updateDisplay(){
 		mediator.setTextAreaString(fileContent.getBuffer());
 	}
-	
-	/**
-	 * Prompts to save any unsaved work, and then exits the program
-	 */
-	public void quit(){
-		if(!fileContent.getIsSaved()){
-			//create prompt to ask to save
-
-		}
-		
-		else{
-			
-		}
-	}	
 	
 	public void changeCurrentFile(int id){
 		fileContent.changeFile(id);

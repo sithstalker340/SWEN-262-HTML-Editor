@@ -24,7 +24,6 @@ public class TabView extends JPanel{
 	
 	MainView mainView;
 	ViewListener listener;
-
 	JTabbedPane tabPane;
 	
 	public TabView(MainView parent, ViewListener vListener){
@@ -102,30 +101,77 @@ public class TabView extends JPanel{
 	  return titlePanel;
 	 }
 	
+	// closes all tabs return true if all are closed, false if user aborted the quit
+	public boolean closeAll(){
+		int tabCount = tabPane.getTabCount();
+		for(int i = 0; i < tabCount; i++){
+			JPanel tab = (JPanel)tabPane.getComponentAt(i);
+			int id = Integer.parseInt(tab.getName());
+			if(mainView.getInputHandler().closeTab(id)){
+				tabPane.remove(tab);
+			}else{
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	
 	public JTabbedPane getTabPane(){
 		return tabPane;
 	}
 
-	public JTextArea getCurrentTextArea(){
+	public String getText(){
+		JTextArea textArea = getTextArea();
+		
+		if(textArea == null){
+			return ""; // no tabs exist
+		}
+		
+		return textArea.getText();
+	}
+	
+	public void setText(String text){
+		JTextArea textArea = getTextArea();
+		
+		if(textArea == null){
+			return; // no tabs exist
+		}
+		
+		textArea.setText(text);
+	}
+	
+	private JTextArea getTextArea(){
 		int index = tabPane.getSelectedIndex();
+		
+		if(index == -1){
+			return null; // no tabs exist
+		}
+		
 		JPanel tab = (JPanel)tabPane.getComponentAt(index);
 		JScrollPane scrollPane = (JScrollPane)tab.getComponent(0);
 		JViewport viewport = (JViewport)scrollPane.getComponent(0);
 		JTextArea textArea = (JTextArea)viewport.getComponent(0);
+		
 		return textArea;
 	}
 	
-	public void setCurrentText(String text){
-		JTextArea textArea = getCurrentTextArea();
-		textArea.setText(text);
-	}
-	
 	public int getCursorStart(){
-		return getCurrentTextArea().getCaret().getDot();
+		JTextArea textArea = getTextArea();
+		
+		if(textArea == null){
+			return -1; // no tabs exist
+		}
+		
+		return textArea.getCaret().getDot();
 	}
 	
 	public int getCursorEnd(){
-		return getCurrentTextArea().getCaret().getMark();
+		JTextArea textArea = getTextArea();
+		
+		if(textArea == null){
+			return -1; // no tabs exist
+		}
+		return textArea.getCaret().getMark();
 	}
 }

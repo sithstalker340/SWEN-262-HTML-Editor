@@ -67,7 +67,8 @@ public class FileContent {
 	}
 	
 	public void setBuffer(String s){
-		activeFile.setBuffer(s);
+		if( s != null && activeFile != null)
+			activeFile.setBuffer(s);
 	}
 	
 	public File getActiveFile(){
@@ -100,5 +101,13 @@ public class FileContent {
 	
 	public void removeFile(File file){
 		fileList.remove(file);
+		if( activeFile == file ){
+			activeFile = null;
+			
+			if(fileList.size() > 0){
+				activeFile = fileList.get( fileList.size() - 1 ); //most recently added file is now the active file
+			}
+			
+		}
 	}
 }

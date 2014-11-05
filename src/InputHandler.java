@@ -15,7 +15,6 @@ public class InputHandler {
 	 * @param txt
 	 */
 	public void buttonViewInput(String tag){
-		
 		if(!mediator.getIsFunctional()){
 			return;
 		}
@@ -99,6 +98,10 @@ public class InputHandler {
 	public void setIsSaved(boolean b){
 		mediator.setIsSaved(b);
 	}
+	
+	public void quit(){
+		mediator.quit();
+	} 
 	
 	public boolean closeTab(int id){
 		return mediator.closeTab(id);

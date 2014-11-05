@@ -53,7 +53,7 @@ public class Mediator{
 	 * @param s
 	 */
 	public void setTextAreaString(String s){
-		mainView.setCurrentText(s);
+		mainView.setText(s);
 	}
 	
 	/**
@@ -61,7 +61,7 @@ public class Mediator{
 	 * @return
 	 */
 	public String getMainViewText(){
-		return mainView.getCurrentTextArea().getText();
+		return mainView.getText();
 	}	
 	
 	public boolean canSave(){
@@ -77,7 +77,7 @@ public class Mediator{
 	}
 	
 	public void quit(){
-		fileHandler.quit();		
+		mainView.quit();
 	}
 	
 	public void openFile(String name, String path){

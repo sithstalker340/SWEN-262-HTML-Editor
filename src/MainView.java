@@ -3,7 +3,6 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
@@ -52,6 +51,12 @@ public class MainView extends JFrame
 		this.setVisible(true);	
 	}
 	
+	public void quit(){
+		if( tabView.closeAll() ){
+			//close program
+		}		
+	}
+	
 	public InputHandler getInputHandler()
 	{
 		return input;
@@ -61,12 +66,12 @@ public class MainView extends JFrame
 		tabView.createNewTab(name, id);
 	}
 	
-	public JTextArea getCurrentTextArea(){
-		return tabView.getCurrentTextArea();
+	public String getText(){
+		return tabView.getText();
 	}
 	
-	public void setCurrentText(String text){
-		tabView.setCurrentText(text);
+	public void setText(String text){
+		tabView.setText(text);
 	}
 	
 	public int getCursorStart(){
@@ -83,10 +88,10 @@ public class MainView extends JFrame
 	
 	public void newLinkedView(int strategy ){
 		if(strategy == 1){
-			linkedView = new LinkedView(new SortByAppear(),getCurrentTextArea().getText());
+			linkedView = new LinkedView(new SortByAppear(), getText());
 		}
 		else{
-			linkedView = new LinkedView(new SortByAlpha(),getCurrentTextArea().getText());
+			linkedView = new LinkedView(new SortByAlpha(), getText());
 		}
 	}
 }
