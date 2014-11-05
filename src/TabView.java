@@ -67,11 +67,11 @@ public class TabView extends JPanel{
 		//set title with close button
 		tabPane.setTabComponentAt(
 				tabPane.getTabCount()-1, 
-				getTitlePanel(tabPane, innerPane, name, index, img)
+				getTitlePanel(tabPane, innerPane, name, index, img, mainView.getInputHandler())
 		);
 	}
 	
-	private static JPanel getTitlePanel(final JTabbedPane tabbedPane, final JPanel panel, String title, int id, Image img){
+	private static JPanel getTitlePanel(final JTabbedPane tabbedPane, final JPanel panel, String title, final int id, Image img, final InputHandler input){
 		JPanel titlePanel = new JPanel();
 		titlePanel.setOpaque(false);
 		JLabel titleLbl = new JLabel(title);
@@ -92,7 +92,7 @@ public class TabView extends JPanel{
 		closeButton.addActionListener( new ActionListener(){
 			@Override	
 			public void actionPerformed(ActionEvent e) {
-				//if(mediator.closeTab(id))	
+				if(input.closeTab(id))	
 					tabbedPane.remove(panel);
 			}
 	  	});
