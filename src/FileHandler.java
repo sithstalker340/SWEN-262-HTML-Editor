@@ -54,12 +54,13 @@ public class FileHandler {
 		
 		if(fileContent.getPath() != null){
 			try{
+				fileContent.setBuffer(mediator.getMainViewText());
+
 				fw = new FileWriter(fileContent.getPath());
 				bw= new BufferedWriter(fw);
 				bw.write(fileContent.getBuffer());
 				bw.close();
-				
-				fileContent.setBuffer(mediator.getMainViewText());
+		
 				fileContent.setIsSaved(true);
 			}
 			

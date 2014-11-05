@@ -1,4 +1,5 @@
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class InputHandler {
 
@@ -8,6 +9,7 @@ public class InputHandler {
 	public InputHandler(Mediator m){
 		mediator = m;
 		fc = new JFileChooser();
+		fc.setFileFilter(new FileNameExtensionFilter("HTML", "html"));
 	}
 	
 	/**
