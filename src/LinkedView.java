@@ -16,8 +16,10 @@ public class LinkedView extends JFrame {
 	public LinkedView(LinkedViewStrategy strategy,String text){
 		this.strategy = strategy;
 		fileBuffer = text;
+		
 		this.setMinimumSize(new Dimension(300,450));
-		this.setTitle("Linked View");
+		this.setTitle(strategy.getName());
+		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 		

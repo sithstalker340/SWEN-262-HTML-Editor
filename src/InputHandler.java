@@ -121,4 +121,8 @@ public class InputHandler {
 	public boolean closeTab(int id){
 		return mediator.closeTab(id);
 	}
+	
+	public void updateLinkedView(){
+		mediator.updateLinkedView();
+	}
 }
