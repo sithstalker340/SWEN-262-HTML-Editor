@@ -101,8 +101,8 @@ public class Mediator{
 	}
 	
 	public void createNewLinkedView(){
-		boolean strategy;
-		strategy = promptManager.linkedListChoice("Please choice the display");
+		int strategy;
+		strategy = promptManager.displayChoice("Please choice the display","Alphabetical","Apperence");
 		mainView.newLinkedView(strategy);
 	}
 	 
