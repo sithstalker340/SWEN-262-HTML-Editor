@@ -107,38 +107,23 @@ public class PromptManager{
 	 * Displays dialog with custom prompt
 	 * @param message
 	 */
-	public boolean displayBool(String m){
+	public boolean displayBool(String message){
 		parent = new JFrame();
-		
 		JOptionPane pane = new JOptionPane();
-        pane.setMessage(m);
-        JButton yes = new JButton("Yes");
-        JButton no = new JButton("No");
-        Object[] options = {yes, no};
-        pane.setOptions(options);
-                
-        yes.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e){
-        		returnBoolPrompt(true);
-        		parent.dispose();
-        	}
-        });
-        
-        no.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e){
-        		returnBoolPrompt(false);
-        		parent.dispose();
-        	}
-        });
-        
-        parent.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        parent.add(pane);
-        parent.pack();
-        parent.setLocationRelativeTo(null);
-		parent.setVisible(true);	
-		parent.setFocusable(true);
 		
-		return returnType;
+		//create dialog box.  Store user responce
+		int responce = JOptionPane.showConfirmDialog(
+			    parent,
+			    message,
+			    "Confirm",
+			    JOptionPane.YES_NO_OPTION);
+		
+		//convert responce to boolean value
+		if(responce == 0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	public void returnBoolPrompt(boolean b){		
