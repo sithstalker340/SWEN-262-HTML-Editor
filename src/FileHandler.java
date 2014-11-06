@@ -76,7 +76,7 @@ public class FileHandler {
 	}
 	
 	public String getBuffer(){
-		fileContent.getBuffer();
+		return fileContent.getBuffer();
 	}
 	
 	/**
