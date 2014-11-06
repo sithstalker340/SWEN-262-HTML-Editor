@@ -48,105 +48,6 @@ public class TabView extends JPanel{
 		});
 	}
 	
-	public void createNewTab(String name, int index){
-		JPanel innerPane = new JPanel();
-		
-		TextAreaView textView = new TextAreaView(mainView, listener);
-		textView.getTextArea().addKeyListener( new KeyListener(){
-			 public void keyReleased(KeyEvent e) {
-			 }
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				char key = e.getKeyChar();
-				if(e.getKeyChar() == '\n'){
-					//int cursor = getCursorStart();
-					mainView.getInputHandler().buttonViewInput("update");
-					//setCursorStart(cursor);
-				}
-				
-				if( e.getKeyChar() == '\b'){
-					//int cursor = getCursorStart();
-					mainView.getInputHandler().buttonViewInput("Subtractive");
-				//	setCursorStart(cursor);
-				}
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-			}
-		});
-
-		JScrollPane scrollPane = new JScrollPane(textView.getTextArea());
-		scrollPane.setName("scrollPane");
-	    scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-	    scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER); 
-	    
-	    innerPane.setName(Integer.toString(index));
-		innerPane.add(scrollPane);
-		innerPane.setLayout(new GridLayout(1,2));		
-	
-		tabPane.addTab(name, innerPane);
-		tabPane.setSelectedIndex(tabPane.getTabCount()-1);
-		
-		//set title with close button
-		tabPane.setTabComponentAt(
-				tabPane.getTabCount()-1, 
-				getTitlePanel(tabPane, innerPane, name, index, mainView.getInputHandler())
-		);
-	}
-	
-	private static JPanel getTitlePanel(final JTabbedPane tabbedPane, final JPanel panel, String title, final int id, final InputHandler input){
-		JPanel titlePanel = new JPanel();
-		titlePanel.setOpaque(false);
-		JLabel titleLbl = new JLabel(title);
-		titleLbl.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
-		titlePanel.add(titleLbl);
-		JButton closeButton = new JButton();
-		closeButton.setOpaque(true);
-		int size = 14;
-		
-		if(img != null){
-			closeButton.setIcon(new ImageIcon(img));
-		}else{
-			closeButton.setText("x");
-		}
-		
-		closeButton.setPreferredSize(new Dimension(size, size));
-		
-		closeButton.addActionListener( new ActionListener(){
-			@Override	
-			public void actionPerformed(ActionEvent e) {
-				if(input.closeTab(id))	
-					tabbedPane.remove(panel);
-			}
-	  	});
-	  
-	  titlePanel.add(closeButton);
-
-	  return titlePanel;
-	 }
-	
-	// closes all tabs return true if all are closed, false if user aborted the quit
-	public boolean closeAll(){
-		int tabCount = tabPane.getTabCount();
-		for(int i = 0; i < tabCount; i++){
-			JPanel tab = (JPanel)tabPane.getComponentAt(i);
-			int id = Integer.parseInt(tab.getName());
-			if(mainView.getInputHandler().closeTab(id)){
-				tabPane.remove(tab);
-				if(tabPane.getTabCount() == 0){
-					return true;
-				}
-				i = -1;
-			}else{
-				return false;
-			}
-		}
-		return true;
-	}
-	
-	
 	public JTabbedPane getTabPane(){
 		return tabPane;
 	}
@@ -229,4 +130,102 @@ public class TabView extends JPanel{
 		
 		else getTextArea().setWrapStyleWord(true);
 	}
+	
+	public void createNewTab(String name, int index){
+		JPanel innerPane = new JPanel();
+		
+		TextAreaView textView = new TextAreaView(mainView, listener);
+		textView.getTextArea().addKeyListener( new KeyListener(){
+			 public void keyReleased(KeyEvent e) {
+			 }
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char key = e.getKeyChar();
+				if(e.getKeyChar() == '\n'){
+					//int cursor = getCursorStart();
+					mainView.getInputHandler().buttonViewInput("update");
+					//setCursorStart(cursor);
+				}
+				
+				if( e.getKeyChar() == '\b'){
+					//int cursor = getCursorStart();
+					mainView.getInputHandler().buttonViewInput("Subtractive");
+				//	setCursorStart(cursor);
+				}
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+			}
+		});
+
+		JScrollPane scrollPane = new JScrollPane(textView.getTextArea());
+		scrollPane.setName("scrollPane");
+	    scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+	    scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER); 
+	    
+	    innerPane.setName(Integer.toString(index));
+		innerPane.add(scrollPane);
+		innerPane.setLayout(new GridLayout(1,2));		
+	
+		tabPane.addTab(name, innerPane);
+		tabPane.setSelectedIndex(tabPane.getTabCount()-1);
+		
+		//set title with close button
+		tabPane.setTabComponentAt(
+				tabPane.getTabCount()-1, 
+				getTitlePanel(tabPane, innerPane, name, index, mainView.getInputHandler())
+		);
+	}
+	
+	// closes all tabs return true if all are closed, false if user aborted the quit
+	public boolean closeAll(){
+		int tabCount = tabPane.getTabCount();
+		for(int i = 0; i < tabCount; i++){
+			JPanel tab = (JPanel)tabPane.getComponentAt(i);
+			int id = Integer.parseInt(tab.getName());
+			if(mainView.getInputHandler().closeTab(id)){
+				tabPane.remove(tab);
+				if(tabPane.getTabCount() == 0){
+					return true;
+				}
+				i = -1;
+			}else{
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static JPanel getTitlePanel(final JTabbedPane tabbedPane, final JPanel panel, String title, final int id, final InputHandler input){
+		JPanel titlePanel = new JPanel();
+		titlePanel.setOpaque(false);
+		JLabel titleLbl = new JLabel(title);
+		titleLbl.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
+		titlePanel.add(titleLbl);
+		JButton closeButton = new JButton();
+		closeButton.setOpaque(true);
+		int size = 14;
+		
+		if(img != null){
+			closeButton.setIcon(new ImageIcon(img));
+		}else{
+			closeButton.setText("x");
+		}
+		
+		closeButton.setPreferredSize(new Dimension(size, size));
+		
+		closeButton.addActionListener( new ActionListener(){
+			@Override	
+			public void actionPerformed(ActionEvent e) {
+				if(input.closeTab(id))	
+					tabbedPane.remove(panel);
+			}
+	  	});
+	  
+	  titlePanel.add(closeButton);
+
+	  return titlePanel;
+	 }
 }
