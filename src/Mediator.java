@@ -23,9 +23,8 @@ public class Mediator{
 	 * Tells the builder to create a command and then pushes it to fileHandler.
 	 */
 	public void pushCommand(String text, String type){
-		
-		if(type == "Additive"){
-			fileHandler.pushCommand(builder.CreateCommand(getMainViewText(), 0, getMainViewText().length(), "Additive"));
+		if(type == "Update"){
+			fileHandler.pushCommand(builder.CreateCommand(text, 0, text.length(), "Additive"));
 		}
 		
 		else{
@@ -112,7 +111,7 @@ public class Mediator{
 	}
 	 
 	public void updateFileBuffer(){
-		fileHandler.updateFileBuffer(getMainViewText());
+		pushCommand(getMainViewText(), "Update");
 	}
 	
 	public boolean getIsFunctional(){

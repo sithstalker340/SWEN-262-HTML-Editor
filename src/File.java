@@ -55,6 +55,7 @@ public class File{
 	}
 	
 	public void setBuffer(String s){
+		System.out.println(id + ": set buffer");
 		buffer = s;
 	}
 	
@@ -63,6 +64,7 @@ public class File{
    * @param cmd
    */
 	public void pushCommand(Command cmd){
+		System.out.println(id + ": push cmd");
 		if(cmd == null){
 			System.out.println("cmd is null");
 			
@@ -82,6 +84,7 @@ public class File{
 	 * Removes and undo's the command.
 	 */
 	public void popCommand(){
+		System.out.println(id + ": pop cmd");
 		if(!commandStack.isEmpty()){
 			commandStack.getFirst().Undo(this);
 			redoStack.push(commandStack.getFirst());

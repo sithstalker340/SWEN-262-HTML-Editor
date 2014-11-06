@@ -54,11 +54,13 @@ public class TabView extends JPanel{
 		TextAreaView textView = new TextAreaView(mainView, listener);
 		textView.getTextArea().addKeyListener( new KeyListener(){
 			 public void keyReleased(KeyEvent e) {
-				 System.out.println("keyReleased");
 			 }
 
 			@Override
 			public void keyTyped(KeyEvent e) {
+				if(e.getKeyChar() == '\n' || e.getKeyChar()== '\b'){
+					mainView.getInputHandler().updateFileBuffer();
+				}
 			}
 
 			@Override
