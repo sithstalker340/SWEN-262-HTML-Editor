@@ -12,16 +12,25 @@ public class SortByAppear implements LinkedViewStrategy{
 	private List<String> urlList;
 	private String name;
 	
+	/**
+	 * Constructor of the SortByAppear class.
+	 */
 	public SortByAppear()
 	{
 		urlList = new ArrayList<String>();
 		this.name = "Appearance Sort";
 	}
 	
+	/**
+	 * Returns null beacause this method is only used in SortByAlpha.
+	 */
 	public List<Integer> numOccur() {
 		return null;
 	}
 	
+	/**
+	 * Returns the name of the Strategy type.
+	 */
 	public String getName(){
 		return name;
 	}

@@ -1,6 +1,15 @@
-
+/**
+ * Command for inserting a table.
+ * @author Braxton
+ */
 public class InsertTableCommand extends Command {
 	
+	/**
+	 * Constructor for table inserting command
+	 * @param startPosition
+	 * @param _rows
+	 * @param _cols
+	 */
 	public InsertTableCommand(int startPosition, int _rows, int _cols){
 		start = startPosition;
 		
@@ -19,6 +28,7 @@ public class InsertTableCommand extends Command {
 	
 	/**
 	 * Updates a file's text by replacing
+	 * @param file
 	 */
 	public void Apply(File file){
 		buffer = file.getBuffer();
@@ -28,6 +38,7 @@ public class InsertTableCommand extends Command {
 	
 	/**
 	 * Undoes the addition of text from a file
+	 * @param file
 	 */
 	public void Undo(File file){
 		file.setBuffer(buffer);

@@ -8,41 +8,55 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Handles the loading and saving of the file objects.
+ * @author Adam, Andrew, Braxton
+ *
+ */
 public class FileHandler {
 	private FileContent fileContent;
-	private int fileNumbers;
 	private Mediator mediator;
-	private FormatHelper formatHelper;
+	private int fileNumbers;
 	
+	/**
+	 * The constructor of the FileHandler class.
+	 * @param med
+	 */
 	public FileHandler(Mediator med){
 		fileNumbers = 0;
 		fileContent = new FileContent();
 		mediator = med;
-		formatHelper = new FormatHelper();
 	}
 		
+	// ACCESSORS
 	/**
-	 * Sends the parameter command to the active file
-	 * @param cmd
+	 * Sets whether the file is saved.
+	 * @param b
 	 */
-	public void pushCommand(Command cmd){
-		fileContent.pushCommand(cmd);
-		updateDisplay();
-	}
-		
-	/**
-	 * Undoes the most recent command of the active file
-	 */
-	public void popCommand(){
-		fileContent.popCommand();
-		updateDisplay();
+	public void setIsSaved(boolean b){
+		fileContent.setIsSaved(b);
 	}
 	
-	public void redoCommand(){
-		fileContent.redoCommand();
-		updateDisplay();
+	/**
+	 * Returns whether the file is well formed.
+	 * @return
+	 */
+	public boolean getIsFunctional(){
+		setIsFunctional();
+		return fileContent.getIsFunctional();
 	}
 	
+	/**
+	 * Sets whether the file is well formed.
+	 */
+	public void setIsFunctional(){
+		fileContent.setIsFunctional(wellFormed(fileContent.getActiveFile()));
+	}
+	
+	/**
+	 * Checks to see if the file can save.
+	 * @return
+	 */
 	public boolean canSave(){
 		return fileContent.getActiveFile() != null;
 	}
@@ -76,10 +90,62 @@ public class FileHandler {
 		
 		else return false;
 	}
-	
+
 	public String getBuffer(){
 		return fileContent.getBuffer();
 	}
+	//END ACCESSORS
+	
+	// COMMANDS
+	/**
+	 * Sends the parameter command to the active file
+	 * @param cmd
+	 */
+	public void pushCommand(Command cmd){
+		fileContent.pushCommand(cmd);
+		updateDisplay();
+	}
+		
+	/**
+	 * Undoes the most recent command of the active file
+	 */
+	public void popCommand(){
+		fileContent.popCommand();
+		updateDisplay();
+	}
+	
+	/**
+	 * Redo's the recently undone command.
+	 */
+	public void redoCommand(){
+		fileContent.redoCommand();
+		updateDisplay();
+	}
+	// END COMMANDS
+ 	
+	/**
+	 * Sets the active file's buffer 
+	 * @param s
+	 */
+	public void updateFileBuffer(String s){
+		fileContent.setBuffer(s);
+	}
+	
+	/**
+	 * Updates the Text box with the backends buffer.
+	 */
+	public void updateDisplay(){
+		mediator.setTextAreaString(fileContent.getBuffer());
+	}
+	
+	/**
+	 * Changes the active file.
+	 * @param id
+	 */
+	public void changeCurrentFile(int id){
+		fileContent.changeFile(id);
+	}
+	
 	
 	/**
 	 * Prompts the user to save the file with a desired name and location
@@ -105,18 +171,13 @@ public class FileHandler {
 			e1.printStackTrace();
 		}
 	}
+
 	
-	private String getNameFromPath( String path ){
-		String name = "";
-		
-		int lastPos = path.indexOf("\\");
-		while(lastPos != -1){
-			name = path.substring(lastPos + 1);
-			lastPos = path.indexOf("\\", lastPos + 2);
-		}
-		return name;
-	}
-	
+	/**
+	 * Creates new instance of a File.
+	 * @param name
+	 * @return
+	 */
 	public File createNewFile(String name){
 		File newFile;
 		newFile = new File("",fileNumbers);
@@ -181,6 +242,11 @@ public class FileHandler {
 		return newFile;
 	}
 	
+	/**
+	 * Closes the file and removes it from the list.
+	 * @param id
+	 * @return
+	 */
 	public boolean close(int id){
 		//If the file is unsaved, then prompt user to continue
 		File file = fileContent.getFileByID(id);
@@ -199,6 +265,7 @@ public class FileHandler {
 		}
 	}
 	
+	//TODO move wellformed to formathelper
 	/**
 	 * Checks to see if the text in the current file is valid HTML
 	 * @return boolean
@@ -286,6 +353,26 @@ public class FileHandler {
 		else return true;
 	}
 	
+	//PRIVATE METHODS 
+	/**
+	 * Returns the name from the path of the file.
+	 * @param path
+	 * @return
+	 */
+	private String getNameFromPath( String path ){
+		String name = "";
+		
+		int lastPos = path.indexOf("\\");
+		while(lastPos != -1){
+			name = path.substring(lastPos + 1);
+			lastPos = path.indexOf("\\", lastPos + 2);
+		}
+		return name;
+	}
+	
+	/**
+	 * Fires a prompt, informing the user that their HTML is not well formed.
+	 */
 	private void notifyIllformed(){
 		mediator.promptManager.displayMessage("Your file contains illformed HTML, some functionality may be disabled till this is corrected");
 	}
@@ -307,39 +394,6 @@ public class FileHandler {
 		
 		return false;
 	}
-	
-	/**
-	 * Sets the active file's buffer 
-	 * @param s
-	 */
-	public void updateFileBuffer(String s){
-		fileContent.setBuffer(s);
-	}
-	
-	public void updateDisplay(){
-		String buffer = fileContent.getBuffer();
-		mediator.setTextAreaString(buffer);
-	}
-	
-	public void changeCurrentFile(int id){
-		fileContent.changeFile(id);
-	}
-	
-	public void setIsSaved(boolean b){
-		fileContent.setIsSaved(b);
-	}
-	
-	public boolean getIsFunctional(){
-		setIsFunctional();
-		return fileContent.getIsFunctional();
-	}
-	
-	public void setIsFunctional(){
-		fileContent.setIsFunctional(wellFormed(fileContent.getActiveFile()));
-	}
-	
-	public String getTagLayout(){
-		return formatHelper.formatTabbedString(mediator.getMainViewText());
-	}
+ 	
 
-}
+} // END FILEHANDLER

@@ -1,42 +1,50 @@
-
+/**
+ * Command for inserting a List
+ * @author Adam
+ */
 public class InsertListCommand extends Command {
-	private int numberRows;
 	
-	public InsertListCommand(String textString, int start, int numRows){
-		text = textString;
-		start = start;
-		numberRows = numRows;
+	/**
+	 * Constructor for list inserting command
+	 * @param file
+	 */
+	public InsertListCommand(String tag, int start, int numRows){
+		text = "";
+		text += '<' + tag + '>';
+		
+		for(int i = 0; i < numRows; i++){
+			text += '\n';
+			
+			if(tag == "dl"){
+				text += "<dt> </dt>" + '\n' + "<dd> </dd>";
+			}else{
+				text += "<li> </li>";				
+			}
+		}
+		
+		text += '\n' + "<" + tag + ">";	
+		
+		this.start = start;
 		isUndoable = true;
 	}
 	
+	/**
+	 * Updates a file's text by replacing
+	 * it with the text + a desired substring
+	 * @param file
+	 */
 	public void Apply(File file) {
 		buffer = file.getBuffer();
 		
-	    StringBuilder builder = new StringBuilder();
-	    builder.append("\n");
-	    builder.append("<" + text + ">");
+	    String newBuffer = buffer.substring(0,start) + text + buffer.substring(start);
 	    
-		for(int i = 0; i < numberRows; i++){
-			if(text == "dl"){
-				builder.append('\n');
-				builder.append("<dt>" + " " + "</dt>"); 
-		        builder.append('\n');
-		        builder.append("<dd>"  + " " + "</dd>");   
-		    }
-
-		    else{
-		    	builder.append('\n');
-		    	builder.append("<li>" + " " + "</li>");
-		    }       
-		}
-		
-		builder.append('\n');
-	    builder.append("</" + text + ">");
-	    
-	    String newBuffer = buffer.substring(0,start) + builder.toString() + buffer.substring(start);
 		file.setBuffer( newBuffer );
 	}
 	
+	/**
+	 * Undoes the addition of text from a file
+	 * @param file
+	 */
 	public void Undo(File file) {
 		file.setBuffer(buffer);		
 	}

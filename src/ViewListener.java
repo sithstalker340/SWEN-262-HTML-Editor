@@ -4,17 +4,26 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
 
-//Methods to get and relay updates to the other view files
+/**
+ * Methods to get and relay updates to the other view files
+ * @author Dylan
+ *
+ */
 public class ViewListener implements ActionListener
 {
-	//Mediator mediator; // ViewListener shouldn't have a mediator object, it should be in InputHandler
 	InputHandler input;
 	
+	/**
+	 * The constructor of the ViewListener class.
+	 * @param i
+	 */
 	public ViewListener(InputHandler i){
 		input = i;
 	}
 
-	@Override
+	/**
+	 * Listeners for the Buttons and Menu items.
+	 */
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		//ButtonView

@@ -1,10 +1,10 @@
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import javax.swing.JTextArea;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.Document;
 
+/**
+ * Class that deals with the text area front end.
+ * @author Andrew
+ *
+ */
 @SuppressWarnings("serial")
 public class TextAreaView extends JTextArea{
 	
@@ -14,9 +14,12 @@ public class TextAreaView extends JTextArea{
 	JTextArea textArea;
 	String lastCharIn;
 	int prevCharPos;
-	boolean focus;
-	final Document document;
 	
+	/**
+	 * The constructor of the TestAreaView.
+	 * @param parent
+	 * @param listener
+	 */
 	public TextAreaView(MainView parent, ViewListener listener){
 		vListener = listener;
 		mainView = parent;
@@ -24,12 +27,6 @@ public class TextAreaView extends JTextArea{
 		textArea = new JTextArea(50, 50);
 		textArea.setWrapStyleWord(true);
         textArea.setLineWrap(true);
-      
-        document = textArea.getDocument();
-        focus = true;
-        
-        createFocusListener();
-        createDocumentListener();
 	}
 	
 	/**
@@ -40,44 +37,19 @@ public class TextAreaView extends JTextArea{
 		return textArea;
 	}
 	
+	/**
+	 * Returns the cursor start position.
+	 * @return
+	 */
 	public int getCursorStart(){
 		return textArea.getCaret().getDot();
 	}
 	
+	/**
+	 * Returns the cursor end position.
+	 * @return
+	 */
 	public int getCursorEnd(){
 		return textArea.getCaret().getMark();
-	}
-	
-	/**
-	 * Creates a listener for the focus of the text box.
-	 * Any time the box loses focus, its text is saved to the file it belongs to
-	 */
-	private  void createFocusListener(){
-		//TODO consider removing focus listener
-		textArea.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent e){
-				focus = true;
-			}
-			
-			public void focusLost(FocusEvent e){
-				focus = false;
-				//mainView.getInputHandler().updateFileBuffer();
-			}
-		});
-	}
-	
-	private void createDocumentListener(){
-		//TODO reval using document listener
-			document.addDocumentListener(new DocumentListener() {
-			public void insertUpdate(DocumentEvent e) {
-				mainView.setIsSaved(false);
-		    }
-		    public void removeUpdate(DocumentEvent e) {
-		    	mainView.setIsSaved(false);
-		    }
-		    public void changedUpdate(DocumentEvent e) {
-		        //Plain text components do not fire these events
-		    }
-		});
 	}
 }

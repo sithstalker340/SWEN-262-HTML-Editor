@@ -29,6 +29,10 @@ public class ImagePreviewer extends JFrame{
     JPanel buttonPanel;
     JLabel label;
     
+    /**
+     * The constructor of the ImagePreviewer class.
+     * @param buffer
+     */
     public ImagePreviewer(String buffer){
     	
     	path = "";
