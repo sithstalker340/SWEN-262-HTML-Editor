@@ -33,3 +33,10 @@ source - contains the source code
 documents - contains design, presentation, listing, vclog, and buildlog
 start.bat - runs the program with necessary settings
 r2editor.jar - runnable jar of the program
+
+Commit History:
+After accepting the invite to the project repo you can access the commit history page located here: https://bitbucket.org/262teamc/editor-2/commits/branch/master
+
+Extra Functionality:
+Reduced Functionality when not well formed.
+Command-line argument to open file with the program.
