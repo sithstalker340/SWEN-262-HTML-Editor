@@ -25,13 +25,24 @@ public class AdditiveCommand extends Command{
 		String buffer = file.getBuffer();
 		String newBuffer = "";
 		
+		System.out.println(file.getID() + ": endpos == buffer" + '\n' +
+				"Start: " + startPos + '\n' + 
+				"End: " + endPos + '\n' + 
+				"Buffer.length: " + buffer.length()
+		);
+		
 		if(buffer.length() == 0){
 			file.setBuffer(text);
 		}
-		
 		else{
-			newBuffer = buffer.substring(0,startPos) + text + buffer.substring(endPos);
-			file.setBuffer(newBuffer);
+			if(endPos >= buffer.length()){			
+				//newBuffer = buffer.substring(0,startPos) + text + buffer.substring(endPos - 1);
+				file.setBuffer(text);
+				file.setBuffer(newBuffer);
+			}else{
+				newBuffer = buffer.substring(0,startPos) + text + buffer.substring(endPos);
+				file.setBuffer(newBuffer);
+			}
 		}
 		
 		if(newBuffer != buffer){
