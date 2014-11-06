@@ -27,6 +27,12 @@ To toggle off the WordWrap functionality (default: on), click on "Edit" in the m
 
 To insert an HTML tag, select one of the HTML construct buttons above the buffer. For the three lists, a prompt appears asking how many list elements to create. For the table, a prompt appears asking for row and column amounts.
 
+To view a list of the URLs in the buffer, click "View" and select "Link View" (or ctrl+l), and then choose a sort method. It will update if a new link is added via button, but not if it's added by typing.
+
+To view the images in the buffer, click "View" and select "Preview Images" (or ctrl+i), and then choose an image to bring up.
+
+To 'Pretty Print' the tags in the buffer, click on "View" and select "Tag Layout" (or ctrl+t), and the tags will be separated into a bracket style layout with the start and end tags on separate lines and the content on the line between.
+
 Folder Structure:
 rel2project - main folder
 source - contains the source code
