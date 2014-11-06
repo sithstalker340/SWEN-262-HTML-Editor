@@ -63,6 +63,7 @@ public class MainView extends JFrame
 		if( tabView.closeAll() ){
 			//close program
 			this.dispose();
+			System.exit(0);
 		}		
 	}
 	
