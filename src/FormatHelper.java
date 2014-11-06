@@ -1,140 +1,134 @@
+import java.util.Arrays;
+
 
 public class FormatHelper 
 {
-	String input;
-	String output;
-	String[] lines;
-	int numTabs;
-	int tagType;
-	private final String TAB = "\t"; 
+	String[] selfClosing = {"meta", "link", "input"};
+	String[] normalTags = {"b", "i", "a", "header", "img", "table", "ol", "dd", "dt", "dl", "li", "td", "tr"};
+	
 	
 	public FormatHelper()
 	{
-		numTabs = 0;
-		input = "";
-		output = "";
-		tagType = 1; //-1 = non tag, 0 = close, 1 = open
 	}
 	
+	//assume in is well formed
 	public String formatTabbedString(String in)
 	{
-		input = in;
-		output = "";
+		int numTabs = 0;
+		boolean inTag = false;
+		//find instance of tag, open and end.  pass that string into another function to format
+		String result = "";
 		
-		String tab = "";
-		String tempPos = input;
+		int start = in.indexOf('<');
+		int end = in.indexOf('>');
 		
-		int startPos = input.indexOf('<');
-		int endPos = input.indexOf('>');
+		if(start == -1 || end == -1){
+			System.out.println("No well formed tags found");
+			return in;
+		}
 		
-		int lastEndPos = endPos;
-		boolean start = true;
+		//Add text before first tag
+		if( start > 0){
+			result += in.substring(0, start);
+		}
 		
-		while(tempPos.length() > 0){
-			tab = "";
-	
-			for(int i = 0; i < numTabs+1; i++){
-				tab += TAB;
-			}
+		//start loop
+		while( start > -1 && end > -1 ){
+			String tag = in.substring(start + 1,  end); // the string between the two tags found
 			
-			if(checkIsTag(tempPos.substring(startPos, endPos + 1))){
-				output += tab + tempPos.substring(startPos, endPos + 1) + '\n';
-				
-				if(tempPos.substring(startPos + 1, startPos + 2).equals("/")){
-					tagType = 0;
+			boolean isOpen = true;
+			if(tag.indexOf('/') == 0){
+				//This tag is a closing tag
+				tag = tag.substring(1);
+				isOpen = false;
+				if(inTag){
+					inTag = false;
+				}else{
+					if(numTabs != 0)
+						numTabs--;
 				}
-				
-				else tagType = 1;
-				
-				
-				lastEndPos = endPos;
-				input = tempPos;
-
-				//System.out.println("before: " + tempPos);
-				tempPos = tempPos.substring(endPos + 1);
-				//System.out.println("after: " + tempPos);
-				
-				
-				if(tempPos.length() <= 0) break;
-				
-
-				startPos = tempPos.indexOf('<');
-				endPos = tempPos.indexOf('>');
-
-				//System.out.println("input: " + input);
-				
-				if(start) {
-					start = !start;
-					numTabs = 0;
-				}
-				
-				else if(tempPos.length() > 0){
-					int newStart = input.indexOf('<');
-					//System.out.println("prev > in inuput: " + lastEndPos);
-					//System.out.println("next < in input: " + newStart);
-					
-					tab = "";
-					for(int i = 0; i < numTabs+1; i++){
-						tab += TAB;
-					}					
-					
-					output += tab + TAB + tempPos.substring(0, startPos) + '\n';	
-				}
-				
-				if(tagType == 1 && !tempPos.substring(1, 2).equals("/")){
+			}else{
+				if(inTag){
 					numTabs++;
-				}
-				
-				else if(tagType == 1 && tempPos.substring(1, 2).equals("/")){
-					numTabs -= 1;
-				}
-				
-				else if(tagType == -1){
-					System.out.println("hit");
-					
-				}
-				
-				else {
-					numTabs -= 1;
+				}else{
+					inTag = true;
 				}
 			}
 			
-			System.out.println(tempPos.substring(startPos, endPos + 1));
-			if(!checkIsTag(tempPos.substring(startPos, endPos + 1))){
-				tagType = -1;
-				System.out.println(tagType);
+			if(numTabs < 0){
+				System.out.println("Too many close tags");
+				return in;
+			}
+			
+			//IS IT A VALID TAG
+			if(tag.indexOf('=') > -1){ // tag is either A or IM
+				if(tag.indexOf("a href=") == 0){
+					//tag is a link				
+				}else if(tag.indexOf("img src=") == 0){
+					//tag is an img
+				}else{
+					System.out.println("Found non-supported tag: " + tag);
+					return in;
+				}
+			}else if(Arrays.asList(normalTags).contains(tag)){
+				//Tag is a normal tag			
+			}else if(Arrays.asList(selfClosing).contains(tag)){
+				//Tag is self closing
+				numTabs--;
+				if(numTabs == -1)
+					numTabs = 0;
+			}else{
+				System.out.println("Found non-supported tag: " + tag);
+				return in;
+			}
+			
+			//Tag is valid, oepnTag ( true = open, false = close )
+	
+			result += formatTag(tag, numTabs, isOpen);
+			
+			//Update start values
+			start = in.indexOf('<', end + 1);
+			end = in.indexOf('>', end + 1);
+			
+			if((end == -1 && start > -1) || (start == -1 && end > -1)){
+				System.out.println("Missmatch tags");
+				return in;
 			}
 		}
+		//end loop		
 		
-		return output;
+		//ADD REMIAINING STRING TO END OF RESULT
+		int p = -1; 
+		end = in.indexOf('>');
+		while(end > -1){
+			p = end;
+			end = in.indexOf('>', end + 1);
+		}
+		
+		if(p + 1 < in.length()){
+		result += in.substring(p);
+		}
+		
+		return result;		
 	}
 	
-	private boolean checkIsTag(String tag){
-		String[] selfClosing = {"meta", "link", "input", "tr"};
-		String[] normalTags = {"b", "i", "a", "header", "img", "table", "ol", "dd", "dt", "dl", "li", "td"};
-		
-		int endIndex = tag.indexOf('>');
-		if(endIndex > 1){
-			tag = tag.substring(1, tag.indexOf('>'));
+	private String formatTag(String tag, int numTabs, Boolean isOpen){
+		String result = "";
+		if(isOpen){
+			result += getTabs(numTabs) + '<' + tag + '>' + '\n';
+		}else{
+			result += getTabs(numTabs) + "</" + tag + '>' + '\n';
 		}
-		
-		for(int i = 0; i < selfClosing.length; i++){
-			if(selfClosing[i].equals(tag)){
-				return true;
-			}
-		}
-		
-		for(int i = 0; i < normalTags.length; i++){
-
-			if(normalTags[i].equals(tag) || ('/' + normalTags[i]).equals(tag)){
-				return true;
-			}
-			
-			else if(normalTags[i].contains("a href") || normalTags[i].contains("img src")){
-				return true;
-			}
-		}
-		
-		return false;
+		return result;
 	}
+	
+	
+	private String getTabs(int i){
+		String result = "";
+		for(int k = 0; k < i; k++){
+			result += '\t';
+		}
+		return result;
+	} 
+
 }

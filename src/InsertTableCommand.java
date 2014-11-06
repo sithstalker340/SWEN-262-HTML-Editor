@@ -20,6 +20,7 @@ public class InsertTableCommand extends Command {
 			for(int c = 0; c < _cols; c++){
 				text += "\n <td> </td>";
 			}			
+			text += '\n' + "</tr>";
 		}
 		text += "\n </table>";
 		isUndoable = true;

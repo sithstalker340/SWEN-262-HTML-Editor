@@ -22,7 +22,7 @@ public class InsertListCommand extends Command {
 			}
 		}
 		
-		text += '\n' + "<" + tag + ">";	
+		text += '\n' + "</" + tag + ">";	
 		
 		this.start = start;
 		isUndoable = true;
