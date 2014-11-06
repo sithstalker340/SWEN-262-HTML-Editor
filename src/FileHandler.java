@@ -12,11 +12,13 @@ public class FileHandler {
 	private FileContent fileContent;
 	private int fileNumbers;
 	private Mediator mediator;
+	private FormatHelper formatHelper;
 	
 	public FileHandler(Mediator med){
 		fileNumbers = 0;
 		fileContent = new FileContent();
 		mediator = med;
+		formatHelper = new FormatHelper();
 	}
 		
 	/**
@@ -316,8 +318,7 @@ public class FileHandler {
 	
 	public void updateDisplay(){
 		String buffer = fileContent.getBuffer();
-		
-		mediator.setTextAreaString(fileContent.getBuffer());
+		mediator.setTextAreaString(buffer);
 	}
 	
 	public void changeCurrentFile(int id){
@@ -336,4 +337,9 @@ public class FileHandler {
 	public void setIsFunctional(){
 		fileContent.setIsFunctional(wellFormed(fileContent.getActiveFile()));
 	}
+	
+	public String getTagLayout(){
+		return formatHelper.formatTabbedString(mediator.getMainViewText());
+	}
+
 }
