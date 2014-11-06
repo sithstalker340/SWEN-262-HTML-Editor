@@ -13,19 +13,22 @@ import javax.swing.JLabel;
 @SuppressWarnings("serial")
 public class ImagePreviewer extends JFrame{
            
-    BufferedImage img;
+    BufferedImage image;
     
     public ImagePreviewer(String path){
        try{
-           img = ImageIO.read(new File(path));
+           image = ImageIO.read(new File(path));
        }catch (IOException e){
     	   e.printStackTrace();
        }
-       ImageIcon imageIcon = new ImageIcon(img);
+       
+       ImageIcon imageIcon = new ImageIcon(image);
        JLabel jLabel = new JLabel();
-       jLabel.setIcon(imageIcon);
-       this.getContentPane().add(jLabel, BorderLayout.CENTER);
        this.setName("Image Preview");
+       jLabel.setIcon(imageIcon);
+       jLabel.setName("Image Preview");
+       this.getContentPane().add(jLabel, BorderLayout.CENTER);
+       
        this.pack();
        this.setLocationRelativeTo(null);
        this.setVisible(true);
