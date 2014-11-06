@@ -1,7 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 
+ * Implementation of the LinkedViewStrategy. Sorts the URL list by order of appearance.
+ * @author Adam, Andrew
+ *
+ */
 public class SortByAppear implements LinkedViewStrategy{
 	private String[] splitText;
 	private List<String> urlList;
@@ -12,7 +17,19 @@ public class SortByAppear implements LinkedViewStrategy{
 		urlList = new ArrayList<String>();
 		this.name = "Appearance Sort";
 	}
-
+	
+	public List<Integer> numOccur() {
+		return null;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	/**
+	 * Looks at the buffer and stripes out the URL tags. 
+	 * @return List<String>
+	 */
 	public List<String> parse(String buffer){
 		urlList = new ArrayList<String>();
 		
@@ -38,13 +55,5 @@ public class SortByAppear implements LinkedViewStrategy{
 		}
 		
 		return urlList;
-	}
-
-	public List<Integer> numOccur() {
-		return null;
-	}
-	
-	public String getName(){
-		return name;
 	}
 }

@@ -9,6 +9,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+/**
+ * LinkedView deals with displaying the URL tags from the editors buffer.
+ * @author Adam, Andrew
+ *
+ */
 @SuppressWarnings("serial")
 public class LinkedView extends JFrame {
 	JTextArea linkedViewList;
@@ -18,6 +23,12 @@ public class LinkedView extends JFrame {
 	String fileBuffer;
 	MainView mainView;
 	
+	/**
+	 * Creates and displays the LinkedView JFrame.
+	 * @param m
+	 * @param strategy
+	 * @param text
+	 */
 	public LinkedView(MainView m, LinkedViewStrategy strategy,String text){
 		this.strategy = strategy;
 		fileBuffer = text;
@@ -51,7 +62,8 @@ public class LinkedView extends JFrame {
         List<Integer> intList = strategy.numOccur();
         
         for(int i = 0; i < bufferList.size(); i++){
-        	if(intList != null){ //for alphabetical
+        	//for alphabetical
+        	if(intList != null){ 	
         		linkedViewList.append("url: " + bufferList.get(i) + " count: " + intList.get(i) + '\n');
         	}
         	
@@ -67,6 +79,10 @@ public class LinkedView extends JFrame {
         this.setVisible(true);
 	}
 	
+	/**
+	 * Method that updates the LinkView's list of URL's.
+	 * @param newBuffer
+	 */
 	public void updateLinkList(String newBuffer){
 		fileBuffer = newBuffer;
 		linkedViewList.setText("");
@@ -75,7 +91,8 @@ public class LinkedView extends JFrame {
 	    List<Integer> intList = strategy.numOccur();
 	       
 	    for(int i = 0; i < bufferList.size(); i++){
-	    	if(intList != null){ //for alphabetical
+	    	//for alphabetical
+	    	if(intList != null){
 	    		linkedViewList.append("url: " + bufferList.get(i) + " count: " + intList.get(i) + '\n');
 	        }
 	        
