@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of the LinkedViewStrategy. Sorts the URL list by alphabetical order. Lists the number of occurrences.
+ * @author Adam, Andrew
+ *
+ */
 public class SortByAlpha implements LinkedViewStrategy{
 	private String[] splitText;
 	private List<String> urlList;
@@ -13,14 +18,18 @@ public class SortByAlpha implements LinkedViewStrategy{
 		this.name = "Alphabetical Sort";
 	}
 	
-	public List<Integer> numOccur() {
+	public List<Integer> numOccur(){
 		return urlOccurance;
 	}
 	
 	public String getName(){
 		return name;
 	}
-
+	
+	/**
+	 * Looks at the buffer and stripes out the URL tags. 
+	 * @return List<String>
+	 */
 	public List<String> parse(String buffer) {
 		urlList = new ArrayList<String>();
 		urlOccurance = new ArrayList<Integer>();
@@ -59,6 +68,9 @@ public class SortByAlpha implements LinkedViewStrategy{
 		return urlList;
 	}
 	
+	/**
+	 * Orders the URL list in alphabetical order.
+	 */
 	private void sort(){
 		int j;
 		boolean flag = true;
