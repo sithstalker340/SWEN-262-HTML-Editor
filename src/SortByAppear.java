@@ -12,6 +12,14 @@ public class SortByAppear implements LinkedViewStrategy{
 		urlList = new ArrayList<String>();
 		this.name = "Appearance Sort";
 	}
+	
+	public List<Integer> numOccur() {
+		return null;
+	}
+	
+	public String getName(){
+		return name;
+	}
 
 	public List<String> parse(String buffer){
 		urlList = new ArrayList<String>();
@@ -38,13 +46,5 @@ public class SortByAppear implements LinkedViewStrategy{
 		}
 		
 		return urlList;
-	}
-
-	public List<Integer> numOccur() {
-		return null;
-	}
-	
-	public String getName(){
-		return name;
 	}
 }

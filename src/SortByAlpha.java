@@ -12,6 +12,14 @@ public class SortByAlpha implements LinkedViewStrategy{
 		urlOccurance = new ArrayList<Integer>();
 		this.name = "Alphabetical Sort";
 	}
+	
+	public List<Integer> numOccur() {
+		return urlOccurance;
+	}
+	
+	public String getName(){
+		return name;
+	}
 
 	public List<String> parse(String buffer) {
 		urlList = new ArrayList<String>();
@@ -73,13 +81,5 @@ public class SortByAlpha implements LinkedViewStrategy{
 				}
 			}
 		}
-	}
-	
-	public List<Integer> numOccur() {
-		return urlOccurance;
-	}
-	
-	public String getName(){
-		return name;
 	}
 }
