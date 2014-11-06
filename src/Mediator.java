@@ -42,7 +42,6 @@ public class Mediator{
 	 */
 	public void popCommand(){
 		fileHandler.popCommand();
-		updateLinkedView();
 	}
 	
 	/**
