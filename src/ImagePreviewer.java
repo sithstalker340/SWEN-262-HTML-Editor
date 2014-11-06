@@ -29,6 +29,7 @@ public class ImagePreviewer extends JFrame{
     String path;
     JComboBox<String> comboBox;
     JPanel buttonPanel;
+    JLabel label;
     
     public ImagePreviewer(String buffer){
     	
@@ -42,7 +43,7 @@ public class ImagePreviewer extends JFrame{
     	JPanel panel = new JPanel();
     	panel.setLayout(new BorderLayout());
     	
-    	JLabel label = new JLabel("Select the image to preview: ");
+    	label = new JLabel("Select the image to preview: ");
     	
     	List<String> imgList = parse(buffer);
 
@@ -85,6 +86,10 @@ public class ImagePreviewer extends JFrame{
     	buttonPanel.add(yesButton);
     	buttonPanel.add(noButton);
     	
+    	label.setVisible(true);
+    	comboBox.setVisible(true);
+    	buttonPanel.setVisible(true);
+    	
     	panel.add(label, BorderLayout.NORTH);
     	panel.add(comboBox, BorderLayout.CENTER);
     	panel.add(buttonPanel, BorderLayout.SOUTH);
@@ -101,6 +106,7 @@ public class ImagePreviewer extends JFrame{
     
     public void preview()
     {
+    	label.setVisible(false);
     	buttonPanel.setVisible(false);
     	comboBox.setVisible(false);
     }
