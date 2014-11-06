@@ -1,11 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Allows the FileHandler to treat FileContent as a File object.
+ * @author Braxton, Andrew, Adam
+ *
+ */
 public class FileContent {
 	private File activeFile;
 	private List<File> fileList;
 	
+	/**
+	 * Constructor of the FileContent class.
+	 */
 	public FileContent(){
 		fileList = new ArrayList<File>();
 		activeFile = null;
@@ -40,15 +47,26 @@ public class FileContent {
 			activeFile.popCommand();
 	}
 		
+	/**
+	 * Redo's the recently undone command.
+	 */
 	public void redoCommand(){
 		if(activeFile != null)
 			activeFile.redoCommand();
 	}
 	
+	/**
+	 * Adds a new file to the file list.
+	 * @param file
+	 */
 	public void addFile(File file){
 		fileList.add(file);
 	}
 	
+	/**
+	 * Returns the active files location.
+	 * @return
+	 */
 	public String getPath(){
 		if(activeFile == null){
 			return "";
@@ -57,6 +75,10 @@ public class FileContent {
 		return activeFile.getPath();
 	}
 	
+	/**
+	 * Returns the active files buffer.
+	 * @return
+	 */
 	public String getBuffer(){
 		if(activeFile == null){
 			return "";
@@ -65,6 +87,10 @@ public class FileContent {
 		return activeFile.getBuffer();
 	}
 	
+	/**
+	 * Set's whether the active file has been saved.
+	 * @param b
+	 */
 	public void setIsSaved(boolean b){
 		if(activeFile == null){
 			return;
@@ -73,6 +99,10 @@ public class FileContent {
 		activeFile.setIsSaved(b);
 	}
 	
+	/**
+	 * Return's whether the active file has been saved.
+	 * @return
+	 */
 	public boolean getIsSaved(){
 		if(activeFile == null){
 			return true;
@@ -81,6 +111,10 @@ public class FileContent {
 		return activeFile.isSaved();
 	}
 	
+	/**
+	 * Returns the active files id.
+	 * @return
+	 */
 	public int getID(){
 		if(activeFile == null){
 			return -1;
@@ -89,15 +123,27 @@ public class FileContent {
 		return activeFile.getID();
 	}
 	
+	/**
+	 * Sets the active files buffer.
+	 * @param s
+	 */
 	public void setBuffer(String s){
 		if( s != null && activeFile != null)
 			activeFile.setBuffer(s);
 	}
 	
+	/**
+	 * Returns the active file.
+	 * @return
+	 */
 	public File getActiveFile(){
 		return activeFile;
 	}
 	
+	/**
+	 * Sets whether the active file is well formed.
+	 * @param b
+	 */
 	public void setIsFunctional(boolean b){
 		if(activeFile == null){
 			return;
@@ -106,6 +152,10 @@ public class FileContent {
 		activeFile.setIsFunctional(b);
 	}
 	
+	/**
+	 * Returns whether the active file is well formed.
+	 * @return
+	 */
 	public boolean getIsFunctional(){
 		if(activeFile == null){
 			return false;
@@ -114,6 +164,11 @@ public class FileContent {
 		return activeFile.getIsFunctional();
 	}
 	
+	/**
+	 * Finds file by id. Returns File.
+	 * @param id
+	 * @return
+	 */
 	public File getFileByID(int id){
 		for(File f : fileList){
 			if(f.getID() == id){
@@ -123,6 +178,10 @@ public class FileContent {
 		return null;//File doesn't exist, return NULL
 	}
 	
+	/**
+	 * Removes file from list.
+	 * @param file
+	 */
 	public void removeFile(File file){
 		if(activeFile == null){
 			return;
@@ -139,6 +198,10 @@ public class FileContent {
 		}
 	}
 	
+	/**
+	 * Sets location of active file.
+	 * @param path
+	 */
 	public void setPath( String path){
 		if(activeFile != null)
 			activeFile.setPath(path);
