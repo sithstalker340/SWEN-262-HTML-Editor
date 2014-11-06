@@ -102,6 +102,10 @@ public class File{
    * @param cmd
    */
 	public void pushCommand(Command cmd){
+		this.pushCommand(cmd, true);
+	}
+	
+	public void pushCommand(Command cmd, boolean clear){
 		if(cmd == null){
 			System.out.println("cmd is null");
 			
@@ -109,7 +113,9 @@ public class File{
 		cmd.Apply(this);
 		if(cmd.isUndoable){
 			commandStack.addFirst(cmd);
-			//redoStack.clear(); 
+			if(clear){
+				redoStack.clear();
+			}
 		}
 		
 		if(commandStack.size() > stackSize){
@@ -134,7 +140,7 @@ public class File{
 	public void redoCommand(){
 		if(redoStack.size() == 0){return;}
 		
-		this.pushCommand(redoStack.pop()); 
+		this.pushCommand(redoStack.pop(), false); 
 	}
 	
 	/**
