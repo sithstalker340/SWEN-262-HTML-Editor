@@ -23,6 +23,9 @@ public class MenuView extends JMenuBar
 	JMenuItem redo;
 	JMenuItem wordWrap;
 	
+	JMenu view;
+	JMenuItem chooseSort;
+	JMenuItem imgPreview;
 	
 	public MenuView(final MainView parent, ViewListener listener){
 		this.setSize(parent.getWidth(), 25);
@@ -116,6 +119,34 @@ public class MenuView extends JMenuBar
 		edit.add(wordWrap);
 
 		this.add(edit);
+		
+		
+		Action actionChooseSort = new AbstractAction("Linked view") {
+			public void actionPerformed(ActionEvent e){}
+		};
+		Action actionImgPreview = new AbstractAction("Preview image") {
+			public void actionPerformed(ActionEvent e){}
+		};
+		
+		actionChooseSort.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control L"));
+		actionImgPreview.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control I"));
+		
+		view = new JMenu();
+		
+		chooseSort = new JMenuItem(actionChooseSort);
+		chooseSort.setText("Linked view");
+		chooseSort.addActionListener(listener);
+	
+		imgPreview = new JMenuItem(actionImgPreview);
+		imgPreview.setText("Preview image");
+		imgPreview.addActionListener(listener);
+		
+		view.setText("View");
+		view.add(chooseSort);
+		view.add(imgPreview);
+		
+		this.add(view);
+		
 
 		this.setVisible(true);
 	}
