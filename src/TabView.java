@@ -54,12 +54,11 @@ public class TabView extends JPanel{
 		TextAreaView textView = new TextAreaView(mainView, listener);
 		textView.getTextArea().addKeyListener( new KeyListener(){
 			 public void keyReleased(KeyEvent e) {
+				 System.out.println("keyReleased");
 			 }
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("keytyped");
 			}
 
 			@Override
@@ -127,6 +126,10 @@ public class TabView extends JPanel{
 			int id = Integer.parseInt(tab.getName());
 			if(mainView.getInputHandler().closeTab(id)){
 				tabPane.remove(tab);
+				if(tabPane.getTabCount() == 0){
+					return true;
+				}
+				i = -1;
 			}else{
 				return false;
 			}
