@@ -137,7 +137,7 @@ public class PromptManager{
 	public int displayChoice(String message, String option1, String option2){
 		Object[] options = {option1, option2};
 		
-		//create dialog box.  Store user responce
+		//create dialog box.  Store user response
 		return JOptionPane.showOptionDialog(
 					new JFrame(),
 			    	message,
