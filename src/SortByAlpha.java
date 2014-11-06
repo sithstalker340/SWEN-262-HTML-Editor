@@ -12,6 +12,9 @@ public class SortByAlpha implements LinkedViewStrategy{
 	private List<Integer> urlOccurance;
 	private String name;
 	
+	/**
+	 * Constructor of the SortByAlpha class.
+	 */
 	public SortByAlpha(){
 		urlList = new ArrayList<String>();
 		urlOccurance = new ArrayList<Integer>();
