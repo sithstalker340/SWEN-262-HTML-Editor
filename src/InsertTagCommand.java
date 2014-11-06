@@ -1,16 +1,11 @@
 
 public class InsertTagCommand extends Command{
 	
-	private String text;
-	private int startPos;
-	private int endPos;
-	private String buffer;
-	
 	public InsertTagCommand(String textString, int startPosition, int endPosition){
 		text = textString;
-		startPos = startPosition;
-		endPos = endPosition;
-		this.isUndoable = true;
+		start = startPosition;
+		end = endPosition;
+		isUndoable = true;
 	}
 	
 	/**
@@ -20,13 +15,14 @@ public class InsertTagCommand extends Command{
 	public void Apply(File file){
 		buffer = file.getBuffer();
 			
-		int temp = startPos;
-		if(startPos > endPos){
-			startPos = endPos;
-			endPos = temp;
+		int temp = start;
+		if(start > end){
+			start = end;
+			end = temp;
 		}
 		
-		file.setBuffer(buffer.substring(0,startPos) + "<"+ text + ">" + buffer.substring(startPos,endPos) + "</" + text + ">"+ buffer.substring(endPos));
+		String newBuffer = buffer.substring(0,start) + "<"+ text + ">" + buffer.substring(start,end) + "</" + text + ">"+ buffer.substring(end);
+		file.setBuffer(newBuffer);
 	}
 	
 	/**

@@ -1,11 +1,8 @@
 
 public class InsertTableCommand extends Command {
-	private int startPos;
-	private String text;
-	private String buffer;
 	
 	public InsertTableCommand(int startPosition, int _rows, int _cols){
-		startPos = startPosition;
+		start = startPosition;
 		
 		//construct table
 		text = "<table>";
@@ -16,7 +13,7 @@ public class InsertTableCommand extends Command {
 			}			
 		}
 		text += "\n </table>";
-		this.isUndoable = true;
+		isUndoable = true;
 	}
 	
 	
@@ -25,9 +22,9 @@ public class InsertTableCommand extends Command {
 	 */
 	public void Apply(File file){
 		buffer = file.getBuffer();
-		file.setBuffer(buffer.substring(0,startPos) + text + buffer.substring(startPos));
+		String newBuffer = buffer.substring(0,start) + text + buffer.substring(start);
+		file.setBuffer(newBuffer);
 	}
-	
 	
 	/**
 	 * Undoes the addition of text from a file

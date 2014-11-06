@@ -50,6 +50,10 @@ public class Mediator{
 	 */
 	public void popCommand(){
 		int cursorStart = mainView.getCursorStart();
+		if(mainView.getText() != fileHandler.getBuffer()){
+			//update the backend before undoing
+			pushCommand("", "update");
+		}
 		fileHandler.popCommand();
 		mainView.setCursorStart(cursorStart);
 	}

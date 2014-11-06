@@ -1,15 +1,11 @@
 
 public class SubtractiveCommand extends Command{
 	
-	private String text;
-	private int startPos;
-	private int endPos;
-	private String buffer;
-	
 	public SubtractiveCommand(String textString, int startPosition, int endPosition){
 		text = textString;
-		startPos = startPosition;
-		endPos = endPosition;
+		start = startPosition;
+		end = endPosition;
+		isUndoable = true;
 	}
 	
 	/**
