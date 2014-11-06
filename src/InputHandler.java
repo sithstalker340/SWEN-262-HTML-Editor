@@ -18,7 +18,7 @@ public class InputHandler {
 	 */
 	public void buttonViewInput(String tag){
 		//TODO confirm update condition in this if statement is correct
-		if(!mediator.getIsFunctional() && tag != "Subtractive" && tag != "update"){
+		if(!tag.equals("Subtractive") && !tag.equals("update") && !mediator.getIsFunctional()){
 			return;
 		}
 		

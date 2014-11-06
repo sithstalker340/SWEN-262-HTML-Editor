@@ -21,11 +21,30 @@ public class MainFile
 		mediator.setMainView(view);
 	}
 	
+	public MainFile(String path)
+	{
+		this();
+		
+		String name = "";
+		
+		int lastPos = path.indexOf("\\");
+		while(lastPos != -1){
+			name = path.substring(lastPos + 1);
+			lastPos = path.indexOf("\\", lastPos + 2);
+		}
+		
+		mediator.openFile(name, path);
+	}
+	
 	/**
 	 * Main method.
 	 * @param args
 	 */
 	public static void main(String args[]){
-		new MainFile();
+		if(args.length > 0 ){
+			new MainFile(args[0]);
+		}else{
+			new MainFile();
+		}
 	}
 }
