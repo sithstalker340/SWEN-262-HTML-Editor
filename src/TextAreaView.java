@@ -33,6 +33,22 @@ public class TextAreaView extends JTextArea{
 	}
 	
 	/**
+	 * Returns the text area 
+	 * @return
+	 */
+	public JTextArea getTextArea(){
+		return textArea;
+	}
+	
+	public int getCursorStart(){
+		return textArea.getCaret().getDot();
+	}
+	
+	public int getCursorEnd(){
+		return textArea.getCaret().getMark();
+	}
+	
+	/**
 	 * Creates a listener for the focus of the text box.
 	 * Any time the box loses focus, its text is saved to the file it belongs to
 	 */
@@ -63,22 +79,5 @@ public class TextAreaView extends JTextArea{
 		        //Plain text components do not fire these events
 		    }
 		});
-	}
-		
-			
-	/**
-	 * Returns the text area 
-	 * @return
-	 */
-	public JTextArea getTextArea(){
-		return textArea;
-	}
-	
-	public int getCursorStart(){
-		return textArea.getCaret().getDot();
-	}
-	
-	public int getCursorEnd(){
-		return textArea.getCaret().getMark();
 	}
 }
