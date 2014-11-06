@@ -8,11 +8,20 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Handles the loading and saving of the file objects.
+ * @author Adam, Andrew, Braxton
+ *
+ */
 public class FileHandler {
 	private FileContent fileContent;
 	private int fileNumbers;
 	private Mediator mediator;
 	
+	/**
+	 * The constructor of the FileHandler class.
+	 * @param med
+	 */
 	public FileHandler(Mediator med){
 		fileNumbers = 0;
 		fileContent = new FileContent();
@@ -36,11 +45,18 @@ public class FileHandler {
 		updateDisplay();
 	}
 	
+	/**
+	 * Redo's the recently undone command.
+	 */
 	public void redoCommand(){
 		fileContent.redoCommand();
 		updateDisplay();
 	}
 	
+	/**
+	 * Checks to see if the file can save.
+	 * @return
+	 */
 	public boolean canSave(){
 		return fileContent.getActiveFile() != null;
 	}
@@ -104,6 +120,11 @@ public class FileHandler {
 		}
 	}
 	
+	/**
+	 * Returns the name from the path of the file.
+	 * @param path
+	 * @return
+	 */
 	private String getNameFromPath( String path ){
 		String name = "";
 		
@@ -115,6 +136,11 @@ public class FileHandler {
 		return name;
 	}
 	
+	/**
+	 * Creates new instance of a File.
+	 * @param name
+	 * @return
+	 */
 	public File createNewFile(String name){
 		File newFile;
 		newFile = new File("",fileNumbers);
@@ -179,6 +205,11 @@ public class FileHandler {
 		return newFile;
 	}
 	
+	/**
+	 * Closes the file and removes it from the list.
+	 * @param id
+	 * @return
+	 */
 	public boolean close(int id){
 		//If the file is unsaved, then prompt user to continue
 		File file = fileContent.getFileByID(id);
@@ -284,6 +315,9 @@ public class FileHandler {
 		else return true;
 	}
 	
+	/**
+	 * Fires a prompt, informing the user that their HTML is not well formed.
+	 */
 	private void notifyIllformed(){
 		mediator.promptManager.displayMessage("Your file contains illformed HTML, some functionality may be disabled till this is corrected");
 	}
@@ -314,25 +348,43 @@ public class FileHandler {
 		fileContent.setBuffer(s);
 	}
 	
+	/**
+	 * Updates the Text box with the backends buffer.
+	 */
 	public void updateDisplay(){
 		String buffer = fileContent.getBuffer();
 		
 		mediator.setTextAreaString(fileContent.getBuffer());
 	}
 	
+	/**
+	 * Changes the active file.
+	 * @param id
+	 */
 	public void changeCurrentFile(int id){
 		fileContent.changeFile(id);
 	}
 	
+	/**
+	 * Sets whether the file is saved.
+	 * @param b
+	 */
 	public void setIsSaved(boolean b){
 		fileContent.setIsSaved(b);
 	}
 	
+	/**
+	 * Returns whether the file is well formed.
+	 * @return
+	 */
 	public boolean getIsFunctional(){
 		setIsFunctional();
 		return fileContent.getIsFunctional();
 	}
 	
+	/**
+	 * Sets whether the file is well formed.
+	 */
 	public void setIsFunctional(){
 		fileContent.setIsFunctional(wellFormed(fileContent.getActiveFile()));
 	}
