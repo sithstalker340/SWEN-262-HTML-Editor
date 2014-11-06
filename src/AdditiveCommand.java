@@ -1,4 +1,8 @@
-
+/**
+ * Adds text to the given position.
+ * @author Braxton
+ *
+ */
 public class AdditiveCommand extends Command{
 
 	public AdditiveCommand(String textString, int startPosition, int endPosition){

@@ -1,4 +1,8 @@
-
+/**
+ * Abstract class for the Command classes.
+ * @author Braxton.
+ *
+ */
 public abstract class Command {
 	
 	public boolean isUndoable;

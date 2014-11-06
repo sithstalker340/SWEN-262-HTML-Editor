@@ -2,6 +2,11 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Stack;
 
+/**
+ * Holds all of the users text.
+ * @author Adam, Braxton, Andrew
+ *
+ */
 public class File{
 	private Deque<Command> commandStack;
 	private Stack<Command> redoStack;
@@ -14,6 +19,7 @@ public class File{
 	
 	/**
 	 * The constructor of the File class.
+	 * @param int
 	 */
 	public File(int idNum){
 		commandStack = new ArrayDeque<Command>();
@@ -25,35 +31,68 @@ public class File{
 		isFunctional = false;
 	}
 	
+	/**
+	 * Overloaded Constructor of the File class.
+	 * @param b
+	 * @param idNum
+	 */
 	public File(String b,int idNum){
 		this(idNum);
 		buffer = b;
 	}
   
+	/**
+	 * Returns the id of the File.
+	 * @return
+	 */
 	public int getID(){
 		return id;
 	}
 	
+	/**
+	 * Returns the location of the File.
+	 * @return
+	 */
 	public String getPath(){
 		return location;
 	}
 	
+	/**
+	 * Returns the buffer of the File.
+	 * @return
+	 */
 	public String getBuffer(){
 		return buffer;
 	}
 	
+	/**
+	 * Boolean that checks to see if the File has been saved.
+	 * @return
+	 */
 	public boolean isSaved(){
 		return isSaved;
 	}
 	
+	/**
+	 * Sets whether the File was saved.
+	 * @param b
+	 */
 	public void setIsSaved(boolean b){
 		isSaved = b;
 	}
 	
+	/**
+	 * Sets the location of the File.
+	 * @param p
+	 */
 	public void setPath(String p){
 		location = p;
 	}
 	
+	/**
+	 * Sets the buffer of the File.
+	 * @param s
+	 */
 	public void setBuffer(String s){
 		buffer = s;
 	}
@@ -89,16 +128,27 @@ public class File{
 		}
 	}
 	
+	/**
+	 * Redo's the recently undone command.
+	 */
 	public void redoCommand(){
 		if(redoStack.size() == 0){return;}
 		
 		this.pushCommand(redoStack.pop()); 
 	}
 	
+	/**
+	 * Well Formed Check.
+	 * @return
+	 */
 	public boolean getIsFunctional(){
 		return isFunctional;
 	}
 	
+	/**
+	 * Sets whether the File is well formed.
+	 * @param b
+	 */
 	public void setIsFunctional(boolean b){
 		isFunctional = b;
 	}

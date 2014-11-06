@@ -1,4 +1,8 @@
-
+/**
+ * Builds all of the concrete command classes.
+ * @author Braxton
+ *
+ */
 public class CommandBuilder{
 	private Mediator mediator;
 	
@@ -6,7 +10,14 @@ public class CommandBuilder{
 		mediator = _m;
 	}
 	
-	//Handles creation of commands 
+	/**
+	 * Handles creation of commands 
+	 * @param text
+	 * @param start
+	 * @param end
+	 * @param type
+	 * @return Command
+	 */
 	public Command CreateCommand(String text, int start, int end, String type){
 		Command cmd;
 		

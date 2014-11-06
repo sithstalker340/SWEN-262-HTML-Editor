@@ -18,10 +18,16 @@ public class SortByAlpha implements LinkedViewStrategy{
 		this.name = "Alphabetical Sort";
 	}
 	
+	/**
+	 *Returns the number of occurrences that each URL appear. 
+	 */
 	public List<Integer> numOccur(){
 		return urlOccurance;
 	}
 	
+	/**
+	 * Returns the name of the Strategy type.
+	 */
 	public String getName(){
 		return name;
 	}

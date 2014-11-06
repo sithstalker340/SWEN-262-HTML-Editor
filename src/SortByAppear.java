@@ -18,10 +18,16 @@ public class SortByAppear implements LinkedViewStrategy{
 		this.name = "Appearance Sort";
 	}
 	
+	/**
+	 * Returns null beacause this method is only used in SortByAlpha.
+	 */
 	public List<Integer> numOccur() {
 		return null;
 	}
 	
+	/**
+	 * Returns the name of the Strategy type.
+	 */
 	public String getName(){
 		return name;
 	}
