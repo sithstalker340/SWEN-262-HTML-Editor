@@ -101,7 +101,7 @@ public class InputHandler {
 			case "Linked view":	mediator.createNewLinkedView();	return;
 			
 			case "Preview image":
-				System.out.println("Preview image WRAP DOESNT GO ANYWHERE");
+				new ImagePreviewer("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\Discrete Math Formula's.PNG");
 				break;
 		}
 	}
