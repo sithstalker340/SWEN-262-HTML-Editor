@@ -109,11 +109,15 @@ public class InputHandler {
 				break;
 			
 			case "Preview image":
-				new ImagePreviewer(mediator.getMainViewText());
+				if(mediator.getIsFunctional()){
+					new ImagePreviewer(mediator.getMainViewText());
+				}
 				break;
 				
 			case "Tag layout":
-				mediator.pushCommand("", "tagLayout");
+				if(mediator.getIsFunctional()){
+					mediator.pushCommand("", "tagLayout");
+				}
 				break;
 		}
 	}

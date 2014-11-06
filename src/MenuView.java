@@ -24,7 +24,6 @@ public class MenuView extends JMenuBar
 	JMenu edit;
 	JMenuItem undo;
 	JMenuItem redo;
-	JMenuItem wordWrap;
 	
 	JMenu view;
 	JMenuItem chooseSort;
@@ -100,13 +99,9 @@ public class MenuView extends JMenuBar
 		Action actionRedo = new AbstractAction("Redo") {
 			public void actionPerformed(ActionEvent e){}
 		};
-		Action actionWordWrap = new AbstractAction("WordWrap") {
-			public void actionPerformed(ActionEvent e){}
-		};		
 		
 		actionUndo.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control Z"));
 		actionRedo.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control Y"));
-		actionWordWrap.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control W"));
 		
 		edit = new JMenu();
 
@@ -118,14 +113,10 @@ public class MenuView extends JMenuBar
 		redo.setText("Redo");
 		redo.addActionListener(listener);
 
-		wordWrap = new JMenuItem(actionWordWrap);
-		wordWrap.setText("Word Wrap");
-		wordWrap.addActionListener(listener);
-
 		edit.setText("Edit");
 		edit.add(undo);
 		edit.add(redo);
-		edit.add(wordWrap);
+
 
 		this.add(edit);
 		
