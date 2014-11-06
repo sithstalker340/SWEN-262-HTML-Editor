@@ -28,18 +28,21 @@ public class FileContent {
 	 * @param cmd
 	 */
 	public void pushCommand(Command cmd){
-		activeFile.pushCommand(cmd);
+		if(activeFile != null)
+			activeFile.pushCommand(cmd);
 	}
 		
 	/**
 	 * Undoes the most recent command of the active file
 	 */
 	public void popCommand(){
-		activeFile.popCommand();
+		if(activeFile != null)
+			activeFile.popCommand();
 	}
 		
 	public void redoCommand(){
-		activeFile.redoCommand();
+		if(activeFile != null)
+			activeFile.redoCommand();
 	}
 	
 	public void addFile(File file){
@@ -47,22 +50,42 @@ public class FileContent {
 	}
 	
 	public String getPath(){
+		if(activeFile == null){
+			return "";
+		}
+			
 		return activeFile.getPath();
 	}
 	
 	public String getBuffer(){
+		if(activeFile == null){
+			return "";
+		}
+		
 		return activeFile.getBuffer();
 	}
 	
 	public void setIsSaved(boolean b){
+		if(activeFile == null){
+			return;
+		}
+		
 		activeFile.setIsSaved(b);
 	}
 	
 	public boolean getIsSaved(){
+		if(activeFile == null){
+			return true;
+		}
+		
 		return activeFile.isSaved();
 	}
 	
 	public int getID(){
+		if(activeFile == null){
+			return -1;
+		}
+		
 		return activeFile.getID();
 	}
 	
@@ -79,6 +102,7 @@ public class FileContent {
 		if(activeFile == null){
 			return;
 		}
+		
 		activeFile.setIsFunctional(b);
 	}
 	
@@ -100,6 +124,10 @@ public class FileContent {
 	}
 	
 	public void removeFile(File file){
+		if(activeFile == null){
+			return;
+		}
+		
 		fileList.remove(file);
 		if( activeFile == file ){
 			activeFile = null;

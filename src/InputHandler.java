@@ -88,16 +88,15 @@ public class InputHandler {
 			break;
 			
 			case "Undo":
-				System.out.println("Undo");
 				mediator.popCommand();
 			break;
 			
 			case "Redo":
-				System.out.println("Redo");
+				System.out.println("Redo DOESNT GO ANYWHERE");
 			break;
 			
 			case "Word Wrap":
-				System.out.println("Word wrap toggled");
+				System.out.println("WORD WRAP DOESNT GO ANYWHERE");
 			break;
 		}
 	}
