@@ -39,7 +39,7 @@ public class CommandBuilder{
 		
 		else if(type == "list"){
 			
-			String s = mediator.promptManager.displayLines1("How many items do you want in your list?");
+			String s = mediator.promptManager.displayLines1("Enter the number of list elements:");
 			if(s != ""){
 				try{
 					int i = Integer.parseInt(s); 
