@@ -1,18 +1,13 @@
 
 public class AdditiveCommand extends Command{
-	
-	private String text;
-	private int startPos;
-	private int endPos;
-	private String buffer;
-	
+
 	public AdditiveCommand(String textString, int startPosition, int endPosition){
 		text = textString;
-		startPos = startPosition;
-		endPos = endPosition;
+		start = startPosition;
+		end = endPosition;
 		
-		if(endPos == startPos){
-			endPos = startPos + text.length();
+		if(end == start){
+			end = start + text.length();
 		}
 		
 		this.isUndoable = false;
@@ -23,20 +18,20 @@ public class AdditiveCommand extends Command{
 	 * it with the text + a desired substring
 	 */
 	public void Apply(File file){
-		String buffer = file.getBuffer();
+		String b = file.getBuffer();
 		
-		if(buffer.length() == 0 || endPos >= buffer.length() ){
+		if(b.length() == 0 || end >= b.length() ){
 			//replace file buffer with newer one
 			file.setBuffer(text);
 			isUndoable = true;
-			this.buffer = buffer;
+			buffer = b;
 		}else{
-			String newBuffer = buffer.substring(0,startPos) + text + buffer.substring(endPos);
+			String newBuffer = b.substring(0,start) + text + b.substring(end);
 			
-			if(newBuffer != buffer){ 
+			if(newBuffer != b){ 
 				file.setBuffer(newBuffer); //update buffer
 				this.isUndoable = true; //buffers are different, save the change
-				this.buffer = buffer;
+				this.buffer = b;
 			}else{ 
 				return; //buffers are the same don't bother
 			}
