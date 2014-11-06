@@ -25,8 +25,8 @@ public class Mediator{
 	public void pushCommand(String text, String type){
 		int cursorStart = mainView.getCursorStart();
 		
-		if(type == "Update"){
-			fileHandler.pushCommand(builder.CreateCommand(text, 0, text.length(), "Additive"));
+		if(type == "update"){
+			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Additive"));
 		}
 		
 		else if(type == "Subtractive"){
@@ -68,6 +68,7 @@ public class Mediator{
 	 * @param s
 	 */
 	public void setTextAreaString(String s){
+		//TODO eval removing this
 		mainView.setText(s);
 	}
 	
@@ -76,6 +77,7 @@ public class Mediator{
 	 * @return
 	 */
 	public String getMainViewText(){
+		//TODO eval why this would be needed
 		return mainView.getText();
 	}	
 	
@@ -124,7 +126,8 @@ public class Mediator{
 	}
 	 
 	public void updateFileBuffer(){
-		pushCommand(getMainViewText(), "Update");
+		//TODO eval why this exists.  
+		pushCommand(getMainViewText(), "update");
 	}
 	
 	public boolean getIsFunctional(){

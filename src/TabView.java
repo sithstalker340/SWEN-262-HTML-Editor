@@ -61,7 +61,7 @@ public class TabView extends JPanel{
 				char key = e.getKeyChar();
 				if(e.getKeyChar() == '\n'){
 					//int cursor = getCursorStart();
-					mainView.getInputHandler().updateFileBuffer();
+					mainView.getInputHandler().buttonViewInput("update");
 					//setCursorStart(cursor);
 				}
 				
@@ -74,8 +74,6 @@ public class TabView extends JPanel{
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 		});
 
