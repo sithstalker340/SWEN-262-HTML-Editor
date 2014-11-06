@@ -1,6 +1,16 @@
-
+/**
+ * Command that deletes text.
+ * @author Braxton
+ *
+ */
 public class SubtractiveCommand extends Command{
 	
+	/**
+	 * The constructor for the SubtractiveCommand class.
+	 * @param textString
+	 * @param startPosition
+	 * @param endPosition
+	 */
 	public SubtractiveCommand(String textString, int startPosition, int endPosition){
 		text = textString;
 		start = startPosition;
