@@ -27,7 +27,10 @@ public class Mediator{
 			fileHandler.pushCommand(builder.CreateCommand(text, 0, text.length(), "Additive"));
 		}
 		
-		else{
+		else if(type == "Subtractive"){
+			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Subtractive"));
+			
+		}else{
 			fileHandler.pushCommand(builder.CreateCommand(text, mainView.getCursorStart() , mainView.getCursorEnd(), type));
 			
 			if(type == "link"){

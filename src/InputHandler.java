@@ -31,6 +31,7 @@ public class InputHandler {
 			case "table": type = "table";break;
 			case "img": type = "img";break;
 			case "update": type = "Additive"; break;
+			case "Subtractive": type=tag; break;
 		}
 		
 		if(mediator.getMainViewText() != null){

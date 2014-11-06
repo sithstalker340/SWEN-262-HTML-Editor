@@ -58,8 +58,12 @@ public class TabView extends JPanel{
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				if(e.getKeyChar() == '\n' || e.getKeyChar()== '\b'){
+				if(e.getKeyChar() == '\n'){
 					mainView.getInputHandler().updateFileBuffer();
+				}
+				
+				if( e.getKeyChar()== '\b'){
+					mainView.getInputHandler().buttonViewInput("Subtractive");
 				}
 			}
 
