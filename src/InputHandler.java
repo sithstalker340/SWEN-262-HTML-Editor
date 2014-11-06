@@ -101,7 +101,7 @@ public class InputHandler {
 			case "Linked view":	mediator.createNewLinkedView();	return;
 			
 			case "Preview image":
-				new ImagePreviewer("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\Discrete Math Formula's.PNG");
+				new ImagePreviewer("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\testbird.jpg");
 				break;
 		}
 	}
