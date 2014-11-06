@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -27,13 +28,25 @@ public class LinkedView extends JFrame {
 		this.setTitle(strategy.getName());
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		this.setVisible(true);
 		
         contentPane = new JPanel();
-        contentPane.setLayout(new BorderLayout(5, 5));
+        contentPane.setLayout(new BorderLayout());
+        
+        button = new JButton("Refresh");
+        
+        button.addActionListener(new ActionListener(){
+        	@Override
+        	public void actionPerformed(ActionEvent e){
+        		mainView.getInputHandler().updateLinkedView();
+        	}
+        });
+                
         linkedViewList = new JTextArea();
+        linkedViewList.setPreferredSize(new Dimension(this.getWidth(), this.getHeight() - button.getHeight()));
         linkedViewList.setEditable(false);
-        contentPane.add(linkedViewList);
+        
+        contentPane.add(linkedViewList, BorderLayout.NORTH);
+        contentPane.add(button, BorderLayout.SOUTH);
         
         List<String> bufferList = strategy.parse(fileBuffer);
         List<Integer> intList = strategy.numOccur();
@@ -49,18 +62,10 @@ public class LinkedView extends JFrame {
         	}
         }
 
-        button = new JButton("Refresh");
-        button.addActionListener(new ActionListener(){
-        	@Override
-        	public void actionPerformed(ActionEvent e){
-        		mainView.getInputHandler().updateLinkedView();
-        	}
-        });
-        
-        this.add(button);
         this.setContentPane(contentPane);      
         this.pack();
         this.setLocationRelativeTo(mainView);
+        this.setVisible(true);
 	}
 	
 	public void updateLinkList(String newBuffer){

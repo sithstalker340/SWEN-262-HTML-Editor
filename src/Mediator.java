@@ -136,7 +136,6 @@ public class Mediator{
 	public void updateLinkedView(){
 		if(mainView.linkedView != null){
 			updateFileBuffer();
-			System.out.println("current buffer: " + getMainViewText());
 			mainView.linkedView.updateLinkList(getMainViewText());
 		}
 	}
