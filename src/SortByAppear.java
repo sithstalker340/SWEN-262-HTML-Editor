@@ -12,6 +12,9 @@ public class SortByAppear implements LinkedViewStrategy{
 	private List<String> urlList;
 	private String name;
 	
+	/**
+	 * Constructor of the SortByAppear class.
+	 */
 	public SortByAppear()
 	{
 		urlList = new ArrayList<String>();

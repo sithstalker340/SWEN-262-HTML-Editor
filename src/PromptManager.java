@@ -9,6 +9,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * Creates the prompts that ask for the user's input.
+ * @author Andrew, Braxton, Arron
+ *
+ */
 public class PromptManager{
 	
 	String message;
@@ -17,7 +22,10 @@ public class PromptManager{
     boolean returnType;
 	
 	
-	//PromptHandler constructor
+	/**
+	 * The constructor for the PromptManager.
+	 * @param m
+	 */
 	public PromptManager(MainView m){
 		message = "";
 		mainView = m;
@@ -142,4 +150,3 @@ public class PromptManager{
 				);
 	}
 }
-
