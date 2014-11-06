@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.Box;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -60,6 +61,7 @@ public class ImagePreviewer extends JFrame{
         	@Override
         	public void actionPerformed(ActionEvent e){
         		path = comboBox.getSelectedItem().toString();
+        		System.out.println(path);
         		try{
         			displayImage(path);
         		}
@@ -98,8 +100,23 @@ public class ImagePreviewer extends JFrame{
     
     public void displayImage(String path){
     	 try{
-    		 System.out.println(path);
-             image = ImageIO.read(new File(path));
+    		 String tempPath = "";
+    		 tempPath = path.replaceAll("\\\\", "\\\\\\\\");
+    		 tempPath = tempPath.replaceAll("\"", "");
+    		 BufferedImage image = null;
+    	     
+    		 System.out.println(new File(tempPath).exists());
+    		 System.out.println(tempPath);
+    		 try
+    	     {
+    			 image = ImageIO.read(new File(tempPath));
+    	     }
+    	     catch (Exception e)
+    	     {
+    	         e.printStackTrace();
+    	     }
+    	        
+    		 //image = ImageIO.read(new File(path));
     		 ImageIcon imageIcon = new ImageIcon(image);
              JLabel jLabel = new JLabel();
              this.setName("Image Preview");
