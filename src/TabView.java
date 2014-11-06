@@ -204,4 +204,12 @@ public class TabView extends JPanel{
 		JLabel label = (JLabel)innerPane.getComponent(0);
 		label.setText(name);
 	}
+	
+	public void toggleWordWrap(){
+		if(getTextArea().getWrapStyleWord()){
+			getTextArea().setWrapStyleWord(false);
+		}
+		
+		else getTextArea().setWrapStyleWord(true);
+	}
 }
