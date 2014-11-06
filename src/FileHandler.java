@@ -18,7 +18,7 @@ public class FileHandler {
 		fileContent = new FileContent();
 		mediator = med;
 	}
-	
+		
 	/**
 	 * Sends the parameter command to the active file
 	 * @param cmd
@@ -73,6 +73,10 @@ public class FileHandler {
 		}
 		
 		else return false;
+	}
+	
+	public String getBuffer(){
+		fileContent.getBuffer();
 	}
 	
 	/**
@@ -313,8 +317,7 @@ public class FileHandler {
 	public void updateDisplay(){
 		String buffer = fileContent.getBuffer();
 		
-		if(buffer != "")
-			mediator.setTextAreaString(fileContent.getBuffer());
+		mediator.setTextAreaString(fileContent.getBuffer());
 	}
 	
 	public void changeCurrentFile(int id){
