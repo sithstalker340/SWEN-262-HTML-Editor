@@ -1,7 +1,10 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -10,12 +13,15 @@ import javax.swing.JTextArea;
 public class LinkedView extends JFrame {
 	JTextArea linkedViewList;
 	JPanel contentPane;
+	JButton button;
 	LinkedViewStrategy strategy;
 	String fileBuffer;
+	MainView mainView;
 	
-	public LinkedView(LinkedViewStrategy strategy,String text){
+	public LinkedView(MainView m, LinkedViewStrategy strategy,String text){
 		this.strategy = strategy;
 		fileBuffer = text;
+		mainView = m;
 		
 		this.setMinimumSize(new Dimension(300,450));
 		this.setTitle(strategy.getName());
@@ -43,9 +49,18 @@ public class LinkedView extends JFrame {
         	}
         }
 
+        button = new JButton("Refresh");
+        button.addActionListener(new ActionListener(){
+        	@Override
+        	public void actionPerformed(ActionEvent e){
+        		mainView.getInputHandler().updateLinkedView();
+        	}
+        });
+        
+        this.add(button);
         this.setContentPane(contentPane);      
         this.pack();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(mainView);
 	}
 	
 	public void updateLinkList(String newBuffer){

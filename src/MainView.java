@@ -97,10 +97,10 @@ public class MainView extends JFrame
 	
 	public void newLinkedView(int strategy ){
 		if(strategy == 1){
-			linkedView = new LinkedView(new SortByAppear(), getText());
+			linkedView = new LinkedView(this, new SortByAppear(), getText());
 		}
 		else{
-			linkedView = new LinkedView(new SortByAlpha(), getText());
+			linkedView = new LinkedView(this, new SortByAlpha(), getText());
 		}
 	}
 	
