@@ -28,6 +28,7 @@ public class ImagePreviewer extends JFrame{
     BufferedImage image;
     String path;
     JComboBox<String> comboBox;
+    JPanel buttonPanel;
     
     public ImagePreviewer(String buffer){
     	
@@ -51,7 +52,7 @@ public class ImagePreviewer extends JFrame{
     		comboBox.addItem(imgList.get(i));
     	}
     
-    	JPanel buttonPanel = new JPanel();
+    	buttonPanel = new JPanel();
     	buttonPanel.setLayout(new GridLayout(1,2));
     	
     	JButton yesButton = new JButton("Ok");
@@ -70,7 +71,7 @@ public class ImagePreviewer extends JFrame{
         			ex.printStackTrace();
         		}
         		
-        		endPreviewer();
+        		preview();
         	}
         });
     	
@@ -98,25 +99,24 @@ public class ImagePreviewer extends JFrame{
     	return path;
     }
     
+    public void preview()
+    {
+    	buttonPanel.setVisible(false);
+    	comboBox.setVisible(false);
+    }
+    
     public void displayImage(String path){
     	 try{
     		 String tempPath = "";
     		 tempPath = path.replaceAll("\\\\", "\\\\\\\\");
     		 tempPath = tempPath.replaceAll("\"", "");
-    		 BufferedImage image = null;
+    		 image = null;
     	     
     		 System.out.println(new File(tempPath).exists());
     		 System.out.println(tempPath);
-    		 try
-    	     {
-    			 image = ImageIO.read(new File(tempPath));
-    	     }
-    	     catch (Exception e)
-    	     {
-    	         e.printStackTrace();
-    	     }
+    		 
+    		 image = ImageIO.read(new File(tempPath));
     	        
-    		 //image = ImageIO.read(new File(path));
     		 ImageIcon imageIcon = new ImageIcon(image);
              JLabel jLabel = new JLabel();
              this.setName("Image Preview");
