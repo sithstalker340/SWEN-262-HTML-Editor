@@ -311,7 +311,10 @@ public class FileHandler {
 	}
 	
 	public void updateDisplay(){
-		mediator.setTextAreaString(fileContent.getBuffer());
+		String buffer = fileContent.getBuffer();
+		
+		if(buffer != "")
+			mediator.setTextAreaString(fileContent.getBuffer());
 	}
 	
 	public void changeCurrentFile(int id){

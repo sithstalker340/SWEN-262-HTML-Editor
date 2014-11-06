@@ -3,6 +3,8 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -50,6 +52,21 @@ public class TabView extends JPanel{
 		JPanel innerPane = new JPanel();
 		
 		TextAreaView textView = new TextAreaView(mainView, listener);
+		textView.getTextArea().addKeyListener( new KeyListener(){
+			 public void keyReleased(KeyEvent e) {
+				 System.out.println("keyReleased");
+			 }
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
 		JScrollPane scrollPane = new JScrollPane(textView.getTextArea());
 		scrollPane.setName("scrollPane");
@@ -105,12 +122,14 @@ public class TabView extends JPanel{
 	public boolean closeAll(){
 		int tabCount = tabPane.getTabCount();
 		for(int i = 0; i < tabCount; i++){
-
-			JPanel tab = (JPanel)tabPane.getComponentAt( tabPane.getSelectedIndex());
+			JPanel tab = (JPanel)tabPane.getComponentAt(i);
 			int id = Integer.parseInt(tab.getName());
-			
 			if(mainView.getInputHandler().closeTab(id)){
 				tabPane.remove(tab);
+				if(tabPane.getTabCount() == 0){
+					return true;
+				}
+				i = -1;
 			}else{
 				return false;
 			}
