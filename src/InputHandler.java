@@ -31,7 +31,6 @@ public class InputHandler {
 			case "table": type = "table";break;
 			case "img": type = "img";break;
 			case "update": type = "Additive"; break;
-			case "Linked View":	mediator.createNewLinkedView();	return;
 		}
 		
 		if(mediator.getMainViewText() != null){
@@ -81,23 +80,29 @@ public class InputHandler {
 				}
 				
 				else System.out.println("Error opening file");
-			break;
+				break;
 			
 			case "Exit":
 				mediator.quit();
-			break;
+				break;
 			
 			case "Undo":
 				mediator.popCommand();
-			break;
+				break;
 			
 			case "Redo":
 				System.out.println("Redo DOESNT GO ANYWHERE");
-			break;
+				break;
 			
 			case "Word Wrap":
 				System.out.println("WORD WRAP DOESNT GO ANYWHERE");
-			break;
+				break;
+			
+			case "Linked view":	mediator.createNewLinkedView();	return;
+			
+			case "Preview image":
+				System.out.println("Preview image WRAP DOESNT GO ANYWHERE");
+				break;
 		}
 	}
 	

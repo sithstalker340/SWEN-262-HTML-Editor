@@ -16,7 +16,6 @@ public class BtnView extends JPanel
 	JButton btnDl;//<dl>   (dictionary list)
 	JButton btnTable;//<Table>
 	JButton btnImg;//<img>   (Image)
-	JButton btnLinkView;
 	
 	ViewListener vListener;
 	
@@ -39,7 +38,7 @@ public class BtnView extends JPanel
 		btnA.addActionListener(vListener);
 		btnA.setFocusable(false);
 		
-		this.add(btnHeader = new JButton("Header"));
+		this.add(btnHeader = new JButton("header"));
 		btnHeader.addActionListener(vListener);
 		btnHeader.setFocusable(false);
 		
@@ -62,10 +61,6 @@ public class BtnView extends JPanel
 		this.add(btnImg = new JButton("img"));
 		btnImg.addActionListener(vListener);
 		btnImg.setFocusable(false);
-		
-		this.add(btnLinkView = new JButton("Linked View"));
-		btnLinkView.addActionListener(vListener);
-		btnLinkView.setFocusable(false);
 		
 		this.setVisible(true);
 	}
