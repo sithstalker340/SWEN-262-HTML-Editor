@@ -20,7 +20,7 @@ public class AdditiveCommand extends Command{
 	public void Apply(File file){
 		String b = file.getBuffer();
 		
-		if(text == b){
+		if(text.equals(b)){
 			return; //buffers are the same
 		}else{
 			isUndoable = true;

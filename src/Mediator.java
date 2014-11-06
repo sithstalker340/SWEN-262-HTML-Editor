@@ -34,7 +34,7 @@ public class Mediator{
 			
 		}else{
 			//update display
-			fileHandler.updateFileBuffer(getMainViewText());
+			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Additive"));
 			fileHandler.pushCommand(builder.CreateCommand(text, mainView.getCursorStart() , mainView.getCursorEnd(), type));
 			
 			if(type == "link"){
@@ -50,7 +50,9 @@ public class Mediator{
 	 */
 	public void popCommand(){
 		int cursorStart = mainView.getCursorStart();
-		if(mainView.getText() != fileHandler.getBuffer()){
+		String mt = mainView.getText() ;
+		String ft = fileHandler.getBuffer();
+		if(!mt.equals(ft)){
 			//update the backend before undoing
 			pushCommand("", "update");
 		}

@@ -93,7 +93,7 @@ public class InputHandler {
 				break;
 			
 			case "Redo":
-				System.out.println("Redo DOESNT GO ANYWHERE");
+				mediator.redoCommand();
 				break;
 			
 			case "Word Wrap":

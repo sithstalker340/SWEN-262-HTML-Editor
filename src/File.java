@@ -55,7 +55,6 @@ public class File{
 	}
 	
 	public void setBuffer(String s){
-		System.out.println(id + ": set buffer");
 		buffer = s;
 	}
 	
@@ -71,7 +70,7 @@ public class File{
 		cmd.Apply(this);
 		if(cmd.isUndoable){
 			commandStack.addFirst(cmd);
-			redoStack.clear(); 
+			//redoStack.clear(); 
 		}
 		
 		if(commandStack.size() > stackSize){
@@ -91,6 +90,8 @@ public class File{
 	}
 	
 	public void redoCommand(){
+		if(redoStack.size() == 0){return;}
+		
 		this.pushCommand(redoStack.pop()); 
 	}
 	
