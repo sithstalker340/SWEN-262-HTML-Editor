@@ -5,7 +5,7 @@ public class FormatHelper
 	String output;
 	String[] lines;
 	int numTabs;
-	boolean tagType;
+	int tagType;
 	private final String TAB = "\t"; 
 	
 	public FormatHelper()
@@ -13,7 +13,7 @@ public class FormatHelper
 		numTabs = 0;
 		input = "";
 		output = "";
-		tagType = true; //true for current tab is open tab
+		tagType = 1; //-1 = non tag, 0 = close, 1 = open
 	}
 	
 	public String formatTabbedString(String in)
@@ -32,56 +32,77 @@ public class FormatHelper
 		
 		while(tempPos.length() > 0){
 			tab = "";
-			for(int i = 0; i < numTabs; i++){
+	
+			for(int i = 0; i < numTabs+1; i++){
 				tab += TAB;
 			}
 			
 			if(checkIsTag(tempPos.substring(startPos, endPos + 1))){
-				output += tab + tempPos.substring(startPos, endPos + 1) + '\n'; 
-	
-				System.out.println(tempPos.substring(startPos + 1, startPos + 2));
+				output += tab + tempPos.substring(startPos, endPos + 1) + '\n';
+				
 				if(tempPos.substring(startPos + 1, startPos + 2).equals("/")){
-					tagType = false;
+					tagType = 0;
 				}
 				
-				else tagType = true;
+				else tagType = 1;
 				
 				
 				lastEndPos = endPos;
 				input = tempPos;
-				System.out.println("old string" + input);
+
+				//System.out.println("before: " + tempPos);
 				tempPos = tempPos.substring(endPos + 1);
-				System.out.println("new string" + tempPos);
+				//System.out.println("after: " + tempPos);
+				
+				
 				if(tempPos.length() <= 0) break;
 				
-				System.out.println("start pos1: " + startPos);
+
 				startPos = tempPos.indexOf('<');
 				endPos = tempPos.indexOf('>');
-				System.out.println("start pos2: " + startPos);
-				System.out.println("new tempString: " + tempPos);
+
+				//System.out.println("input: " + input);
 				
 				if(start) {
 					start = !start;
+					numTabs = 0;
 				}
 				
-				else if(tempPos.length() > 0 && input.substring(lastEndPos, input.indexOf(tempPos)).length() > 1){
-					System.out.println("last end pos: " + lastEndPos);
-					System.out.println("start pos: " + startPos);
-					System.out.println("adjusted start pos: " + input.indexOf(tempPos));
-					output += input.substring(lastEndPos + 1, input.indexOf(tempPos));	
+				else if(tempPos.length() > 0){
+					int newStart = input.indexOf('<');
+					//System.out.println("prev > in inuput: " + lastEndPos);
+					//System.out.println("next < in input: " + newStart);
+					
+					tab = "";
+					for(int i = 0; i < numTabs+1; i++){
+						tab += TAB;
+					}					
+					
+					output += tab + TAB + tempPos.substring(0, startPos) + '\n';	
 				}
 				
-				if(tagType && !tempPos.substring(1, 2).equals("/")){
+				if(tagType == 1 && !tempPos.substring(1, 2).equals("/")){
 					numTabs++;
 				}
 				
-				else if(tagType && tempPos.substring(1, 2).equals("/")){
-
+				else if(tagType == 1 && tempPos.substring(1, 2).equals("/")){
+					numTabs -= 1;
+				}
+				
+				else if(tagType == -1){
+					System.out.println("hit");
+					
 				}
 				
 				else {
-					numTabs--;
+					numTabs -= 1;
 				}
+			}
+			
+			System.out.println(tempPos.substring(startPos, endPos + 1));
+			if(!checkIsTag(tempPos.substring(startPos, endPos + 1))){
+				tagType = -1;
+				System.out.println(tagType);
 			}
 		}
 		

@@ -17,6 +17,7 @@ public class FileHandler {
 	private FileContent fileContent;
 	private Mediator mediator;
 	private int fileNumbers;
+	private FormatHelper formatHelper;
 	
 	/**
 	 * The constructor of the FileHandler class.
@@ -26,6 +27,7 @@ public class FileHandler {
 		fileNumbers = 0;
 		fileContent = new FileContent();
 		mediator = med;
+		formatHelper = new FormatHelper();
 	}
 		
 	// ACCESSORS
@@ -263,6 +265,10 @@ public class FileHandler {
 				return false;
 			}
 		}
+	}
+	
+	public String getTagLayout(){
+		return formatHelper.formatTabbedString(fileContent.getBuffer());
 	}
 	
 	//TODO move wellformed to formathelper
