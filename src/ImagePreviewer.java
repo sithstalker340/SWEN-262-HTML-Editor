@@ -28,6 +28,8 @@ public class ImagePreviewer extends JFrame{
     BufferedImage image;
     String path;
     JComboBox<String> comboBox;
+    JPanel buttonPanel;
+    JLabel label;
     
     public ImagePreviewer(String buffer){
     	
@@ -41,7 +43,7 @@ public class ImagePreviewer extends JFrame{
     	JPanel panel = new JPanel();
     	panel.setLayout(new BorderLayout());
     	
-    	JLabel label = new JLabel("Select the image to preview: ");
+    	label = new JLabel("Select the image to preview: ");
     	
     	List<String> imgList = parse(buffer);
 
@@ -51,7 +53,7 @@ public class ImagePreviewer extends JFrame{
     		comboBox.addItem(imgList.get(i));
     	}
     
-    	JPanel buttonPanel = new JPanel();
+    	buttonPanel = new JPanel();
     	buttonPanel.setLayout(new GridLayout(1,2));
     	
     	JButton yesButton = new JButton("Ok");
@@ -70,7 +72,7 @@ public class ImagePreviewer extends JFrame{
         			ex.printStackTrace();
         		}
         		
-        		endPreviewer();
+        		preview();
         	}
         });
     	
@@ -83,6 +85,10 @@ public class ImagePreviewer extends JFrame{
     	
     	buttonPanel.add(yesButton);
     	buttonPanel.add(noButton);
+    	
+    	label.setVisible(true);
+    	comboBox.setVisible(true);
+    	buttonPanel.setVisible(true);
     	
     	panel.add(label, BorderLayout.NORTH);
     	panel.add(comboBox, BorderLayout.CENTER);
@@ -98,25 +104,25 @@ public class ImagePreviewer extends JFrame{
     	return path;
     }
     
+    public void preview()
+    {
+    	label.setVisible(false);
+    	buttonPanel.setVisible(false);
+    	comboBox.setVisible(false);
+    }
+    
     public void displayImage(String path){
     	 try{
     		 String tempPath = "";
     		 tempPath = path.replaceAll("\\\\", "\\\\\\\\");
     		 tempPath = tempPath.replaceAll("\"", "");
-    		 BufferedImage image = null;
+    		 image = null;
     	     
     		 System.out.println(new File(tempPath).exists());
     		 System.out.println(tempPath);
-    		 try
-    	     {
-    			 image = ImageIO.read(new File(tempPath));
-    	     }
-    	     catch (Exception e)
-    	     {
-    	         e.printStackTrace();
-    	     }
+    		 
+    		 image = ImageIO.read(new File(tempPath));
     	        
-    		 //image = ImageIO.read(new File(path));
     		 ImageIcon imageIcon = new ImageIcon(image);
              JLabel jLabel = new JLabel();
              this.setName("Image Preview");
