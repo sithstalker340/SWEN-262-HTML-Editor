@@ -1,6 +1,15 @@
-
+/**
+ * Command for inserting a link.
+ * @author Adam
+ */
 public class InsertLinkCommand extends Command {
 	
+	/**
+	 * Constructor for link inserting command
+	 * @param url
+	 * @param startPosition
+	 * @param endPosition
+	 */
 	public InsertLinkCommand(String url, int startPosition, int endPosition){
 		text = url;
 		start = startPosition;
@@ -11,6 +20,7 @@ public class InsertLinkCommand extends Command {
 	/**
 	 * Updates a file's text by replacing
 	 * it with the text + a desired substring
+	 * @param file
 	 */
 	public void Apply(File file){
 		buffer = file.getBuffer();
@@ -20,6 +30,7 @@ public class InsertLinkCommand extends Command {
 	
 	/**
 	 * Undoes the addition of text from a file
+	 * @param file
 	 */
 	public void Undo(File file){
 		file.setBuffer(buffer);

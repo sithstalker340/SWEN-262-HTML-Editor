@@ -1,6 +1,15 @@
-
+/**
+ * Command for inserting tags
+ * @author Adam
+ */
 public class InsertTagCommand extends Command{
 	
+	/**
+	 * Constructor for tag insertion command
+	 * @param textString
+	 * @param startPosition
+	 * @param endPosition
+	 */
 	public InsertTagCommand(String textString, int startPosition, int endPosition){
 		text = textString;
 		start = startPosition;
@@ -11,6 +20,7 @@ public class InsertTagCommand extends Command{
 	/**
 	 * Updates a file's text by replacing
 	 * it with the text + a desired substring
+	 * @param file
 	 */
 	public void Apply(File file){
 		buffer = file.getBuffer();
@@ -27,6 +37,7 @@ public class InsertTagCommand extends Command{
 	
 	/**
 	 * Undoes the addition of text from a file
+	 * @param file
 	 */
 	public void Undo(File file){
 		file.setBuffer(buffer);
