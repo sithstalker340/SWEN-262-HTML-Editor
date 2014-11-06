@@ -1,6 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.File;
@@ -23,11 +21,10 @@ public class ImagePreviewer extends JFrame{
        }
        
        ImageIcon imageIcon = new ImageIcon(image);
-       JLabel jLabel = new JLabel();
+       JLabel label = new JLabel();
        this.setName("Image Preview");
-       jLabel.setIcon(imageIcon);
-       jLabel.setName("Image Preview");
-       this.getContentPane().add(jLabel, BorderLayout.CENTER);
+       label.setIcon(imageIcon);
+       this.getContentPane().add(label, BorderLayout.CENTER);
        
        this.pack();
        this.setLocationRelativeTo(null);
