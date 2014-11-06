@@ -16,7 +16,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-@SuppressWarnings("serial")
+/**
+ * ImagePreviewer reads and displays the given image location.
+ * @author Adam, and Andrew
+ *
+ */
 public class ImagePreviewer extends JFrame{
            
     BufferedImage image;
@@ -31,6 +35,11 @@ public class ImagePreviewer extends JFrame{
     	getImagePath(buffer);
     }
     
+    /**
+     * Prompts the user for the correct image that they want to preview.
+     * @param buffer
+     * @return String
+     */
     public String getImagePath(String buffer){
     	this.setMinimumSize(new Dimension(300, 100));
     	
@@ -98,6 +107,9 @@ public class ImagePreviewer extends JFrame{
     	return path;
     }
     
+    /**
+     * Sets all of the non image portions of the display to non visable.
+     */
     public void preview()
     {
     	label.setVisible(false);
@@ -105,6 +117,10 @@ public class ImagePreviewer extends JFrame{
     	comboBox.setVisible(false);
     }
     
+    /**
+     * Reads in and displays the selected image.
+     * @param path
+     */
     public void displayImage(String path){
     	 try{
     		 String tempPath = "";
@@ -136,6 +152,11 @@ public class ImagePreviewer extends JFrame{
          }
     }
     
+    /**
+     * Reads in the buffer and stripes the image paths from it.
+     * @param buffer
+     * @return List<String>
+     */
     public List<String> parse(String buffer){
 		List<String> imgList = new ArrayList<String>();
 		String[] splitText;

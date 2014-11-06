@@ -3,8 +3,11 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-//Methods to display buttons and run attached functions (inserts, HTML constructs)
-@SuppressWarnings("serial")
+/**
+ * Methods to display buttons and run attached functions (inserts, HTML constructs)
+ * @author Dylan, Andrew
+ *
+ */
 public class BtnView extends JPanel
 {
 	JButton btnA;//<a>
@@ -19,6 +22,11 @@ public class BtnView extends JPanel
 	
 	ViewListener vListener;
 	
+	/**
+	 * Creates and connects all of the buttons to the listeners.
+	 * @param parent
+	 * @param listener
+	 */
 	public BtnView(MainView parent, ViewListener listener){
 	
 		vListener = listener;
