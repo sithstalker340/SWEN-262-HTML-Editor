@@ -7,7 +7,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-//Methods to display and run dropdown menu functions (save, load, button commands)
+/**
+ * Methods to display and run dropdown menu functions (save, load, button commands)
+ * @author Dylan
+ */
 @SuppressWarnings("serial")
 public class MenuView extends JMenuBar
 {
@@ -27,6 +30,11 @@ public class MenuView extends JMenuBar
 	JMenuItem chooseSort;
 	JMenuItem imgPreview;
 	
+	/**
+	 * The constructor for the MenuView class.
+	 * @param parent
+	 * @param listener
+	 */
 	public MenuView(final MainView parent, ViewListener listener){
 		this.setSize(parent.getWidth(), 25);
 

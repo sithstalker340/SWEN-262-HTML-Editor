@@ -1,4 +1,8 @@
-
+/**
+ * The main file for the Editor Project.
+ * @author ALL
+ *
+ */
 public class MainFile
 {
 	MenuView menu;
@@ -6,6 +10,9 @@ public class MainFile
 	Mediator mediator;
 	InputHandler input;
 	
+	/**
+	 * The constructor of the MainFile class.
+	 */
 	public MainFile()
 	{
 		mediator = new Mediator();
@@ -14,6 +21,10 @@ public class MainFile
 		mediator.setMainView(view);
 	}
 	
+	/**
+	 * Main method.
+	 * @param args
+	 */
 	public static void main(String args[]){
 		new MainFile();
 	}
