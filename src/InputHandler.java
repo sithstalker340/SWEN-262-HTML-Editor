@@ -109,8 +109,11 @@ public class InputHandler {
 				break;
 			
 			case "Preview image":
-				//new ImagePreviewer("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\testbird.jpg");
 				new ImagePreviewer(mediator.getMainViewText());
+				break;
+				
+			case "Tag layout":
+				mediator.pushCommand("", "tagLayout");
 				break;
 		}
 	}

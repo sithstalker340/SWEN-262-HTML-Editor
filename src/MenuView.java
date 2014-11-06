@@ -29,6 +29,7 @@ public class MenuView extends JMenuBar
 	JMenu view;
 	JMenuItem chooseSort;
 	JMenuItem imgPreview;
+	JMenuItem tagFormatter;
 	
 	/**
 	 * The constructor for the MenuView class.
@@ -135,9 +136,13 @@ public class MenuView extends JMenuBar
 		Action actionImgPreview = new AbstractAction("Preview image") {
 			public void actionPerformed(ActionEvent e){}
 		};
+		Action actionTagFormatter = new AbstractAction("Tag layout") {
+			public void actionPerformed(ActionEvent e){}
+		};
 		
 		actionChooseSort.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control L"));
 		actionImgPreview.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control I"));
+		actionTagFormatter.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control T"));
 		
 		view = new JMenu();
 		
@@ -149,9 +154,14 @@ public class MenuView extends JMenuBar
 		imgPreview.setText("Preview image");
 		imgPreview.addActionListener(listener);
 		
+		tagFormatter = new JMenuItem(actionTagFormatter);
+		tagFormatter.setText("Tag layout");
+		tagFormatter.addActionListener(listener);
+		
 		view.setText("View");
 		view.add(chooseSort);
 		view.add(imgPreview);
+		view.add(tagFormatter);
 		
 		this.add(view);
 		

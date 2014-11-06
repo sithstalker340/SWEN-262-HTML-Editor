@@ -30,10 +30,19 @@ public class Mediator{
 			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Additive"));
 		}
 		
+		else if(type == "tagLayout"){
+			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Additive"));
+			text = fileHandler.getTagLayout();
+			fileHandler.pushCommand(builder.CreateCommand(text, 0, text.length(), "Additive"));
+			return;
+		}
+		
 		else if(type == "Subtractive"){
 			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Subtractive"));
 			
-		}else{
+		}
+		
+		else{
 			//update display
 			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Additive"));
 			fileHandler.pushCommand(builder.CreateCommand(text, cursorStart , cursorEnd, type));
