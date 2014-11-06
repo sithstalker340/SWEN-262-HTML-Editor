@@ -17,7 +17,7 @@ public class InputHandler {
 	 * @param txt
 	 */
 	public void buttonViewInput(String tag){
-		if(!mediator.getIsFunctional()){
+		if(!mediator.getIsFunctional() && tag != "Subtractive"){
 			return;
 		}
 		

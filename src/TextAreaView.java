@@ -44,7 +44,7 @@ public class TextAreaView extends JTextArea{
 			
 			public void focusLost(FocusEvent e){
 				focus = false;
-				mainView.getInputHandler().updateFileBuffer();
+				//mainView.getInputHandler().updateFileBuffer();
 			}
 		});
 	}

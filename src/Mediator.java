@@ -23,6 +23,8 @@ public class Mediator{
 	 * Tells the builder to create a command and then pushes it to fileHandler.
 	 */
 	public void pushCommand(String text, String type){
+		int cursorStart = mainView.getCursorStart();
+		
 		if(type == "Update"){
 			fileHandler.pushCommand(builder.CreateCommand(text, 0, text.length(), "Additive"));
 		}
@@ -31,26 +33,34 @@ public class Mediator{
 			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Subtractive"));
 			
 		}else{
+			//update display
+			fileHandler.updateFileBuffer(getMainViewText());
 			fileHandler.pushCommand(builder.CreateCommand(text, mainView.getCursorStart() , mainView.getCursorEnd(), type));
 			
 			if(type == "link"){
 				updateLinkedView();
 			}
 		}		
+		
+		mainView.setCursorStart(cursorStart);
 	}
 	
 	/**
 	 * Removes the most recent command
 	 */
 	public void popCommand(){
+		int cursorStart = mainView.getCursorStart();
 		fileHandler.popCommand();
+		mainView.setCursorStart(cursorStart);
 	}
 	
 	/**
 	 * Reapplies the most recently removed command
 	 */
 	public void redoCommand(){
+		int cursorStart = mainView.getCursorStart();
 		fileHandler.redoCommand();
+		mainView.setCursorStart(cursorStart);
 	}
 
 	/**
@@ -118,7 +128,6 @@ public class Mediator{
 	}
 	
 	public boolean getIsFunctional(){
-		updateFileBuffer();
 		return fileHandler.getIsFunctional();
 	}
 	

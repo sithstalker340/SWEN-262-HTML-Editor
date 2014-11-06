@@ -4,6 +4,7 @@ public class SubtractiveCommand extends Command{
 	private String text;
 	private int startPos;
 	private int endPos;
+	private String buffer;
 	
 	public SubtractiveCommand(String textString, int startPosition, int endPosition){
 		text = textString;
@@ -16,15 +17,14 @@ public class SubtractiveCommand extends Command{
 	 * it with the text - a desired substring
 	 */
 	public void Apply(File file){
-		String buffer = file.getBuffer();
-		file.setBuffer(buffer.substring(0, startPos) + buffer.substring(endPos));
+		buffer = file.getBuffer();
+		file.setBuffer(text);
 	}
 	
 	/**
 	 * Undoes the removal of text from a file
 	 */
 	public void Undo(File file){
-		String buffer = file.getBuffer();
-		file.setBuffer(buffer.substring(0,startPos) + text + buffer.substring(endPos));
+		file.setBuffer(buffer);
 	}
 }

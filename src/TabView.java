@@ -58,12 +58,17 @@ public class TabView extends JPanel{
 
 			@Override
 			public void keyTyped(KeyEvent e) {
+				char key = e.getKeyChar();
 				if(e.getKeyChar() == '\n'){
+					//int cursor = getCursorStart();
 					mainView.getInputHandler().updateFileBuffer();
+					//setCursorStart(cursor);
 				}
 				
-				if( e.getKeyChar()== '\b'){
+				if( e.getKeyChar() == '\b'){
+					//int cursor = getCursorStart();
 					mainView.getInputHandler().buttonViewInput("Subtractive");
+				//	setCursorStart(cursor);
 				}
 			}
 
@@ -191,6 +196,16 @@ public class TabView extends JPanel{
 		}
 		
 		return textArea.getCaret().getDot();
+	}
+	
+	public void setCursorStart(int n){
+		JTextArea textArea = getTextArea();
+		
+		if(textArea == null){
+			return; // no tabs exist
+		}
+		
+		textArea.getCaret().setDot(n);		
 	}
 	
 	public int getCursorEnd(){
