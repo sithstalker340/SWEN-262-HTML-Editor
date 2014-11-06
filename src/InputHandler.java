@@ -17,7 +17,8 @@ public class InputHandler {
 	 * @param txt
 	 */
 	public void buttonViewInput(String tag){
-		if(!mediator.getIsFunctional()){
+		//TODO confirm update condition in this if statement is correct
+		if(!mediator.getIsFunctional() && tag != "Subtractive" && tag != "update"){
 			return;
 		}
 		
@@ -30,7 +31,7 @@ public class InputHandler {
 			case "dl": type = "list";break;
 			case "table": type = "table";break;
 			case "img": type = "img";break;
-			case "update": type = "Additive"; break;
+			case "update": type =tag; break;
 			case "Subtractive": type=tag; break;
 		}
 		

@@ -37,6 +37,7 @@ public class TextAreaView extends JTextArea{
 	 * Any time the box loses focus, its text is saved to the file it belongs to
 	 */
 	private  void createFocusListener(){
+		//TODO consider removing focus listener
 		textArea.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 				focus = true;
@@ -44,12 +45,13 @@ public class TextAreaView extends JTextArea{
 			
 			public void focusLost(FocusEvent e){
 				focus = false;
-				mainView.getInputHandler().updateFileBuffer();
+				//mainView.getInputHandler().updateFileBuffer();
 			}
 		});
 	}
 	
 	private void createDocumentListener(){
+		//TODO reval using document listener
 			document.addDocumentListener(new DocumentListener() {
 			public void insertUpdate(DocumentEvent e) {
 				mainView.setIsSaved(false);

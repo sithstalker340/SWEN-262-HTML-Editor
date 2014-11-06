@@ -111,4 +111,8 @@ public class MainView extends JFrame
 	public void toggleWordWrap(){
 		tabView.toggleWordWrap();
 	}
+	
+	public void setCursorStart(int n){
+		tabView.setCursorStart(n);
+	}
 }

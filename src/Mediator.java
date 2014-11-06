@@ -23,34 +23,44 @@ public class Mediator{
 	 * Tells the builder to create a command and then pushes it to fileHandler.
 	 */
 	public void pushCommand(String text, String type){
-		if(type == "Update"){
-			fileHandler.pushCommand(builder.CreateCommand(text, 0, text.length(), "Additive"));
+		int cursorStart = mainView.getCursorStart();
+		
+		if(type == "update"){
+			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Additive"));
 		}
 		
 		else if(type == "Subtractive"){
 			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Subtractive"));
 			
 		}else{
+			//update display
+			fileHandler.updateFileBuffer(getMainViewText());
 			fileHandler.pushCommand(builder.CreateCommand(text, mainView.getCursorStart() , mainView.getCursorEnd(), type));
 			
 			if(type == "link"){
 				updateLinkedView();
 			}
 		}		
+		
+		mainView.setCursorStart(cursorStart);
 	}
 	
 	/**
 	 * Removes the most recent command
 	 */
 	public void popCommand(){
+		int cursorStart = mainView.getCursorStart();
 		fileHandler.popCommand();
+		mainView.setCursorStart(cursorStart);
 	}
 	
 	/**
 	 * Reapplies the most recently removed command
 	 */
 	public void redoCommand(){
+		int cursorStart = mainView.getCursorStart();
 		fileHandler.redoCommand();
+		mainView.setCursorStart(cursorStart);
 	}
 
 	/**
@@ -58,6 +68,7 @@ public class Mediator{
 	 * @param s
 	 */
 	public void setTextAreaString(String s){
+		//TODO eval removing this
 		mainView.setText(s);
 	}
 	
@@ -66,6 +77,7 @@ public class Mediator{
 	 * @return
 	 */
 	public String getMainViewText(){
+		//TODO eval why this would be needed
 		return mainView.getText();
 	}	
 	
@@ -114,11 +126,11 @@ public class Mediator{
 	}
 	 
 	public void updateFileBuffer(){
-		pushCommand(getMainViewText(), "Update");
+		//TODO eval why this exists.  
+		pushCommand(getMainViewText(), "update");
 	}
 	
 	public boolean getIsFunctional(){
-		updateFileBuffer();
 		return fileHandler.getIsFunctional();
 	}
 	
