@@ -107,4 +107,8 @@ public class MainView extends JFrame
 	public void updateFileName(String name){
 		tabView.updateFileName(name);
 	}
+	
+	public void toggleWordWrap(){
+		tabView.toggleWordWrap();
+	}
 }

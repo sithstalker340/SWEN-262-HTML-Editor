@@ -95,10 +95,16 @@ public class InputHandler {
 				break;
 			
 			case "Word Wrap":
-				System.out.println("WORD WRAP DOESNT GO ANYWHERE");
+				if(mediator.getIsFunctional()){
+					mediator.toggleWordWrap();
+				}
 				break;
 			
-			case "Linked view":	mediator.createNewLinkedView();	return;
+			case "Linked view":	
+				if(mediator.getIsFunctional()){
+					mediator.createNewLinkedView();
+				}
+				break;
 			
 			case "Preview image":
 				new ImagePreviewer("C:\\Users\\Adam\\Desktop\\TEMP_Important\\SWEN-262\\Editor 2\\testbird.jpg");

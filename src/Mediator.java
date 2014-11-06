@@ -137,4 +137,8 @@ public class Mediator{
 			mainView.linkedView.updateLinkList(getMainViewText());
 		}
 	}
+	
+	public void toggleWordWrap(){
+		mainView.toggleWordWrap();
+	}
 }
