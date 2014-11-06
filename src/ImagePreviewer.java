@@ -25,6 +25,13 @@ import javax.swing.JFrame;
 	           img = ImageIO.read(new File(path));
 	       } catch (IOException e) {
 	       }
+	       
+	       JFrame f = new JFrame("Load Image Sample");
+           
+	 
+	        f.add(this);
+	        f.pack();
+	        f.setVisible(true);
 	 
 	    }
 	 
