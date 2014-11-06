@@ -36,6 +36,7 @@ r2editor.jar - runnable jar of the program
 
 Commit History:
 After accepting the invite to the project repo you can access the commit history page located here: https://bitbucket.org/262teamc/editor-2/commits/branch/master
+It is also available in the documents folder under the name commit_log.txt.
 
 Extra Functionality:
 Reduced Functionality when not well formed.
