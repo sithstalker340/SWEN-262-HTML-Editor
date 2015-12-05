@@ -1,7 +1,9 @@
+package rel2project.src;
+
 import java.util.List;
 
 /**
- * Abtract Strategy for the LinkedView class.
+ * Abstract Strategy for the LinkedView class.
  * @author Adam
  *
  */
