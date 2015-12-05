@@ -1,5 +1,5 @@
 READ ME Version 2.0
-Team C - Braxton Frederick, Andrew Vogler, Arron Reed, Adam Audycki, Dylan Hogue
+Team C - Braxton Frederick, Andrew Vogler, Arron Reed, Adam Audycki
 SWEN 262-01
 11/5/14
 
