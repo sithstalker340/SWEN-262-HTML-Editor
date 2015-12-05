@@ -1,3 +1,6 @@
+package commands;
+import editor.File;
+
 /**
  * Command for inserting a link.
  * @author Adam

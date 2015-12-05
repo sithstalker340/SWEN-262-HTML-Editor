@@ -1,6 +1,9 @@
+package editor;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Stack;
+
+import commands.Command;
 
 /**
  * Holds all of the users text.

@@ -1,3 +1,6 @@
+package commands;
+import editor.File;
+
 /**
  * Abstract class for the Command classes.
  * @author Braxton.

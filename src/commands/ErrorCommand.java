@@ -1,3 +1,6 @@
+package commands;
+import editor.File;
+
 /**
  * Error Command that is send when a inserting command is canceled.
  * @author Andrew

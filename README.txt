@@ -1,4 +1,4 @@
-READ ME Version 2.0
+READ ME Version 2.1
 Team C - Braxton Frederick, Andrew Vogler, Arron Reed, Adam Audycki
 SWEN 262-01
 11/5/14
@@ -34,8 +34,7 @@ To view the images in the buffer, click "View" and select "Preview Images" (or c
 To 'Pretty Print' the tags in the buffer, click on "View" and select "Tag Layout" (or ctrl+t), and the tags will be separated into a bracket style layout with the start and end tags on separate lines and the content on the line between.
 
 Folder Structure:
-rel2project - main folder
-source - contains the source code
-documents - contains design, presentation, listing, vclog, and buildlog
+src - main folder
+Documents - contains design, presentation, listing, vclog, and buildlog
 start.bat - runs the program with necessary settings
-r2editor.jar - runnable jar of the program
+editor.jar - runnable jar of the program

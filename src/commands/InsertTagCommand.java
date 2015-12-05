@@ -1,3 +1,6 @@
+package commands;
+import editor.File;
+
 /**
  * Command for inserting tags
  * @author Adam

@@ -1,8 +1,11 @@
+package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
+
+import patterns.InputHandler;
 
 /**
  * Methods to get and relay updates to the other view files

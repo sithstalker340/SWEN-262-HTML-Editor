@@ -1,3 +1,6 @@
+package commands;
+import editor.File;
+
 
 /**
  * Adds text to the given position.

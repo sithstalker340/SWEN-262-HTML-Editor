@@ -1,3 +1,4 @@
+package view;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;

@@ -1,3 +1,9 @@
+package patterns;
+import view.MainView;
+import view.PromptManager;
+import commands.CommandBuilder;
+import editor.File;
+
 public class Mediator{
 
 	private CommandBuilder builder;
@@ -163,9 +169,9 @@ public class Mediator{
 	}
 	
 	public void updateLinkedView(){
-		if(mainView.linkedView != null){
+		if(mainView.getLinkedView()!= null){
 			updateFileBuffer();
-			mainView.linkedView.updateLinkList(getMainViewText());
+			mainView.getLinkedView().updateLinkList(getMainViewText());
 		}
 	}
 	

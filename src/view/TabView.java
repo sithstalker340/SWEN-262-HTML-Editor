@@ -1,3 +1,4 @@
+package view;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -21,6 +22,8 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import patterns.InputHandler;
+
 @SuppressWarnings("serial")
 public class TabView extends JPanel{
 	
@@ -37,7 +40,7 @@ public class TabView extends JPanel{
 		img = null;
 		//get icon
 		try {
-		    img = ImageIO.read(getClass().getResource("resources/closeIcon.png"));
+		    img = ImageIO.read(getClass().getResource("closeIcon.png"));
 		} catch (IOException ex) {}
 		
 		tabPane.addChangeListener(new ChangeListener() {

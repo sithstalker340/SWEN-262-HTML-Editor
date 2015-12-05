@@ -1,3 +1,4 @@
+package patterns;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -7,6 +8,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import commands.Command;
+import editor.File;
+import editor.FileContent;
 
 /**
  * Handles the loading and saving of the file objects.

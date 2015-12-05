@@ -1,5 +1,8 @@
+package patterns;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import view.ImagePreviewer;
 
 public class InputHandler {
 

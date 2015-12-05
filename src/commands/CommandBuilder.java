@@ -1,3 +1,6 @@
+package commands;
+import patterns.Mediator;
+
 /**
  * Builds all of the concrete command classes.
  * @author Braxton

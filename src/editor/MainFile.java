@@ -1,3 +1,9 @@
+package editor;
+import patterns.InputHandler;
+import patterns.Mediator;
+import view.MainView;
+import view.MenuView;
+
 /**
  * The main file for the Editor Project.
  * @author ALL

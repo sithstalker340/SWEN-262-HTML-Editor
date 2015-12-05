@@ -1,3 +1,6 @@
+package commands;
+import editor.File;
+
 /**
  * Command that is sent when an image is inserted.
  * @author Adam

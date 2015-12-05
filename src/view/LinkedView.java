@@ -1,3 +1,4 @@
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -9,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import patterns.LinkedViewStrategy;
 
 /**
  * LinkedView deals with displaying the URL tags from the editors buffer.

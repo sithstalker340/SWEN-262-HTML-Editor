@@ -1,3 +1,4 @@
+package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -5,6 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
+
+import patterns.InputHandler;
+import patterns.SortByAlpha;
+import patterns.SortByAppear;
 
 @SuppressWarnings("serial")
 public class MainView extends JFrame
@@ -90,6 +95,10 @@ public class MainView extends JFrame
 	
 	public int getCursorEnd(){
 		return tabView.getCursorEnd();
+	}
+	
+	public LinkedView getLinkedView(){
+		return linkedView;
 	}
 	
 	public void setIsSaved(boolean b){

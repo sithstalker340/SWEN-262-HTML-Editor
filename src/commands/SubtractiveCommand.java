@@ -1,3 +1,6 @@
+package commands;
+import editor.File;
+
 /**
  * Command that deletes text.
  * @author Braxton
