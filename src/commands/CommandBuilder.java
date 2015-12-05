@@ -45,16 +45,16 @@ public class CommandBuilder{
 		
 		else if(type == "link"){
 			String s = mediator.promptManager.displayLines1("Enter the url:");
-			if(s != ""){
+			if(!s.equals("")){
 				cmd = new InsertLinkCommand(s, start, end);	
 			}
 			else cmd = new ErrorCommand(); //do nothing
 		}
 		
-		else if(type == "list"){
+		else if(type.equals("list")){
 			
 			String s = mediator.promptManager.displayLines1("Enter the number of list elements:");
-			if(s != ""){
+			if(!s.equals("")){
 				try{
 					int i = Integer.parseInt(s); 
 					cmd = new InsertListCommand(text, start, i);
@@ -67,7 +67,7 @@ public class CommandBuilder{
 			else cmd = new ErrorCommand(); //this intentionally does nothing, cmd must be returned 
 		}			
 		
-		else if(type == "table"){
+		else if(type.equals("table")){
 			String[] userInput = new String[2];
 			userInput = mediator.promptManager.displayLines2("Number of rows:", "Number of columns:"); 
 		
@@ -82,9 +82,9 @@ public class CommandBuilder{
 			}
 		}
 		
-		else if(type == "img"){
+		else if(type.equals("img")){
 			String s = mediator.promptManager.displayLines1("Enter the source path:");
-			if(s != ""){
+			if(!s.equals("")){
 				cmd = new InsertImageCommand(s, start, end);	
 			}
 			else cmd = new ErrorCommand(); //do nothing

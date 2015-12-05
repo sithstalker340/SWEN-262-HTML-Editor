@@ -30,14 +30,13 @@ public class TabView extends JPanel{
 	MainView mainView;
 	ViewListener listener;
 	JTabbedPane tabPane;
-	static Image img;
+	static Image img = null;
 	
 	public TabView(MainView parent, ViewListener vListener){
 		mainView = parent;
 		listener = vListener;
 		tabPane = new JTabbedPane();
 		
-		img = null;
 		//get icon
 		try {
 		    img = ImageIO.read(getClass().getResource("closeIcon.png"));

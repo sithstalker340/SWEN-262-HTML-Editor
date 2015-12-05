@@ -32,18 +32,18 @@ public class Mediator{
 		int cursorStart = mainView.getCursorStart();
 		int cursorEnd = mainView.getCursorEnd();
 		
-		if(type == "update"){
+		if(type.equals("update")){
 			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Additive"));
 		}
 		
-		else if(type == "tagLayout"){
+		else if(type.equals("tagLayout")){
 			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Additive"));
 			text = fileHandler.getTagLayout();
 			fileHandler.pushCommand(builder.CreateCommand(text, 0, text.length(), "Additive"));
 			return;
 		}
 		
-		else if(type == "Subtractive"){
+		else if(type.equals("Subtractive")){
 			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Subtractive"));
 			
 		}
@@ -53,7 +53,7 @@ public class Mediator{
 			fileHandler.pushCommand(builder.CreateCommand(mainView.getText(), 0, text.length(), "Additive"));
 			fileHandler.pushCommand(builder.CreateCommand(text, cursorStart , cursorEnd, type));
 			
-			if(type == "link"){
+			if(type.equals("link")){
 				updateLinkedView();
 			}
 		}		

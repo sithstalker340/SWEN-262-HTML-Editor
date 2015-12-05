@@ -18,7 +18,7 @@ public class InsertListCommand extends Command {
 		for(int i = 0; i < numRows; i++){
 			text += '\n';
 			
-			if(tag == "dl"){
+			if(tag.equals("dl")){
 				text += "<dt> </dt>" + '\n' + "<dd> </dd>";
 			}else{
 				text += "<li> </li>";				

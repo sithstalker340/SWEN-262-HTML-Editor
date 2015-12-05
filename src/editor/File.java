@@ -111,7 +111,7 @@ public class File{
 	public void pushCommand(Command cmd, boolean clear){
 		if(cmd == null){
 			System.out.println("cmd is null");
-			
+			return;
 		}
 		cmd.Apply(this);
 		if(cmd.isUndoable){
