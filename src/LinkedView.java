@@ -1,4 +1,3 @@
-package rel2project.src;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
